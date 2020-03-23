@@ -1,0 +1,69 @@
+version: '3.7'
+
+services:
+
+  app:
+    hostname: "${DRUPAL_HOSTNAME}"
+    container_name: "${COMPOSE_PROJECT_NAME}-drupal"
+    image: "${DRUPAL_IMAGE}"
+    volumes:
+      - .:/app:delegated
+      - ssh:/tmp/amazeeio_ssh-agent:ro
+    environment:
+      APP_ENV: "${APP_ENV}"
+      DRUSH_OPTIONS_URI: "https://${DRUPAL_HOSTNAME}"
+      #XDEBUG_ENABLE: "true"
+    networks:
+      - internal
+      - dev-network
+    labels:
+      traefik.enable: true
+      traefik.port: 8080
+      traefik.frontend.rule: "Host:${DRUPAL_HOSTNAME}"
+      traefik.frontend.redirect.entryPoint: https
+
+  db:
+    container_name: "${COMPOSE_PROJECT_NAME}-db"
+    image: druidfi/db:mysql5.7-drupal
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 3306
+    networks:
+      - internal
+
+  varnish:
+    container_name: "${COMPOSE_PROJECT_NAME}-varnish"
+    image: druidfi/varnish:6-drupal
+    depends_on:
+      - app
+    networks:
+      - internal
+      - dev-network
+    labels:
+      traefik.enable: true
+      traefik.port: 6081
+      traefik.frontend.rule: "Host:varnish-${DRUPAL_HOSTNAME}"
+      traefik.frontend.redirect.entryPoint: https
+
+  solr:
+    image: wodby/solr:$SOLR_TAG
+    container_name: "${COMPOSE_PROJECT_NAME}-solr"
+    environment:
+      SOLR_DEFAULT_CONFIG_SET: $SOLR_CONFIG_SET
+      SOLR_HEAP: 1024m
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
+
+networks:
+  internal:
+    external: false
+  dev-network:
+    name: stonehenge-network
+    external: true
+
+volumes:
+  db_data:
+  ssh:
+    name: stonehenge-ssh
+    external: true

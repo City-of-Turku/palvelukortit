@@ -32,19 +32,19 @@ services:
     networks:
       - internal
 
-  varnish:
-    container_name: "${COMPOSE_PROJECT_NAME}-varnish"
-    image: druidfi/varnish:6-drupal
-    depends_on:
-      - app
-    networks:
-      - internal
-      - dev-network
-    labels:
-      traefik.enable: true
-      traefik.port: 6081
-      traefik.frontend.rule: "Host:varnish-${DRUPAL_HOSTNAME}"
-      traefik.frontend.redirect.entryPoint: https
+#  varnish:
+#    container_name: "${COMPOSE_PROJECT_NAME}-varnish"
+#    image: druidfi/varnish:6-drupal
+#    depends_on:
+#      - app
+#    networks:
+#      - internal
+#      - dev-network
+#    labels:
+#      traefik.enable: true
+#      traefik.port: 6081
+#      traefik.frontend.rule: "Host:varnish-${DRUPAL_HOSTNAME}"
+#      traefik.frontend.redirect.entryPoint: https
 
   solr:
     image: wodby/solr:$SOLR_TAG

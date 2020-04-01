@@ -1,13 +1,12 @@
 dev:
   host: node-1f9f9f03-bffd-4eda-b32b-c1785c87d8f3.wod.by
   user: wodby
-  root: /var/www/html/public
+  root: /var/www/html
   uri: palvelukortit-test.druid.fi
   ssh:
-    options: '-p 31233 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+    options: '-p 31238'
   wodby:
     app_id: a50d97b3-8845-4208-be86-212e0fe6bb12
-    app_name: afda
+    app_name: turku-palvelukortit
     instance_id: 684a9cf7-6c2c-44fc-9d81-35b9041df511
     instance_name: dev
-

@@ -6,5 +6,8 @@ npm-debug.log
 # Distribution folder
 dist
 
+# Icons sprite html
+icons/sprite.symbol.html
+
 # Other
 .DS_Store

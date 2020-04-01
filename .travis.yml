@@ -24,12 +24,12 @@ env:
     - SIMPLETEST_BASE_URL=$BASE_URL
     - SIMPLETEST_DB=$DB_URL
     - WEBROOT=$TRAVIS_BUILD_DIR/public
-    - APP_ENV=prod
 
 cache:
   directories:
   - "$HOME/.composer/cache"
   - "$HOME/.drush/cache"
+  - "$HOME/.npm"
 
 before_install:
 
@@ -54,7 +54,9 @@ install:
   - composer validate
 
   # Do Composer install.
-  - make build
+  - composer install --no-suggest
+  - npm ci  --prefix /usr/src/app/public/themes/custom/pako --engine-strict true
+  - npm run --prefix /usr/src/app/public/themes/custom/pako gulp production
 
 script:
 

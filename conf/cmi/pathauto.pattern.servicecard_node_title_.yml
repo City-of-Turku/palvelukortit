@@ -1,0 +1,33 @@
+uuid: d45e4dd0-3937-4e3a-a7fa-92cd169b436e
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: servicecard_node_title_
+label: 'Service card En'
+type: 'canonical_entities:node'
+pattern: 'servicecard/[node:title]'
+selection_criteria:
+  d966385a-bceb-402d-abca-0204b5616dfb:
+    id: node_type
+    bundles:
+      service_card: service_card
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d966385a-bceb-402d-abca-0204b5616dfb
+  d6d22124-34bd-4470-995f-5335de2e9b72:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: d6d22124-34bd-4470-995f-5335de2e9b72
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

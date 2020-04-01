@@ -12,6 +12,8 @@ html {
 
 .dialog-off-canvas-main-canvas {
   background-color: $page-background;
+  height: 100%;
+  padding: $gutter;
 }
 
 body {

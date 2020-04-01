@@ -3,7 +3,7 @@
 //
 // This file includes all variables related to colors
 //
-$page-background: #F7F7F7;
+$page-background: #fff; //#F7F7F7;
 
 $black: #282828;
 $white: #fff;
@@ -12,3 +12,11 @@ $gray-light: #E7E8E9;
 $gray-medium: #C8CDD0;
 $gray: #A5ACB0;
 $gray-dark: #5F686D;
+
+// Colors for messages
+$error-light: #e98491;
+$error-dark: #ed1a3b;
+$status-light: #7dcdc8;
+$status-dark: #00a97a;
+$warning-light: #f29869;
+$warning-dark: #f26522;

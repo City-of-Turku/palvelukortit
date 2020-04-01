@@ -1,0 +1,25 @@
+//
+// @file
+//
+// This file includes everything related to the logo styling
+//
+
+.logo {
+  align-items: center;
+  display: flex;
+  line-height: 0;
+
+  &--header,
+  &--header:hover {
+    text-decoration: none;
+  }
+
+  &--text {
+    @include font-weight($semibold);
+    @include font-size(32px, 40px);
+    color: $gray-dark;
+    font-family: $default-font-family;
+    letter-spacing: -0.5px;
+    text-align: left;
+  }
+}

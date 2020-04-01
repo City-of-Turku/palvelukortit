@@ -1,25 +1,24 @@
-uuid: 3389bda4-221e-4bac-8811-9fa8ba5811d1
+uuid: a99b3a46-b94a-40a2-91ad-1f6d26feccfb
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
-    - field.field.node.service_cards.body
-    - node.type.service_cards
+    - core.entity_view_mode.node.full
+    - field.field.node.service_card.body
+    - node.type.service_card
   module:
     - text
     - user
-id: node.service_cards.teaser
+id: node.service_card.full
 targetEntityType: node
-bundle: service_cards
-mode: teaser
+bundle: service_card
+mode: full
 content:
   body:
     label: hidden
-    type: text_summary_or_trimmed
+    type: text_default
     weight: 101
-    settings:
-      trim_length: 600
+    settings: {  }
     third_party_settings: {  }
     region: content
   links:

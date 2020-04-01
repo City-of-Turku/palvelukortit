@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.service_cards.body
-    - node.type.service_cards
+    - field.field.node.service_card.body
+    - node.type.service_card
   module:
     - text
     - user
-id: node.service_cards.default
+id: node.service_card.default
 targetEntityType: node
-bundle: service_cards
+bundle: service_card
 mode: default
 content:
   body:

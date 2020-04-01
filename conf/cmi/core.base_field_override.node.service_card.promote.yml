@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.service_cards
-id: node.service_cards.promote
+    - node.type.service_card
+id: node.service_card.promote
 field_name: promote
 entity_type: node
-bundle: service_cards
+bundle: service_card
 label: 'Promoted to front page'
 description: ''
 required: false

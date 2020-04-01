@@ -4,13 +4,13 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.service_cards
+    - node.type.service_card
   module:
     - text
-id: node.service_cards.body
+id: node.service_card.body
 field_name: body
 entity_type: node
-bundle: service_cards
+bundle: service_card
 label: Body
 description: ''
 required: false

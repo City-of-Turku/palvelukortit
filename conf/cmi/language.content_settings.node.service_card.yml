@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.service_cards
+    - node.type.service_card
   module:
     - content_translation
 third_party_settings:
   content_translation:
     enabled: true
-id: node.service_cards
+id: node.service_card
 target_entity_type_id: node
-target_bundle: service_cards
+target_bundle: service_card
 default_langcode: site_default
 language_alterable: true

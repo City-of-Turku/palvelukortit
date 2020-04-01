@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50164be80f6f3bb1954b1862bd3696d3",
+    "content-hash": "98e8408e10d7428fa8872ebdcb0cc8cf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1157,6 +1157,18 @@
             "time": "2017-01-20T21:14:22+00:00"
         },
         {
+            "name": "dimsemenov/magnific-popup",
+            "version": "1.1.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/dimsemenov/Magnific-Popup/archive/1.1.0.zip"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "magnific-popup"
+            }
+        },
+        {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
             "source": {
@@ -2165,6 +2177,93 @@
             }
         },
         {
+            "name": "drupal/dropzonejs",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/dropzonejs.git",
+                "reference": "8.x-2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/dropzonejs-8.x-2.1.zip",
+                "reference": "8.x-2.1",
+                "shasum": "a165b70070c320933fdce0c02be3577abce5e938"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "require-dev": {
+                "drupal/entity_browser": "*"
+            },
+            "suggest": {
+                "enyo/dropzone": "Required to user drupal/dropzonejs. Dropzone is an easy to use drag'n'drop library."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.1",
+                    "datestamp": "1585662324",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Janez Urevc",
+                    "homepage": "https://drupal.org/u/slashrsm",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Christian Fritsch",
+                    "homepage": "https://drupal.org/u/chrfritsch",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Primoz Hmeljak",
+                    "homepage": "https://drupal.org/u/Primsi",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/1998478/committers",
+                    "role": "contributor"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                },
+                {
+                    "name": "wouters_f",
+                    "homepage": "https://www.drupal.org/user/721548"
+                },
+                {
+                    "name": "zkday",
+                    "homepage": "https://www.drupal.org/user/888644"
+                }
+            ],
+            "description": "Drupal integration for DropzoneJS - An open source library that provides drag’n’drop file uploads with image previews.",
+            "homepage": "https://www.drupal.org/project/dropzonejs",
+            "keywords": [
+                "DropzoneJS",
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://www.drupal.org/project/dropzonejs",
+                "issues": "https://www.drupal.org/project/issues/dropzonejs",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
+        },
+        {
             "name": "drupal/pathauto",
             "version": "1.6.0",
             "source": {
@@ -2223,6 +2322,71 @@
             "homepage": "https://www.drupal.org/project/pathauto",
             "support": {
                 "source": "https://git.drupalcode.org/project/pathauto"
+            }
+        },
+        {
+            "name": "drupal/select2",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/select2.git",
+                "reference": "8.x-1.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/select2-8.x-1.7.zip",
+                "reference": "8.x-1.7",
+                "shasum": "ad26fe63a488d9b3fc36818f194224ffa0b3aa8c"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "require-dev": {
+                "drupal/facets": "^1.4",
+                "drupal/form_options_attributes": "^1.0",
+                "drupal/search_api": "^1.10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.7",
+                    "datestamp": "1583142729",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Fritsch",
+                    "homepage": "https://www.drupal.org/user/1133806",
+                    "email": "christian.fritsch@burda.com"
+                },
+                {
+                    "name": "chr.fritsch",
+                    "homepage": "https://www.drupal.org/user/2103716"
+                },
+                {
+                    "name": "oushen",
+                    "homepage": "https://www.drupal.org/user/1200780"
+                },
+                {
+                    "name": "thunderbot",
+                    "homepage": "https://www.drupal.org/user/3511180"
+                }
+            ],
+            "description": "Integration with the select2 JavaScript library.",
+            "homepage": "https://www.drupal.org/project/select2",
+            "support": {
+                "source": "https://git.drupalcode.org/project/select2"
             }
         },
         {
@@ -2545,6 +2709,16 @@
                 "validator"
             ],
             "time": "2019-08-13T17:33:27+00:00"
+        },
+        {
+            "name": "enyo/dropzone",
+            "version": "5.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/enyo/dropzone",
+                "reference": "origin/master"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "grasmash/expander",
@@ -3613,6 +3787,18 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "select2/select2",
+            "version": "4.0.7",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/select2/select2/archive/4.0.7.zip"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "select2"
+            }
         },
         {
             "name": "stack/builder",

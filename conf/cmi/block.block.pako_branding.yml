@@ -1,15 +1,15 @@
-uuid: a0328b95-f8a6-4b6c-8844-8eccb4425840
+uuid: 3052c1d6-c79f-41f1-a74d-f37e384bd891
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - stark
+    - pako
 _core:
   default_config_hash: fRKXNB91UxDvEMkzCR8ZBsawfC6Fqbme2gtobei3gu4
-id: stark_branding
-theme: stark
+id: pako_branding
+theme: pako
 region: header
 weight: 0
 provider: null

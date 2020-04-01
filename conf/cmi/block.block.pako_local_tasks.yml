@@ -1,13 +1,13 @@
-uuid: b4bd4e15-08b9-45e6-8ea9-2d6e5605d9b0
+uuid: c287ec4d-0f9d-4b1d-aa36-a9b9f2ea2ad6
 langcode: en
 status: true
 dependencies:
   theme:
-    - stark
+    - pako
 _core:
   default_config_hash: c-06bbElRY5sKmglk74ppgTW93Et4-EJFyNiUZMb8JY
-id: stark_local_tasks
-theme: stark
+id: pako_local_tasks
+theme: pako
 region: content
 weight: -20
 provider: null

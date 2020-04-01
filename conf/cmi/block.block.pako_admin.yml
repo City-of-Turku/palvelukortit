@@ -1,4 +1,4 @@
-uuid: 8cd9f7be-f9ec-4bed-b18a-4468a3ac6045
+uuid: f29847f4-8254-4d0c-88c4-da7f7c2c4dff
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - stark
+    - pako
 _core:
   default_config_hash: OFEDxrButmQ8Vac1kiVr1gtw6vYKuSJPr9cJQZVKCKg
-id: stark_admin
-theme: stark
+id: pako_admin
+theme: pako
 region: sidebar_first
 weight: 1
 provider: null

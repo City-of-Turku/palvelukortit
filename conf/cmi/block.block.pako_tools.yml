@@ -1,4 +1,4 @@
-uuid: 39f89795-9c09-44a7-976e-7fd7b46c6544
+uuid: 8389621d-0da2-4b00-b976-e882c2bc01cc
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - stark
+    - pako
 _core:
   default_config_hash: uUF2GYN2x5fcmOu26M-gwqUA-yVWMDD_MRmnYfmPzlM
-id: stark_tools
-theme: stark
+id: pako_tools
+theme: pako
 region: sidebar_first
 weight: 0
 provider: null

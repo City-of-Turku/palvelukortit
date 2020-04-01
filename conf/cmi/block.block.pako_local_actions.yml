@@ -1,13 +1,13 @@
-uuid: ff66ece3-a10f-41d9-ae72-98ecffbfb614
+uuid: f2f6438d-4c87-4ca5-bdba-4b239da47709
 langcode: en
 status: true
 dependencies:
   theme:
-    - stark
+    - pako
 _core:
   default_config_hash: PffmQ-ABSz5tFjWmVsR7NesunDnEivvopnJnBjl8KNE
-id: stark_local_actions
-theme: stark
+id: pako_local_actions
+theme: pako
 region: content
 weight: -10
 provider: null

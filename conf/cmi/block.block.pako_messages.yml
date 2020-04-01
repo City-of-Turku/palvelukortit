@@ -1,16 +1,16 @@
-uuid: 541e5471-a7a6-4ae0-8ec5-df8945cd7876
+uuid: 73aa8198-9256-46ab-9012-c90dcb51e9ee
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - stark
+    - pako
 _core:
   default_config_hash: 5MNdk3fpMKx_xxBTcz2T11DL4XEU1H5SgHl8BsYdFsA
-id: stark_messages
-theme: stark
-region: highlighted
+id: pako_messages
+theme: pako
+region: header
 weight: 0
 provider: null
 plugin: system_messages_block

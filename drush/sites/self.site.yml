@@ -1,7 +1,7 @@
 dev:
   host: node-1f9f9f03-bffd-4eda-b32b-c1785c87d8f3.wod.by
   user: wodby
-  root: /var/www/html
+  root: /var/www/html/public
   uri: palvelukortit-test.druid.fi
   ssh:
     options: '-p 31238'

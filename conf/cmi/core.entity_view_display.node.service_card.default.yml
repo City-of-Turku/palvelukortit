@@ -1,0 +1,29 @@
+uuid: 0e0f5c20-3f1e-459e-bb25-f8001e0a2081
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.service_card.body
+    - node.type.service_card
+  module:
+    - text
+    - user
+id: node.service_card.default
+targetEntityType: node
+bundle: service_card
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

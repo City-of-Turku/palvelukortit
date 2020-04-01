@@ -1,0 +1,23 @@
+uuid: 432984b7-85a4-4a4d-bad2-c274595a92f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.service_card
+  module:
+    - text
+id: node.service_card.body
+field_name: body
+entity_type: node
+bundle: service_card
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,28 @@
+# Should be removed when all major browsers on most used operating systems
+# can handle CSS3 hyphens: auto. See. https://caniuse.com/#search=hyphens or
+# https://www.w3schools.com/cssref/css3_pr_hyphens.asp.
+hyphenopoly:
+  header: true
+  js:
+    dist/js/initializeHyphenopoly.min.js: { weight: -2 }
+    src/js/hyphenopoly/Hyphenopoly_Loader.js: { weight: -1 }
+
+svgxuse:
+  js:
+    dist/js/svgxuse.min.js: {}
+
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      dist/css/styles.css: {}
+
+global-scripting:
+  version: 1.x
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/jquery
+    - core/jquery.once
+    - pako/hyphenopoly
+    - pako/svgxuse

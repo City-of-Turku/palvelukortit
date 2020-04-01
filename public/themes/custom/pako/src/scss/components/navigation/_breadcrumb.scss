@@ -1,0 +1,31 @@
+.breadcrumb {
+  @include font-size(14px, 20px);
+  color: $gray-dark;
+  margin: 0;
+  padding: $gutter / 1.25 0 0;
+
+  a {
+    color: $gray-dark;
+    text-decoration: none;
+
+    &:focus,
+    &:active,
+    &:hover {
+      color: $black;
+    }
+  }
+
+  .icon {
+    height: 12px;
+    margin: 0 3px 2px 4px;
+    vertical-align: middle;
+    width: 12px;
+  }
+
+  svg {
+    height: auto;
+    max-height: 50px;
+    max-width: 50px;
+    width: 100%;
+  }
+}

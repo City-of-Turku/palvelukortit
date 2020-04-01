@@ -1,0 +1,39 @@
+//
+// @file
+// This file includes styling related to local tasks such as "view" and "edit"
+//
+
+.local-tasks {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: $gutter -5px;
+  padding: 0;
+
+  .local-task {
+    margin: 0;
+
+    a {
+      @include button;
+      @include font-size(14px, 18px);
+      background-color: $white;
+      border: 1px solid $gray;
+      box-shadow: 0 3px 6px #00000029;
+      color: $gray;
+      margin: 10px 5px;
+
+      &:hover {
+        background-color: $gray-light;
+        border-color: $gray;
+        color: $white;
+      }
+
+      &.is-active {
+        background-color: $gray;
+        box-shadow: 0 0 0 transparent;
+        color: $white;
+        cursor: default;
+      }
+    }
+  }
+}

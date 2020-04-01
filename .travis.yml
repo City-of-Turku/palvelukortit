@@ -24,6 +24,7 @@ env:
     - SIMPLETEST_BASE_URL=$BASE_URL
     - SIMPLETEST_DB=$DB_URL
     - WEBROOT=$TRAVIS_BUILD_DIR/public
+    - APP_ENV=prod
 
 cache:
   directories:

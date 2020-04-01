@@ -1,0 +1,21 @@
+pipeline:
+
+  - name: Install dependencies
+    type: command
+    command: composer install --prefer-dist -n --no-dev
+    directory: $APP_ROOT
+
+  - name: Drush updb
+    type: command
+    command: drush -y updb
+    directory: $HTTP_ROOT
+
+  - name: Drush cim
+    type: command
+    command: drush -y cim
+    directory: $HTTP_ROOT
+
+  - name: Drush clear cache
+    type: command
+    command: drush -y cr
+    directory: $HTTP_ROOT

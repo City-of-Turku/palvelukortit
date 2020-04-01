@@ -1,6 +1,6 @@
 {
     "name": "druidfi/turku_palvelukortit",
-    "description": "Drupal 8 website for Suomidigi.fi",
+    "description": "Drupal 8 website for Turku palvelukortit",
     "type": "project",
     "license": "MIT",
     "homepage": "https://github.com/druidfi/turku_palvelukortit",
@@ -25,7 +25,7 @@
         "drupal/dropzonejs": "^2.0-alpha4",
         "drupal/select2": "^1.1",
         "drush/drush": "^10.2",
-        "enyo/dropzone": "5.5.0",
+        "enyo/dropzone": "^5.7.0",
         "select2/select2": "^4.0.7",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98e8408e10d7428fa8872ebdcb0cc8cf",
+    "content-hash": "3a2fe54ba4e3e8b7a05fb1c7f64f9ab1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2712,13 +2712,39 @@
         },
         {
             "name": "enyo/dropzone",
-            "version": "5.5.0",
+            "version": "v5.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/enyo/dropzone",
-                "reference": "origin/master"
+                "url": "https://github.com/enyo/dropzone.git",
+                "reference": "5b82186d5f18540a1d13b6f4914fdc6220617ef5"
             },
-            "type": "drupal-library"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/enyo/dropzone/zipball/5b82186d5f18540a1d13b6f4914fdc6220617ef5",
+                "reference": "5b82186d5f18540a1d13b6f4914fdc6220617ef5",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matias Meno",
+                    "email": "m@tias.me",
+                    "homepage": "http://www.matiasmeno.com"
+                }
+            ],
+            "description": "Handles drag and drop of files for you.",
+            "homepage": "http://www.dropzonejs.com",
+            "keywords": [
+                "drag and drop",
+                "dragndrop",
+                "file upload",
+                "upload"
+            ],
+            "time": "2020-02-14T13:09:09+00:00"
         },
         {
             "name": "grasmash/expander",

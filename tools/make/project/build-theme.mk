@@ -4,10 +4,18 @@ else
 	PATH_TO_THEME := ./public/themes/custom
 endif
 
+ifeq ($(BUILD_THEME_ENV),travis)
+	SHOULD_BUILD := false
+else
+	SHOULD_BUILD := true
+endif
+
 THEME_PACKAGE_JSON_EXISTS := $(shell test -f ./public/themes/custom/$(DRUPAL_THEME_NAME)/package.json && echo yes || echo no)
 
-ifeq (${THEME_PACKAGE_JSON_EXISTS},yes)
+ifeq ($(THEME_PACKAGE_JSON_EXISTS),yes)
+ifeq ($(SHOULD_BUILD),true)
 	BUILD_TARGETS += build-theme
+endif
 endif
 
 ifeq ($(ENV),production)

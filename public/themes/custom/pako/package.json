@@ -46,6 +46,7 @@
     "lodash.template": ">=4.5.0",
     "minimist": ">=1.2.5",
     "node-normalize-scss": "^8.0.1",
+    "phantomjs-prebuilt": "^2.1.16",
     "slash": "2.0.0",
     "svg-sprite": "^1.5.0",
     "tar": "4.4.8"

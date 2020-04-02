@@ -1,31 +1,31 @@
-uuid: d45e4dd0-3937-4e3a-a7fa-92cd169b436e
+uuid: 0246b41a-daaf-4e67-a75d-b9645866a86f
 langcode: en
 status: true
 dependencies:
   module:
     - language
     - node
-id: servicecard_node_title_
-label: 'Service card En'
+id: service_card_sv
+label: 'Service card - SV'
 type: 'canonical_entities:node'
-pattern: 'servicecard/[node:title]'
+pattern: 'servicekort/[node:title]'
 selection_criteria:
-  d966385a-bceb-402d-abca-0204b5616dfb:
+  8f13afbb-641f-4381-b2cf-cd9f2f267d6f:
     id: node_type
     bundles:
       service_card: service_card
     negate: false
     context_mapping:
       node: node
-    uuid: d966385a-bceb-402d-abca-0204b5616dfb
-  d6d22124-34bd-4470-995f-5335de2e9b72:
+    uuid: 8f13afbb-641f-4381-b2cf-cd9f2f267d6f
+  69e431be-117f-4013-ba55-cab80cc95262:
     id: language
     langcodes:
-      en: en
+      sv: sv
     negate: false
     context_mapping:
       language: 'node:langcode:language'
-    uuid: d6d22124-34bd-4470-995f-5335de2e9b72
+    uuid: 69e431be-117f-4013-ba55-cab80cc95262
 selection_logic: and
 weight: -10
 relationships:

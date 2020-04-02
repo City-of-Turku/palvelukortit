@@ -1,0 +1,42 @@
+.pager {
+  padding: 0;
+  text-align: center;
+  width: 100%;
+
+  &__item {
+    border: 0 none;
+
+    &.is-infinite {
+      &:last-child {
+        border: 0 none;
+        padding: $gutter;
+      }
+    }
+
+    .button {
+      @include font-size(20px, 26px);
+      @include font-weight($semibold);
+      background-color: $white;
+      border: 2px solid $gray-dark;
+      border-radius: 5px;
+      color: $gray-dark;
+      display: inline-block;
+      letter-spacing: 0;
+      margin: 0 auto;
+      padding: 10px 40px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: $gray-dark;
+        color: $white;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+
+}

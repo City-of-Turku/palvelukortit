@@ -1,0 +1,7 @@
+.service-card {
+  padding: $gutter 0 $gutter * 2;
+
+  @include breakpoint($for-tablet-portrait-up) {
+    padding: 0 0 $gutter * 2;
+  }
+}

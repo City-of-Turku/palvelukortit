@@ -24,11 +24,13 @@ env:
     - SIMPLETEST_BASE_URL=$BASE_URL
     - SIMPLETEST_DB=$DB_URL
     - WEBROOT=$TRAVIS_BUILD_DIR/public
+    - BUILD_THEME_ENV=travis
 
 cache:
   directories:
   - "$HOME/.composer/cache"
   - "$HOME/.drush/cache"
+  - "$HOME/.npm"
 
 before_install:
 

@@ -1,0 +1,28 @@
+pako.for_phone_only:
+  label: for-phone-only
+  mediaQuery: 'max-width: 767px'
+  weight: 0
+  multipliers:
+  - 1x
+  - 2x
+pako.for_tablet_portrait_up:
+  label: for-tablet-portrait-up
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 1
+  multipliers:
+  - 1x
+  - 2x
+pako.for_tablet_landscape_up:
+  label: for-tablet-landscape-up
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 1
+  multipliers:
+  - 1x
+  - 2x
+pako.for_desktop_up:
+  label: for-desktop-up
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 2
+  multipliers:
+  - 1x
+  - 2x

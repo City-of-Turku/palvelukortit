@@ -1,0 +1,20 @@
+uuid: f2f6438d-4c87-4ca5-bdba-4b239da47709
+langcode: en
+status: true
+dependencies:
+  theme:
+    - pako
+_core:
+  default_config_hash: PffmQ-ABSz5tFjWmVsR7NesunDnEivvopnJnBjl8KNE
+id: pako_local_actions
+theme: pako
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

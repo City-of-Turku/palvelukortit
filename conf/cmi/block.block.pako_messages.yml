@@ -1,0 +1,22 @@
+uuid: 73aa8198-9256-46ab-9012-c90dcb51e9ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pako
+_core:
+  default_config_hash: 5MNdk3fpMKx_xxBTcz2T11DL4XEU1H5SgHl8BsYdFsA
+id: pako_messages
+theme: pako
+region: header
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

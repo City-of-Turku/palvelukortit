@@ -1,0 +1,32 @@
+name: Turku palvelukortit theme
+description: A Drupal 8 theme for Turun palvelukortit.
+type: theme
+core: 8.x
+screenshot: screenshot.jpg
+base theme: classy
+
+# Define Regions
+regions:
+  header: Header
+  navigation: Navigation
+  messages: Messages
+  tools: Tools
+  breadcrumb: Breadcrumb
+  sidebar_first: First sidebar
+  sidebar_second: Second sidebar
+  content: Content
+  footer: Footer
+
+# Define Libraries
+libraries:
+  - pako/global-styling
+  - pako/global-scripting
+
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+        css/components/button.css: false
+        css/components/pager.css: false
+

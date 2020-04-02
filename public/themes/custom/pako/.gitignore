@@ -1,0 +1,13 @@
+# Node and npm
+node_modules
+npm-debug.log
+.gulp
+
+# Distribution folder
+dist
+
+# Icons sprite html
+icons/sprite.symbol.html
+
+# Other
+.DS_Store

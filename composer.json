@@ -1,9 +1,9 @@
 {
-    "name": "druidfi/spell",
-    "description": "Spell to create a new Drupal 8 project",
+    "name": "druidfi/turku_palvelukortit",
+    "description": "Drupal 8 website for Turku palvelukortit",
     "type": "project",
     "license": "MIT",
-    "homepage": "https://github.com/druidfi/spell",
+    "homepage": "https://github.com/druidfi/turku_palvelukortit",
     "authors": [
         {
             "name": "Druid.fi",
@@ -14,6 +14,7 @@
     "prefer-stable": true,
     "require": {
         "cweagans/composer-patches": "^1.6.5",
+        "dimsemenov/magnific-popup": "^1.1",
         "druidfi/omen": "^0.1.0",
         "drupal/admin_toolbar": "^2.2",
         "drupal/core-composer-scaffold": "^8.8.0",
@@ -21,7 +22,11 @@
         "drupal/ctools": "^3.2",
         "drupal/pathauto": "^1.6",
         "drupal/token": "^1.6",
+        "drupal/dropzonejs": "^2.0-alpha4",
+        "drupal/select2": "^1.1",
         "drush/drush": "^10.2",
+        "enyo/dropzone": "^5.7.0",
+        "select2/select2": "^4.0.7",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
@@ -63,6 +68,49 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "enyo/dropzone",
+                "version": "5.5.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/enyo/dropzone",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "select2/select2",
+                "version": "4.0.7",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "select2"
+                },
+                "dist": {
+                    "url": "https://github.com/select2/select2/archive/4.0.7.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "dimsemenov/magnific-popup",
+                "version": "1.1.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "magnific-popup"
+                },
+                "dist": {
+                    "url": "https://github.com/dimsemenov/Magnific-Popup/archive/1.1.0.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "scripts": {

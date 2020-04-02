@@ -1,0 +1,11 @@
+//
+// @file
+//
+// This file includes styles for a page layout.
+//
+.page-type--service-card {
+  background-color: $white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px #00000029;
+  margin: $gutter 0 $gutter * 4;
+}

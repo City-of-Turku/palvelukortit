@@ -1,0 +1,15 @@
+@mixin font-size($font-size, $line-height: '') {
+  font-size: ($font-size / $base-font-size) * 1rem;
+  @if $line-height != '' {
+    line-height: ($line-height / $font-size) * $font-size;
+  }
+}
+
+@mixin font-weight($font-weight) {
+  font-weight: $font-weight;
+}
+
+@mixin icon-colors($fallback: $black) {
+  fill: $fallback;
+  @content;
+}

@@ -1,0 +1,33 @@
+uuid: 92404ba4-67bc-4e8e-9add-7c1948767212
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: service_card_fi
+label: 'Service card - FI'
+type: 'canonical_entities:node'
+pattern: 'palvelukortti/[node:title]'
+selection_criteria:
+  b07898f8-06d8-47b1-bb2b-fd5a283b9f2b:
+    id: node_type
+    bundles:
+      service_card: service_card
+    negate: false
+    context_mapping:
+      node: node
+    uuid: b07898f8-06d8-47b1-bb2b-fd5a283b9f2b
+  a473941c-fef3-434d-b663-7ec6226fb93d:
+    id: language
+    langcodes:
+      fi: fi
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: a473941c-fef3-434d-b663-7ec6226fb93d
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

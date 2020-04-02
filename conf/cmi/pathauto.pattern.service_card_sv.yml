@@ -1,0 +1,33 @@
+uuid: 0246b41a-daaf-4e67-a75d-b9645866a86f
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: service_card_sv
+label: 'Service card - SV'
+type: 'canonical_entities:node'
+pattern: 'servicekort/[node:title]'
+selection_criteria:
+  8f13afbb-641f-4381-b2cf-cd9f2f267d6f:
+    id: node_type
+    bundles:
+      service_card: service_card
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 8f13afbb-641f-4381-b2cf-cd9f2f267d6f
+  69e431be-117f-4013-ba55-cab80cc95262:
+    id: language
+    langcodes:
+      sv: sv
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 69e431be-117f-4013-ba55-cab80cc95262
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

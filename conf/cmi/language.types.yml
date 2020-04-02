@@ -4,12 +4,10 @@ all:
   - language_url
 configurable:
   - language_interface
-  - language_content
 negotiation:
   language_content:
     enabled:
       language-url: -8
-      language-selected: 12
     method_weights:
       language-content-entity: -9
       language-url: -8
@@ -24,14 +22,13 @@ negotiation:
       language-url-fallback: 1
   language_interface:
     enabled:
-      language-user: -20
       language-url: -18
       language-selected: -15
     method_weights:
+      language-user: -20
       language-user-admin: -19
       language-url: -18
       language-session: -17
-      language-user: -20
       language-browser: -16
       language-selected: -15
 _core:

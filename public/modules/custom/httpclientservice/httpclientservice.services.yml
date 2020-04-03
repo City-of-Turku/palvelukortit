@@ -1,0 +1,4 @@
+services:
+  httpclientservice.client:
+    class: '\Drupal\httpclientservice\Client\httpclientserviceClient'
+    arguments: ['@http_client', '@key.repository', '@config.factory']

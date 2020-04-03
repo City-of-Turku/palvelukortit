@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains httpclientservice.module.
+ */
+
+function httpclientservice_cron() {
+  $client = Drupal::service('httpclientservice.client');
+
+  $query = [
+  ];
+
+  $request = $client->connect('get', 'api/v1/palvelupisteet', $query, []);
+  $results = json_decode($request);
+  var_dump($results); exit;
+}

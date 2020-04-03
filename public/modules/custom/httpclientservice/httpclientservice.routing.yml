@@ -1,0 +1,7 @@
+httpclientservice.settings:
+  path: '/admin/config/httpclientservice'
+  defaults:
+    _form: '\Drupal\httpclientservice\Form\ConfigForm'
+    _title: 'Asiakaspalvelijoiden palvelukortit API'
+  requirements:
+    _permission: 'administer httpclientservice api'

@@ -1,0 +1,6 @@
+httpclientservice.settings:
+  title: 'Asiakaspalvelijoiden palvelukortit API'
+  description: 'Asiakaspalvelijoiden palvelukortit API settings'
+  parent: system.admin_config_services
+  route_name: httpclientservice.settings
+  weight: 100

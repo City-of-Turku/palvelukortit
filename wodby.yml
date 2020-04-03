@@ -5,6 +5,11 @@ pipeline:
     command: composer install --prefer-dist -n --no-dev
     directory: $APP_ROOT
 
+  - name: Build theme
+    type: command
+    command: make build-theme
+    directory: $HTTP_ROOT
+
   - name: Drush updb
     type: command
     command: drush -y updb

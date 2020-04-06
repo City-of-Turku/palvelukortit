@@ -7,8 +7,9 @@
 
     span,
     a {
+      @include font-size(18px);
+      @include font-weight($semibold);
       color: $white;
-      font-size: 16px;
       text-decoration: none;
 
       &:hover {
@@ -37,11 +38,6 @@
 
       &:hover {
         text-decoration: underline;
-
-        .icon {
-          --circle-color: #282828;
-          --pw-color: #282828;
-        }
       }
     }
   }
@@ -56,9 +52,9 @@
     margin: 0;
     padding: $gutter / 1.5 0;
     position: absolute;
-    right: 15px;
-    top: 75px;
-    width: 200px;
+    right: 0px;
+    top: 55px;
+    width: 240px;
     z-index: 1000;
 
     &:after,
@@ -141,7 +137,7 @@
 
   &__button {
     @include font-size(14px, 17px);
-    @include font-weight($regular);
+    @include font-weight($semibold);
     background-color: $white;
     border: 0 none;
     height: 40px;

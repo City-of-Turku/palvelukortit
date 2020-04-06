@@ -47,6 +47,11 @@
   .menu--account {
     order: 3;
 
+    .contextual {
+      right: 35px;
+      top: -10px;
+    }
+
     @include breakpoint($for-navigation-desktop) {
       margin-left: auto;
       margin-right: 20px;
@@ -71,6 +76,11 @@
     margin-left: auto;
     margin-right: 20px;
     order: 2;
+
+    .contextual {
+      right: 35px;
+      top: -10px;
+    }
 
     @include breakpoint($for-navigation-desktop) {
       margin: 0;

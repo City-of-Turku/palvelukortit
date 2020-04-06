@@ -1,0 +1,121 @@
+.language-switch {
+  display: block;
+  flex: 2 2 310px;
+  margin: 0 0 0 $gutter * 2;
+  padding: 0;
+
+  &__wrapper {
+    line-height: 0;
+    position: relative;
+  }
+
+  &__button {
+    @include font-size(20px, 20px);
+    align-items: center;
+    background-color: $white;
+    border: 0 none;
+    border-radius: 0;
+    color: $black;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    width: 40px;
+
+    @include breakpoint($for-navigation-desktop) {
+      @include font-size(16px, 16px);
+      height: 100px;
+      width: 100px;
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: $cyan auto 3px;
+    }
+
+    &[aria-expanded=true] {
+      color: $black;
+
+      svg {
+        fill: $black;
+        transform: rotate(180deg);
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      fill: $black;
+      margin-right: -3px;
+      max-height: 15px;
+      width: 18px;
+
+      &__wrapper {
+        display: none;
+        line-height: 0;
+        margin-left: 2px;
+
+        @include breakpoint($for-navigation-desktop) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__dropdown {
+    background: $white;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 2px 2px 10px #00000029;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    z-index: 1000;
+
+    @include breakpoint($for-navigation-desktop) {
+      top: 100px;
+    }
+
+    &:not(.is-active) {
+      display: none;
+    }
+
+    .language-links {
+      padding-bottom: 10px;
+      padding-top: 10px;
+
+      .language-link {
+        @include font-size(16px, 26px);
+        @include font-weight($regular);
+        color: $black;
+        display: block;
+        padding: $gutter * 2;
+        text-decoration: none;
+        white-space: nowrap;
+
+        @include breakpoint($for-navigation-desktop) {
+          padding: 40px;
+        }
+
+        &.is-active,
+        &:focus,
+        &:hover {
+          background-color: $gray-medium;
+        }
+
+        &.is-active {
+          @include font-weight($semibold);
+        }
+      }
+
+      span.language-link:not(.is-active) {
+        color: $gray-medium;
+
+        &:focus,
+        &:hover {
+          border-left: 6px solid transparent;
+        }
+      }
+    }
+  }
+}

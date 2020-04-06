@@ -1,0 +1,80 @@
+//
+// @file
+//
+// This file includes everything related to the page header styling.
+//
+
+.page-header {
+  background-color: $blue;
+  color: $white;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  left: 0;
+  margin-bottom: -5px;
+  position: relative;
+  top: -5px;
+  transition: all 0.5s;
+  width: 100%;
+
+  @include breakpoint($for-navigation-desktop) {
+    border: 0 none;
+    height: 100px;
+    margin: 0;
+    position: static;
+    top: 0;
+  }
+
+  &__container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+    position: relative;
+
+    @include breakpoint(0, $for-navigation-desktop) {
+      width: 100%;
+    }
+
+    @include breakpoint($for-navigation-desktop) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  // Order items.
+  .menu--account {
+    order: 3;
+
+    @include breakpoint($for-navigation-desktop) {
+      margin-left: auto;
+      margin-right: 20px;
+      order: 2;
+    }
+  }
+
+  .block-system-branding-block{
+    width: 150px;
+
+    @include breakpoint($for-mobile-portrait-up) {
+      width: 270px;
+    }
+
+    @include breakpoint($for-navigation-desktop) {
+      margin-top: -10px;
+      width: 440px;
+    }
+  }
+
+  .block-language {
+    margin-left: auto;
+    margin-right: 20px;
+    order: 2;
+
+    @include breakpoint($for-navigation-desktop) {
+      margin: 0;
+      order: 3;
+    }
+  }
+}

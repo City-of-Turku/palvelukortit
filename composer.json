@@ -17,6 +17,7 @@
         "dimsemenov/magnific-popup": "^1.1",
         "druidfi/omen": "^0.1.0",
         "drupal/admin_toolbar": "^2.2",
+        "drupal/context": "^4.0@beta",
         "drupal/core-composer-scaffold": "^8.8.0",
         "drupal/core-recommended": "^8.8.0",
         "drupal/ctools": "^3.2",

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains pako_content.module.
+ */
+
 use Drupal\Core\Entity\ContentEntityInterface;
 
 /**

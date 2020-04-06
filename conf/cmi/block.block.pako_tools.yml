@@ -12,7 +12,7 @@ _core:
   default_config_hash: uUF2GYN2x5fcmOu26M-gwqUA-yVWMDD_MRmnYfmPzlM
 id: pako_tools
 theme: pako
-region: tools
+region: navigation
 weight: -3
 provider: null
 plugin: 'system_menu_block:tools'

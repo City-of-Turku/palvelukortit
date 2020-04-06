@@ -1,10 +1,10 @@
 definitions:
   user__page:
-    weight: -49
+    enabled: false
     menu_name: account
     parent: ''
-    enabled: true
     expanded: false
+    weight: -49
   user__logout:
     weight: -48
     menu_name: account

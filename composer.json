@@ -13,6 +13,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
+        "brainmaestro/composer-git-hooks": "^2.7",
         "cweagans/composer-patches": "^1.6.5",
         "dimsemenov/magnific-popup": "^1.1",
         "druidfi/omen": "^0.1.0",
@@ -66,6 +67,9 @@
             "public/themes/contrib/{$name}": ["type:drupal-theme"],
             "public/themes/custom/{$name}": ["type:drupal-theme-custom"],
             "drush/{$name}": ["type:drupal-drush"]
+        },
+        "hooks": {
+            "pre-push": "make test"
         }
     },
     "repositories": [
@@ -118,5 +122,7 @@
         }
     ],
     "scripts": {
+        "post-install-cmd": "cghooks add --force",
+        "post-update-cmd": "cghooks update"
     }
 }

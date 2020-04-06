@@ -52,7 +52,7 @@
     margin: 0;
     padding: $gutter / 1.5 0;
     position: absolute;
-    right: 0px;
+    right: 0;
     top: 55px;
     width: 240px;
     z-index: 1000;
@@ -107,6 +107,7 @@
 
       &:not(.is-active) {
         display: flex;
+        margin: 0px -26px;
       }
     }
 
@@ -120,7 +121,7 @@
       @include font-weight($regular);
 
       a {
-        padding: $gutter / 1.5 $gutter;
+        padding: $gutter / 1.5 $gutter * 1.6;
 
         @include breakpoint($for-navigation-desktop) {
           color: $white;

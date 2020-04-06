@@ -33,10 +33,10 @@
     }
 
     @include breakpoint($for-navigation-desktop) {
-      @include font-size(16px, 16px);
-      background-color: $blue;
+      @include font-size(18px, 18px);
+      background-color: transparent;
       color: $white;
-      height: 100px;
+      height: 60px;
       width: 60px;
 
       &[aria-expanded=true] {

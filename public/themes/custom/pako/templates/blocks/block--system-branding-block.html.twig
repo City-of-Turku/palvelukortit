@@ -15,6 +15,14 @@
 #}
 {% block content %}
   <a href="{{ path('<front>') }}" class="logo logo--header" title="{{ 'Back to front page'|t }}" rel="home">
-    <span class="logo--text">{{ site_name }}</span>
+    {% if current_language == 'sv' %}
+      {% set logo = '/themes/custom/pako/images/logo_sv.png' %}
+      {% set logo_class = 'logo--abo' %}
+    {% else %}
+      {% set logo = '/themes/custom/pako/images/logo.png' %}
+      {% set logo_class = '' %}
+    {% endif %}
+    <img src="{{ logo }}" />
+    <span class="logo--text {{ logo_class }}">{{ site_name }}</span>
   </a>
 {% endblock %}

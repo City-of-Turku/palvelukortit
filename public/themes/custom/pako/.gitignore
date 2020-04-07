@@ -4,7 +4,7 @@ npm-debug.log
 .gulp
 
 # Distribution folder
-dist
+# dist
 
 # Icons sprite html
 icons/sprite.symbol.html

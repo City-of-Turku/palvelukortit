@@ -8,8 +8,8 @@ _core:
   default_config_hash: c-06bbElRY5sKmglk74ppgTW93Et4-EJFyNiUZMb8JY
 id: pako_local_tasks
 theme: pako
-region: content
-weight: -20
+region: tools
+weight: -3
 provider: null
 plugin: local_tasks_block
 settings:

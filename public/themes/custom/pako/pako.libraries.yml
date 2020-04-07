@@ -1,3 +1,7 @@
+account-menu:
+  js:
+    dist/js/accountMenu.min.js: {}
+
 # Should be removed when all major browsers on most used operating systems
 # can handle CSS3 hyphens: auto. See. https://caniuse.com/#search=hyphens or
 # https://www.w3schools.com/cssref/css3_pr_hyphens.asp.
@@ -6,6 +10,10 @@ hyphenopoly:
   js:
     dist/js/initializeHyphenopoly.min.js: { weight: -2 }
     src/js/hyphenopoly/Hyphenopoly_Loader.js: { weight: -1 }
+
+language-switcher:
+  js:
+    dist/js/languageSwitcher.min.js: {}
 
 svgxuse:
   js:
@@ -24,5 +32,7 @@ global-scripting:
     - core/drupal.ajax
     - core/jquery
     - core/jquery.once
+    - pako/account-menu
     - pako/hyphenopoly
+    - pako/language-switcher
     - pako/svgxuse

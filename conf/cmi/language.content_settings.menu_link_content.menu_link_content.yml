@@ -1,18 +1,17 @@
-uuid: 9ea15351-e066-4659-86eb-776472b7e452
+uuid: 78008cd0-f42c-4564-a31b-d14ea3851d23
 langcode: en
 status: true
 dependencies:
-  config:
-    - node.type.service_card
   module:
     - content_translation
+    - menu_link_content
 third_party_settings:
   content_translation:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: node.service_card
-target_entity_type_id: node
-target_bundle: service_card
+id: menu_link_content.menu_link_content
+target_entity_type_id: menu_link_content
+target_bundle: menu_link_content
 default_langcode: fi
 language_alterable: true

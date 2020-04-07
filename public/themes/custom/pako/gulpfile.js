@@ -199,7 +199,7 @@ gulp.task(
 // -------------
 // Default task.
 // -------------
-gulp.task("default", gulp.series("dev", gulp.parallel("watch")), done => {
+gulp.task("default", gulp.series("prod", gulp.parallel("watch")), done => {
   done();
 });
 
@@ -217,4 +217,90 @@ gulp.task(
   done => {
     done();
   }
+);
+
+// -----------
+// SVG sprites
+// -----------
+const svgSprite = require("gulp-svg-sprite");
+const plumber = require("gulp-plumber");
+const filenames = require("gulp-filenames-to-json");
+
+const svgBaseDir = "icons/svg";
+const svgGlob = "**/*.svg";
+const svgOutDir = "icons";
+
+const svgSpriteConfig = {
+  log: "info",
+  shape: {
+    // Set maximum dimensions
+    dimension: {
+      maxWidth: 64,
+      maxHeight: 64
+    },
+    // Add padding
+    spacing: {
+      padding: 0
+    }
+  },
+  mode: {
+    symbol: {
+      render: {
+        css: false,
+        scss: {
+          dest: "icons.scss"
+        }
+      },
+      example: true,
+      dest: "./",
+      prefix: ".icon--%s",
+      sprite: "icons.svg"
+    }
+  },
+  svg: {
+    xmlDeclaration: false, // strip out the XML attribute
+    doctypeDeclaration: false // don't include the !DOCTYPE declaration
+  }
+};
+
+// ----------------------------------
+// Save SVG filenames to a JSON file.
+// ----------------------------------
+gulp.task("svgNamesToJson", () => {
+  const filename = {
+    fileName: "icons.json"
+  };
+  return gulp
+    .src(svgGlob, { cwd: svgBaseDir })
+    .pipe(plumber())
+    .pipe(filenames(filename))
+    .pipe(gulp.dest(svgOutDir));
+});
+
+// ----------------
+// Clean SVG sprite
+// ----------------
+function cleanSVGSprite() {
+  console.log("Clean sprites in icons folder");
+  return clean(["./icons/icons.*"]);
+}
+
+// ----------------
+// SVG sprite task.
+// ----------------
+gulp.task(
+  "svgSprite",
+  gulp.series(
+    cleanSVGSprite,
+    "svgNamesToJson",
+    () =>
+      gulp
+        .src(svgGlob, { cwd: svgBaseDir })
+        .pipe(plumber())
+        .pipe(svgSprite(svgSpriteConfig))
+        .on("error", error => {
+          console.log(error);
+        })
+        .pipe(gulp.dest(svgOutDir))
+  )
 );

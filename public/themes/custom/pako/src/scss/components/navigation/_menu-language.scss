@@ -119,11 +119,12 @@
       padding-bottom: 10px;
 
       .language-link {
-        @include font-size(16px, 26px);
-        @include font-weight($regular);
+        @include font-size(18px, 26px);
+        @include font-weight($semibold);
         color: $black;
         display: block;
         padding: $gutter * 2;
+        text-align: center;
         text-decoration: none;
         white-space: nowrap;
 
@@ -145,9 +146,8 @@
       span.language-link:not(.is-active) {
         color: $gray-medium;
 
-        &:focus,
         &:hover {
-          border-left: 6px solid transparent;
+          background-color: $white;
         }
       }
     }

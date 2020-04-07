@@ -68,6 +68,13 @@
             "public/themes/custom/{$name}": ["type:drupal-theme-custom"],
             "drush/{$name}": ["type:drupal-drush"]
         },
+        "patches": {
+            "drupal/core": {
+                "https://www.drupal.org/project/drupal/issues/2868193#comment-12258614":"https://www.drupal.org/files/issues/2868193-10.patch",
+                "https://www.drupal.org/project/drupal/issues/2313309#comment-12567549":"https://www.drupal.org/files/issues/2018-04-12/2313309-44.patch",
+                "https://www.drupal.org/project/drupal/issues/3054641#comment-13385850":"https://www.drupal.org/files/issues/2019-12-10/3054641-14.patch"
+            }
+        },
         "hooks": {
             "pre-push": "make test"
         }

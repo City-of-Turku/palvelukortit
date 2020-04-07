@@ -34,7 +34,7 @@ content:
     weight: 2
     region: content
     settings:
-      include_locked: true
+      include_locked: false
     third_party_settings: {  }
   path:
     type: path
@@ -73,9 +73,9 @@ content:
     third_party_settings: {  }
   translation:
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5

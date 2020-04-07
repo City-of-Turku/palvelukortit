@@ -18,13 +18,8 @@ ifeq ($(SHOULD_BUILD),true)
 endif
 endif
 
-ifeq ($(ENV),production)
-	BUILD_THEME_ARGS := production
-	NPM_BUILD_FLAG := --production
-else
-	BUILD_THEME_ARGS := development
-	NPM_BUILD_FLAG :=
-endif
+BUILD_THEME_ARGS := production
+NPM_BUILD_FLAG := --production
 
 PHONY += build-theme
 build-theme: DOCKER_NODE_IMG ?= node:8.16.0-alpine

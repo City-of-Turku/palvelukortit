@@ -1,0 +1,6 @@
+name: 'PaKo Content'
+type: module
+description: 'Performs alterations for Palvelukortit content.'
+core: 8.x
+package: 'PaKo'
+

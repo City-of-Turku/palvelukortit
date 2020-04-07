@@ -1,0 +1,20 @@
+uuid: 572970c2-91ff-46df-a1f1-fe1cf4c8ace1
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - pako
+id: languageswitcher
+theme: pako
+region: header
+weight: -2
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  provider: language
+  label_display: '0'
+visibility: {  }

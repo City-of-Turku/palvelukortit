@@ -9,6 +9,7 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access content overview'
+  - 'access files overview'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
@@ -29,6 +30,7 @@ permissions:
   - 'revert all revisions'
   - 'revert service_card revisions'
   - 'translate any entity'
+  - 'translate menu_link_content'
   - 'translate service_card node'
   - 'update content translations'
   - 'view all revisions'

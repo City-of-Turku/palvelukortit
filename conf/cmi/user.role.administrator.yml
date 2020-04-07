@@ -21,6 +21,7 @@ permissions:
   - 'administer nodes'
   - 'administer permissions'
   - 'administer taxonomy'
+  - 'administer url aliases'
   - 'administer users'
   - 'bypass node access'
   - 'cancel account'

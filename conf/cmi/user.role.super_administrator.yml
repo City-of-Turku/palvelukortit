@@ -69,6 +69,7 @@ permissions:
   - 'translate any entity'
   - 'translate configuration'
   - 'translate interface'
+  - 'translate menu_link_content'
   - 'translate service_card node'
   - 'update content translations'
   - 'view all revisions'

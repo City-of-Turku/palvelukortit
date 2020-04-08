@@ -13,3 +13,35 @@
 .page-content {
   padding: $gutter * 2 0;
 }
+
+.before_content__container {
+  @include breakpoint($for-tablet-portrait-up) {
+    padding-left: calc(#{$gutter} * 2 + 270px);
+  }
+
+  @include breakpoint($for-tablet-landscape-up) {
+    padding-left: calc(#{$gutter} * 2 + 300px);
+  }
+}
+
+.content__wrapper {
+  display: block;
+
+  @include breakpoint($for-tablet-portrait-up) {
+    display: flex;
+  }
+}
+
+.sidebar--first {
+  @include breakpoint($for-tablet-portrait-up) {
+    margin-right: $gutter * 2;
+    max-width: 270px;
+    min-width: 270px;
+    padding: 35px 0 0 0;
+  }
+
+  @include breakpoint($for-tablet-landscape-up) {
+    max-width: 300px;
+    min-width: 300px;
+  }
+}

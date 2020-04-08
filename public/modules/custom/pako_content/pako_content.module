@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_language_switch_links_alter().
@@ -66,6 +67,32 @@ function pako_content_get_route_entity() {
         // Since entity was found, no need to iterate further.
         return NULL;
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pako_content_form_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['actions']['submit']['#submit'][] = 'pako_content_node_form_submit_callback';
+}
+
+/**
+ * Form submit callback for node forms.
+ */
+function pako_content_node_form_submit_callback($form, FormStateInterface $form_state) {
+  if ($langcode = $form_state->get('langcode')) {
+    $language = [
+      'language' => \Drupal::languageManager()->getLanguage($langcode)
+    ];
+
+    if ($nid = $form_state->get('nid')) {
+      $node = [
+        'node' => $nid
+      ];
+
+      $form_state->setRedirect('entity.node.canonical', $node, $language);
     }
   }
 }

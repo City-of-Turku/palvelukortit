@@ -1,0 +1,50 @@
+uuid: ee2bb3eb-f101-42b7-9df2-3d1815cde334
+langcode: en
+status: true
+dependencies: {  }
+id: administrator
+label: Administrator
+weight: 2
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access site in maintenance mode'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer account settings'
+  - 'administer content types'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer permissions'
+  - 'administer taxonomy'
+  - 'administer url aliases'
+  - 'administer users'
+  - 'bypass node access'
+  - 'cancel account'
+  - 'change own username'
+  - 'create content translations'
+  - 'create service_card content'
+  - 'create url aliases'
+  - 'delete all revisions'
+  - 'delete any service_card content'
+  - 'delete content translations'
+  - 'delete own service_card content'
+  - 'delete service_card revisions'
+  - 'edit any service_card content'
+  - 'edit own service_card content'
+  - 'revert all revisions'
+  - 'revert service_card revisions'
+  - 'select account cancellation method'
+  - 'translate any entity'
+  - 'translate interface'
+  - 'translate menu_link_content'
+  - 'translate service_card node'
+  - 'update content translations'
+  - 'view all revisions'
+  - 'view own unpublished content'
+  - 'view service_card revisions'
+  - 'view the administration theme'

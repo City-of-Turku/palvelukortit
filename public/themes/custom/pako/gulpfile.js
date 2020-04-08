@@ -199,7 +199,7 @@ gulp.task(
 // -------------
 // Default task.
 // -------------
-gulp.task("default", gulp.series("dev", gulp.parallel("watch")), done => {
+gulp.task("default", gulp.series("prod", gulp.parallel("watch")), done => {
   done();
 });
 

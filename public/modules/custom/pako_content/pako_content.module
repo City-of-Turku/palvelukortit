@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Contains pako_content.module.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_language_switch_links_alter().
+ *
+ * Switch link title as desired.
+ */
+function pako_content_language_switch_links_alter(array &$links, $type, $path) {
+  $entity = pako_content_get_route_entity();
+
+  foreach ($links as $lang_code => &$link) {
+    switch ($lang_code) {
+      case 'en':
+        $link['title'] = 'In English';
+        break;
+
+      case 'sv':
+        $link['title'] = 'På svenska';
+        break;
+
+      case 'fi':
+        $link['title'] = 'Suomeksi';
+        break;
+    }
+
+    $link['#abbreviation'] = $lang_code;
+    if ($entity && $entity instanceof ContentEntityInterface) {
+      if (
+        !$entity->hasTranslation($lang_code) ||
+        (
+          method_exists($entity->getTranslation($lang_code), 'isPublished') &&
+          !$entity->getTranslation($lang_code)->isPublished()
+        )
+      ) {
+        $link['#untranslated'] = TRUE;
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to extract the entity for the supplied route.
+ *
+ * @return null|ContentEntityInterface
+ *   Returns the found entity or null.
+ */
+function pako_content_get_route_entity() {
+  $route_match = \Drupal::routeMatch();
+  // Entity will be found in the route parameters.
+  if (($route = $route_match->getRouteObject()) && ($parameters = $route->getOption('parameters'))) {
+    // Determine if the current route represents an entity.
+    foreach ($parameters as $name => $options) {
+      if (isset($options['type']) && strpos($options['type'], 'entity:') === 0) {
+        $entity = $route_match->getParameter($name);
+        if ($entity instanceof ContentEntityInterface && $entity->hasLinkTemplate('canonical')) {
+          return $entity;
+        }
+
+        // Since entity was found, no need to iterate further.
+        return NULL;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pako_content_form_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['actions']['submit']['#submit'][] = 'pako_content_node_form_submit_callback';
+}
+
+/**
+ * Form submit callback for node forms.
+ */
+function pako_content_node_form_submit_callback($form, FormStateInterface $form_state) {
+  if ($langcode = $form_state->get('langcode')) {
+    $language = [
+      'language' => \Drupal::languageManager()->getLanguage($langcode)
+    ];
+
+    if ($nid = $form_state->get('nid')) {
+      $node = [
+        'node' => $nid
+      ];
+
+      $form_state->setRedirect('entity.node.canonical', $node, $language);
+    }
+  }
+}

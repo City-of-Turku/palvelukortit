@@ -4,7 +4,7 @@ dev:
   root: /var/www/html/public
   uri: palvelukortit-test.druid.fi
   ssh:
-    options: '-p 31238'
+    options: '-p 31238 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
   wodby:
     app_id: a50d97b3-8845-4208-be86-212e0fe6bb12
     app_name: turku-palvelukortit

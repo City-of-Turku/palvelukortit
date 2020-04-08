@@ -106,8 +106,7 @@ class httpclientserviceClient implements httpclientserviceClientInterface {
   public function connect($method, $endpoint, array $query) {
     // Build call string for the API.
     $this->buildCallString($endpoint, $query);
-
-    // Connect to the client.
+    
     // Connect to the client.
     try {
       $response = $this->getCachedClient()->{$method}(
@@ -150,7 +149,7 @@ class httpclientserviceClient implements httpclientserviceClientInterface {
    * @return array
    *   Return Headers.
    */
-  public function getHttpHeaders() {
+    public function getHttpHeaders() {
     $timestamp = time();
     $signature = hash_hmac(
       'sha256',

@@ -6,19 +6,12 @@ The dist files are compiled when deploying to test/production.
 
 For everything to work correctly you need to install required modules. Run the following:
 
-    npm install
+    npm i
 
-After this you can run the command that compiles your sass files to css. It will compile the css into human-readable form and begins watching the scss/js source folders.
+After this you can run the command that compiles and copies SCSS, JS and fonts from ./src to ./dist.
+The css and js files will be minified.
 
     npm run gulp
-
-If you just want to compile the sass and js, you can run:
-
-    npm run gulp development
-
-If you want to test how the css and js is compiled in production, you can run:
-
-    npm run gulp production
 
 To update icons and generate SVG sprite, you can run:
 

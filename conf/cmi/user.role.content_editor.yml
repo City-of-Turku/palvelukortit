@@ -1,0 +1,39 @@
+uuid: 07b4abde-e512-4d2c-a81c-3a0675707eb0
+langcode: en
+status: true
+dependencies: {  }
+id: content_editor
+label: 'Content Editor'
+weight: 2
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access files overview'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer nodes'
+  - 'administer taxonomy'
+  - 'administer url aliases'
+  - 'change own username'
+  - 'create content translations'
+  - 'create service_card content'
+  - 'create url aliases'
+  - 'delete all revisions'
+  - 'delete any service_card content'
+  - 'delete content translations'
+  - 'delete own service_card content'
+  - 'delete service_card revisions'
+  - 'edit any service_card content'
+  - 'edit own service_card content'
+  - 'revert all revisions'
+  - 'revert service_card revisions'
+  - 'translate any entity'
+  - 'translate menu_link_content'
+  - 'translate service_card node'
+  - 'update content translations'
+  - 'view all revisions'
+  - 'view own unpublished content'
+  - 'view service_card revisions'
+  - 'view the administration theme'

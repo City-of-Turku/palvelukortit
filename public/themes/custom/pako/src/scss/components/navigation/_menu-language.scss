@@ -1,0 +1,155 @@
+.language-switch {
+  display: block;
+  flex: 2 2 310px;
+  margin: 0 0 0 $gutter * 2;
+  padding: 0;
+
+  &__wrapper {
+    line-height: 0;
+    position: relative;
+  }
+
+  &__button {
+    @include font-size(20px, 20px);
+    @include font-weight($semibold);
+    align-items: center;
+    border: 0 none;
+    border-radius: 0;
+    color: $black;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    width: 40px;
+
+    &[aria-expanded=true] {
+      color: $black;
+
+      svg {
+        fill: $black;
+        transform: rotate(180deg);
+      }
+    }
+
+    @include breakpoint($for-navigation-desktop) {
+      @include font-size(18px, 18px);
+      background-color: transparent;
+      color: $white;
+      height: 60px;
+      width: 60px;
+
+      &[aria-expanded=true] {
+        color: $white;
+
+        svg {
+          fill: $white;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: $cyan auto 3px;
+    }
+
+    .icon {
+      display: inline-block;
+      fill: $white;
+      margin-right: -3px;
+      max-height: 15px;
+      width: 18px;
+
+      &__wrapper {
+        display: none;
+        line-height: 0;
+        margin-left: 2px;
+
+        @include breakpoint($for-navigation-desktop) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__dropdown {
+    background: $white;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 2px 2px 10px #00000029;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 55px;
+    z-index: 1000;
+
+    &:after,
+    &:before {
+      border: solid transparent;
+      bottom: 100%;
+      content: " ";
+      height: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 20px;
+      width: 0;
+    }
+
+    &:before {
+      border-bottom-color: $gray-light;
+      border-width: 8px;
+      margin-right: -8px;
+    }
+
+    &:after {
+      border-bottom-color: $white;
+      border-width: 7px;
+      margin-right: -7px;
+    }
+
+    @include breakpoint($for-navigation-desktop) {
+      top: 80px;
+    }
+
+    &:not(.is-active) {
+      display: none;
+    }
+
+    .language-links {
+      padding-bottom: 10px;
+
+      .language-link {
+        @include font-size(18px, 26px);
+        @include font-weight($semibold);
+        color: $black;
+        display: block;
+        padding: $gutter * 2;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+
+        @include breakpoint($for-navigation-desktop) {
+          padding: 40px;
+        }
+
+        &.is-active,
+        &:focus,
+        &:hover {
+          background-color: $gray-medium;
+        }
+
+        &.is-active {
+          @include font-weight($semibold);
+        }
+      }
+
+      span.language-link:not(.is-active) {
+        color: $gray-medium;
+
+        &:hover {
+          background-color: $white;
+        }
+      }
+    }
+  }
+}

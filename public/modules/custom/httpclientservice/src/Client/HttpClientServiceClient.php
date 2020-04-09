@@ -3,7 +3,6 @@
 namespace Drupal\httpclientservice\Client;
 
 use Drupal\Component\Utility\UrlHelper;
-use Drupal\Component\Serialization\Json;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\guzzle_cache\DrupalGuzzleCache;
 use Drupal\key\KeyRepositoryInterface;
@@ -19,7 +18,7 @@ use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
  *
  * @package Drupal\httpclientservice\Client
  */
-class httpclientserviceClient implements httpclientserviceClientInterface {
+class HttpClientServiceClient implements HttpClientServiceClientInterface {
 
   /**
    * An http client.
@@ -106,7 +105,7 @@ class httpclientserviceClient implements httpclientserviceClientInterface {
   public function connect($method, $endpoint, array $query) {
     // Build call string for the API.
     $this->buildCallString($endpoint, $query);
-    
+
     // Connect to the client.
     try {
       $response = $this->getCachedClient()->{$method}(
@@ -149,12 +148,15 @@ class httpclientserviceClient implements httpclientserviceClientInterface {
    * @return array
    *   Return Headers.
    */
-    public function getHttpHeaders() {
-    $timestamp = time();
-    $signature = hash_hmac(
+  public function getHttpHeaders() {
+    // 'YYYY-MM-DDThh:mm:ssZ' F.e. 2019-05-27T12:17:06.457Z;
+    $timestamp = date('Y-m-d\TH:i:s.v\Z');
+    $payload = '';
+    // @TODO Move to private file and fetch with keys.
+    $apikey = 'b80d2c033069be8c3bbd114ec2bac0dc45a5a0e19c8cbe06a00bd637d562500d';
+    $signature = hash(
       'sha256',
-      base64_encode($this->caller . ',' . $timestamp . ',' . $this->callString . ',' . $this->publicKey),
-      'turku_api'
+      $this->caller . $timestamp . $payload . $apikey
     );
 
     return [

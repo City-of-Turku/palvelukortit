@@ -5,7 +5,7 @@ namespace Drupal\httpclientservice\Client;
 /**
  * Provides the interface for a connection to Asiakaspalvelijoiden palvelukortit API.
  */
-interface httpclientserviceClientInterface {
+interface HttpClientServiceClientInterface {
 
   /**
    * Utilizes Drupal's httpClient to connect to Lyyti API.

@@ -5,13 +5,11 @@
  * Contains httpclientservice.module.
  */
 
+/**
+ * Implements hook_cron().
+ */
 function httpclientservice_cron() {
   $client = Drupal::service('httpclientservice.client');
-
-  $query = [
-  ];
-
-  $request = $client->connect('get', 'api/v1/palvelupisteet', $query, []);
-  $results = json_decode($request);
-  var_dump($results); exit;
+  $query = [];
+  $request = $client->connect('GET', 'palvelut', $query);
 }

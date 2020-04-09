@@ -6,4 +6,4 @@ form_build_id: form-4Mbw9JPvBi5EZYhaYzxlqdAgUqMHwRut56mCVKqfDZ4
 form_token: Wp4YTdGsnI5fTOIFqgbWjnCbKkFaam4ZfHu9GX9kDwM
 form_id: httpclientservice_settings_form
 op: 'Save configuration'
-httpclientservice_caller: caller
+httpclientservice_caller: 'Asiakaspalvelijoiden palvelukortit'

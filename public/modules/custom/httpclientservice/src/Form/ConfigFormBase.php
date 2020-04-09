@@ -5,6 +5,11 @@ namespace Drupal\httpclientservice\Form;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase as DrupalConfigFormBase;
 
+/**
+ * Class ConfigFormBase.
+ *
+ * @package Drupal\httpclientservice\Form
+ */
 abstract class ConfigFormBase extends DrupalConfigFormBase {
 
   const CONFIG_NAME = 'httpclientservice.settings';

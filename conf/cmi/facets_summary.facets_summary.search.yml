@@ -30,12 +30,6 @@ facets:
     show_count: false
 facet_source_id: 'search_api:views_page__faceted_search__page'
 processor_configs:
-  reset_facets:
-    processor_id: reset_facets
-    weights:
-      build: '30'
-    settings:
-      link_text: 'Clear search criteria'
   show_count:
     processor_id: show_count
     weights:

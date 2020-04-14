@@ -107,6 +107,9 @@ function pako_theme_suggestions_form_element_alter(&$suggestions, array $variabl
   }
 }
 
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function pako_preprocess_facets_item_list(&$variables) {
   $facet = $variables['facet'];
 

@@ -1,3 +1,4 @@
+name: 'Typ av tjänst'
 widget:
   config:
     soft_limit_settings:

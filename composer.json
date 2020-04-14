@@ -36,6 +36,7 @@
         "drupal/select2": "^1.1",
         "drupal/smart_trim": "^1.2",
         "drupal/token": "^1.6",
+        "drupal/twig_tweak": "^2.5",
         "drupal/views_ajax_history": "^1.2",
         "drush/drush": "^10.2",
         "enyo/dropzone": "^5.7.0",
@@ -84,7 +85,7 @@
             }
         },
         "hooks": {
-            "pre-push": "make test"
+            "pre-push": "make lint-php"
         }
     },
     "repositories": [

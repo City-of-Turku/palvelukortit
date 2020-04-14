@@ -168,11 +168,9 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
   }
 
   /**
-   * Create a new entity
+   * Create a new entity.
    *
-   * @param $data
-   * @param $type
-   * @throws \Drupal\Core\Entity\EntityStorageException
+   * {@inheritdoc}
    */
   public function createEntity($data, $type) {
     $node = Node::create([
@@ -183,8 +181,6 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
       'changed' => \Drupal::time()->getRequestTime(),
       'uid' => 1,
       'title' => 'My test!',
-      //If you have another field lets says field_day you can do this:
-      //'field_day' => 'value',
       'body' => [
         'summary' => '',
         'value' => '<p>The body of my node.</p>',
@@ -192,7 +188,7 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
       ],
     ]);
 
-    //Saving original the node
+    // Saving original the node.
     $node->save();
 
     foreach ($this->translation as $tr) {
@@ -203,21 +199,21 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
         'value' => '<p>Eng body.</p>',
         'format' => 'full_html',
       ];
-      //Saving translation
+
+      // Saving translation.
       $node_tr->save();
     }
   }
 
   /**
-   * @param $nid
-   * @throws \Drupal\Core\Entity\EntityStorageException
+   * {@inheritdoc}
    */
   public function updateEntityByNid($nid) {
     if (!$node = Node::load($nid)) {
       return;
     }
 
-    //save to update node
+    // Save to update node.
     $node->save();
 
     foreach ($this->translation as $tr) {
@@ -228,6 +224,9 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getEntity() {
     $query = \Drupal::entityQuery('node')
       ->condition('status', 1)
@@ -237,6 +236,9 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
     $nids = $query->execute();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function deleteEntity($nid) {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
@@ -245,8 +247,11 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function deleteMultipleEntitys($nids) {
-    foreach($nids as $nid) {
+    foreach ($nids as $nid) {
       $this->deleteEntity($nid);
     }
   }

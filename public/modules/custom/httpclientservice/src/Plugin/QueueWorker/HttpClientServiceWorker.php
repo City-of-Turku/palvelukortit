@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\example_queue\Plugin\QueueWorker\ExampleQueueWorker.
- */
 
 namespace Drupal\httpclientservice\Plugin\QueueWorker;
 

@@ -1,11 +1,11 @@
 <?php
 
-use Drupal\Component\Serialization\Json;
-
 /**
  * @file
  * Contains httpclientservice.module.
  */
+
+use Drupal\Component\Serialization\Json;
 
 /**
  * Implements hook_cron().
@@ -14,59 +14,100 @@ function httpclientservice_cron() {
   $state     = \Drupal::state();
   $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
 
-  getPalvelut();
+  get_palvelut();
 
-  // Store the timestamp in state
+  // Store the timestamp in state.
   $last_time = \Drupal::time()->getRequestTime();
   \Drupal::state()->set('httpclientservice.import_palvelut', $last_time);
 }
 
-function getService($url, $query = [], $code = null) {
+/**
+ * {@inheritdoc}
+ */
+function get_service($url, $query = [], $code = NULL) {
   $client = Drupal::service('httpclientservice.client');
   $query = [];
-  $url = ($code) ? $url.'/'.$code : $url;
+  $url = ($code) ? $url . '/' . $code : $url;
   $request = $client->connect('GET', $url, $query);
 
   return Json::decode($request);
 }
 
-function getPalveluluokat() {
+/**
+ * {@inheritdoc}
+ */
+function get_palveluluokat() {
   $data = getService('palveluluokat');
 }
 
-function getPalveluluokka($query, $code) {
+/**
+ * {@inheritdoc}
+ */
+function get_palveluluokka($query, $code) {
   $data = getService('palveluluokka', $query, $code);
 }
 
-function getPalvelupisteet() {
+/**
+ * {@inheritdoc}
+ */
+function get_palvelupisteet() {
   $data = getService('palvelupisteet');
 }
 
-function getPalvelupiste($query, $code) {
+/**
+ * {@inheritdoc}
+ */
+function get_palvelupiste($query, $code) {
   $data = getService('palvelupiste', $query, $code);
 }
 
-function getPalvelut() {
+/**
+ * {@inheritdoc}
+ */
+function get_palvelut() {
   $data = getService('palvelut');
   var_dump($data); exit;
 }
 
-function getPalvelu($query, $code) {
+/**
+ * {@inheritdoc}
+ */
+function get_palvelu($query, $code) {
   $data = getService('palvelu', $query, $code);
 }
 
-function getPalvelutarjoukset() {
+/**
+ * {@inheritdoc}
+ */
+function get_palvelutarjoukset() {
   $data = getService('palvelutarjoukset');
 }
 
-function getPalvelutarjous($query, $code) {
+/**
+ * {@inheritdoc}
+ */
+function get_palvelutarjous($query, $code) {
   $data = getService('palvelutarjous', $query, $code);
 }
 
-function getCurrentDate() {
+/**
+ * {@inheritdoc}
+ */
+function get_current_date() {
   return date('Y-m-d');
 }
 
-function getWhitelist() {
-  return ['palvelutarjoukset', 'palvelutarjous', 'palvelut', 'palvelu', 'palvelupisteet', 'palvelupiste', 'palveluluokat', 'palveluluokka'];
+/**
+ * {@inheritdoc}
+ */
+function get_whitelist() {
+  return ['palvelutarjoukset',
+          'palvelutarjous',
+          'palvelut',
+          'palvelu',
+          'palvelupisteet',
+          'palvelupiste',
+          'palveluluokat',
+          'palveluluokka'
+  ];
 }

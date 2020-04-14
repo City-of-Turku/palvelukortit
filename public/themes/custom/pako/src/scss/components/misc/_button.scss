@@ -1,0 +1,91 @@
+.button {
+  &.button--select {
+    background-color: $blue;
+    color: $white;
+
+    &.button--alternative {
+      background-color: $black;
+      color: $white;
+    }
+
+    &::before {
+      background-image: url("../../icons/svg/close.svg");
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      bottom: 0;
+      color: $white;
+      content: "";
+      height: 32px;
+      opacity: 1;
+      position: absolute;
+      right: 0;
+      width: 32px;
+    }
+  }
+
+  &.button--search {
+    &.button--submit {
+      background: $blue;
+      border: 0 none;
+      border-radius: 0;
+      height: 70px;
+      padding: 22px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 70px;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: $black;
+      }
+
+      svg {
+        fill: white;
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    &.button--reset {
+      align-items: center;
+      background-color: $blue;
+      display: inline-flex;
+      margin: 0 $gutter / 1.5 0 0;
+
+      &:active,
+      &:focus,
+      &:hover {
+        &,
+        &.button--alternative {
+          background-color: $black;
+        }
+      }
+
+      input,
+      span {
+        @include font-size(12px, 14px);
+        @include font-weight($semibold);
+        background: transparent;
+        border: 0 none;
+        color: $white;
+        padding: 7px 10px;
+        text-shadow: none;
+      }
+
+      svg {
+        color: $white;
+        max-height: 11px;
+        max-width: 22px;
+        min-height: 11px;
+        min-width: 11px;
+        padding-left: 10px;
+      }
+
+      &.button--alternative {
+        background-color: $gray-dark;
+      }
+    }
+  }
+}

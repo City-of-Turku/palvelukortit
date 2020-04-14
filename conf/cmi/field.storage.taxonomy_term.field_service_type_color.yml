@@ -1,0 +1,27 @@
+uuid: f22dbe8d-55a6-42c3-a7e5-82f155728bad
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_service_type_color
+field_name: field_service_type_color
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '#E7AA00'
+      label: Yellow
+    -
+      value: '#E93171'
+      label: Pink
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

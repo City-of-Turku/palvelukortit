@@ -48,12 +48,19 @@ services:
 
   solr:
     image: wodby/solr:$SOLR_TAG
-    container_name: "${COMPOSE_PROJECT_NAME}-solr"
+    container_name: "${PROJECT_NAME}_solr"
     environment:
       SOLR_DEFAULT_CONFIG_SET: $SOLR_CONFIG_SET
       SOLR_HEAP: 1024m
+    ports:
+      - "8983:8983"
+    networks:
+      - dev-network
+      - internal
     labels:
-      - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
+      - 'traefik.backend=${PROJECT_NAME}_solr'
+      - 'traefik.port=8983'
+      - 'traefik.frontend.rule=Host:solr.${PROJECT_BASE_URL}'
 
 networks:
   internal:

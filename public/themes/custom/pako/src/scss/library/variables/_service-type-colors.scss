@@ -1,0 +1,25 @@
+.color--pink {
+  &.facet-item label {
+    .facet-item__count {
+      color: $pink;
+    }
+    &::after {
+      .facet-block__content & {
+        background-color: $pink;
+      }
+    }
+  }
+}
+
+.color--yellow {
+  &.facet-item label {
+    .facet-item__count {
+      color: $yellow;
+    }
+    &::after {
+      .facet-block__content & {
+        background-color: $yellow;
+      }
+    }
+  }
+}

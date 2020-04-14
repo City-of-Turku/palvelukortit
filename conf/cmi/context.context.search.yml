@@ -1,0 +1,60 @@
+uuid: 5d0601c0-9c90-4550-9c91-ce3b8bcaa9fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+name: search
+label: Search
+group: Search
+description: ''
+requireAllConditions: false
+disabled: false
+conditions:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/search"
+    negate: 0
+    uuid: 1727bf45-6356-420f-802d-83d7fc914e04
+    context_mapping: {  }
+reactions:
+  blocks:
+    blocks:
+      f3f99f8c-1839-465d-88ec-0b5a7ccb662a:
+        id: facets_block
+        label: 'Facets Block'
+        provider: facets_block
+        label_display: 0
+        region: sidebar_first
+        weight: '0'
+        show_title: 1
+        exclude_empty_facets: 1
+        facets_to_include:
+          'facet_block:index': 'facet_block:index'
+          'facet_block:service_type': 'facet_block:service_type'
+          'facet_block:tags': 'facet_block:tags'
+        context_mapping: {  }
+        theme: pako
+        css_class: ''
+        unique: 1
+        context_id: search
+        uuid: f3f99f8c-1839-465d-88ec-0b5a7ccb662a
+      eb18d8c6-f7bb-4494-8236-53a293b497ce:
+        id: 'views_exposed_filter_block:faceted_search-page'
+        label: ''
+        provider: views
+        label_display: 0
+        views_label: ''
+        region: before_content
+        weight: '-1'
+        context_mapping: {  }
+        theme: pako
+        css_class: ''
+        unique: 0
+        context_id: search
+        uuid: eb18d8c6-f7bb-4494-8236-53a293b497ce
+    id: blocks
+    saved: false
+    uuid: b12b90ad-f2ce-4270-b310-ac3238f74e3e
+    include_default_blocks: 1
+weight: 0

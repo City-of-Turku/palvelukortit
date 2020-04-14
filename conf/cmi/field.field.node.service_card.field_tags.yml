@@ -1,0 +1,29 @@
+uuid: 02b07d48-1dc6-4e72-a5dd-7ad9437f05ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tags
+    - node.type.service_card
+    - taxonomy.vocabulary.tags
+id: node.service_card.field_tags
+field_name: field_tags
+entity_type: node
+bundle: service_card
+label: Tags
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

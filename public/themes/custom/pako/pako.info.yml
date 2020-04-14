@@ -12,6 +12,7 @@ regions:
   messages: Messages
   tools: Tools
   breadcrumb: Breadcrumb
+  before_content: Before content
   sidebar_first: First sidebar
   sidebar_second: Second sidebar
   content: Content

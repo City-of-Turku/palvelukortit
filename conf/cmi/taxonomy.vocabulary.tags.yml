@@ -1,0 +1,8 @@
+uuid: ac4649e7-f12a-49a8-a8e3-56ab09a8a7a1
+langcode: en
+status: true
+dependencies: {  }
+name: Tags
+vid: tags
+description: ''
+weight: 0

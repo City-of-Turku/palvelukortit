@@ -13,7 +13,6 @@ module:
   contextual: 0
   ctools: 0
   dblog: 0
-  devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
   facets: 0
@@ -44,6 +43,7 @@ module:
   text: 0
   token: 0
   toolbar: 0
+  twig_tweak: 0
   update: 0
   user: 0
   views_ajax_history: 0

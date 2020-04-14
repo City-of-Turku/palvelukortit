@@ -17,14 +17,14 @@ mode: default
 content:
   field_description:
     weight: 105
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_index:
     weight: 103
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -32,7 +32,7 @@ content:
     region: content
   field_service_type:
     weight: 104
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -40,7 +40,7 @@ content:
     region: content
   field_tags:
     weight: 102
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }

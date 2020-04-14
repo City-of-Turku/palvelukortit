@@ -1,0 +1,19 @@
+uuid: 3705adbe-4086-49a5-a788-934fa5319dc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_colour
+    - taxonomy.vocabulary.service_type
+id: taxonomy_term.service_type.field_colour
+field_name: field_colour
+entity_type: taxonomy_term
+bundle: service_type
+label: Colour
+description: 'Enter colour in hexadecimal. F.e. <strong>#a1a1a1</strong>'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

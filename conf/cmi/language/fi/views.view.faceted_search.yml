@@ -5,8 +5,3 @@ display:
         options:
           submit_button: Hae
           reset_button_label: Tyhjennä
-      filters:
-        search_api_fulltext:
-          expose:
-            label: Hae
-      title: Haku

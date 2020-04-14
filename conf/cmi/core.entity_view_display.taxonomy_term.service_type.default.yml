@@ -1,0 +1,32 @@
+uuid: 8f0ab0b3-964a-4c6b-8744-8dc13ad72347
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.service_type.field_colour
+    - taxonomy.vocabulary.service_type
+  module:
+    - text
+id: taxonomy_term.service_type.default
+targetEntityType: taxonomy_term
+bundle: service_type
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_colour:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

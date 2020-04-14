@@ -1,10 +1,15 @@
 .service-card-teaser {
-  background-color: $gray-light;
+  background: $gray-light linear-gradient(90deg, #EFEFEF 0%, #E2E2E2 100%) 0 0 no-repeat padding-box;
   border-left: 10px solid $gray-light;
   border-radius: 3px 0 0 3px;
   height: 100%;
   margin-bottom: $gutter * 1.4;
   padding: 20px;
+
+  &:focus,
+  &:hover {
+    background: $gray-light;
+  }
 }
 
 .service-card-teaser__link {

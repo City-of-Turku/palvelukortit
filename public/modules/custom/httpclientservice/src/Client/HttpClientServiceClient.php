@@ -6,6 +6,7 @@ use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\guzzle_cache\DrupalGuzzleCache;
 use Drupal\key\KeyRepositoryInterface;
+use Drupal\node\Entity\Node;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
@@ -164,6 +165,90 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
       'X-TURKU-TS' => $timestamp,
       'Authorization' => $signature,
     ];
+  }
+
+  /**
+   * Create a new entity
+   *
+   * @param $data
+   * @param $type
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public function createEntity($data, $type) {
+    $node = Node::create([
+      // The node entity bundle in this case article.
+      'type' => $type,
+      'langcode' => 'fi',
+      'created' => \Drupal::time()->getRequestTime(),
+      'changed' => \Drupal::time()->getRequestTime(),
+      'uid' => 1,
+      'title' => 'My test!',
+      //If you have another field lets says field_day you can do this:
+      //'field_day' => 'value',
+      'body' => [
+        'summary' => '',
+        'value' => '<p>The body of my node.</p>',
+        'format' => 'full_html',
+      ],
+    ]);
+
+    //Saving original the node
+    $node->save();
+
+    foreach ($this->translation as $tr) {
+      $node_tr = $node->addTranslation($tr);
+      $node_tr->title = 'Eng title';
+      $node_tr->body = [
+        'summary' => '',
+        'value' => '<p>Eng body.</p>',
+        'format' => 'full_html',
+      ];
+      //Saving translation
+      $node_tr->save();
+    }
+  }
+
+  /**
+   * @param $nid
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public function updateEntityByNid($nid) {
+    if (!$node = Node::load($nid)) {
+      return;
+    }
+
+    //save to update node
+    $node->save();
+
+    foreach ($this->translation as $tr) {
+      if ($node->hasTranslation($tr)) {
+        $tr_node = $node->getTranslation($tr);
+        $tr_node->save();
+      }
+    }
+  }
+
+  public function getEntity() {
+    $query = \Drupal::entityQuery('node')
+      ->condition('status', 1)
+      ->condition('title', 'cat', 'CONTAINS')
+      ->condition('field_tags.entity.name', 'cats');
+
+    $nids = $query->execute();
+  }
+
+  public function deleteEntity($nid) {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+
+    if ($node) {
+      $node->delete();
+    }
+  }
+
+  public function deleteMultipleEntitys($nids) {
+    foreach($nids as $nid) {
+      $this->deleteEntity($nid);
+    }
   }
 
 }

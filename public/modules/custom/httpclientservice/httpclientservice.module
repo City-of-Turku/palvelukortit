@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Component\Serialization\Json;
+
 /**
  * @file
  * Contains httpclientservice.module.
@@ -9,7 +11,62 @@
  * Implements hook_cron().
  */
 function httpclientservice_cron() {
+  $state     = \Drupal::state();
+  $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
+
+  getPalvelut();
+
+  // Store the timestamp in state
+  $last_time = \Drupal::time()->getRequestTime();
+  \Drupal::state()->set('httpclientservice.import_palvelut', $last_time);
+}
+
+function getService($url, $query = [], $code = null) {
   $client = Drupal::service('httpclientservice.client');
   $query = [];
-  $request = $client->connect('GET', 'palvelut', $query);
+  $url = ($code) ? $url.'/'.$code : $url;
+  $request = $client->connect('GET', $url, $query);
+
+  return Json::decode($request);
+}
+
+function getPalveluluokat() {
+  $data = getService('palveluluokat');
+}
+
+function getPalveluluokka($query, $code) {
+  $data = getService('palveluluokka', $query, $code);
+}
+
+function getPalvelupisteet() {
+  $data = getService('palvelupisteet');
+}
+
+function getPalvelupiste($query, $code) {
+  $data = getService('palvelupiste', $query, $code);
+}
+
+function getPalvelut() {
+  $data = getService('palvelut');
+  var_dump($data); exit;
+}
+
+function getPalvelu($query, $code) {
+  $data = getService('palvelu', $query, $code);
+}
+
+function getPalvelutarjoukset() {
+  $data = getService('palvelutarjoukset');
+}
+
+function getPalvelutarjous($query, $code) {
+  $data = getService('palvelutarjous', $query, $code);
+}
+
+function getCurrentDate() {
+  return date('Y-m-d');
+}
+
+function getWhitelist() {
+  return ['palvelutarjoukset', 'palvelutarjous', 'palvelut', 'palvelu', 'palvelupisteet', 'palvelupiste', 'palveluluokat', 'palveluluokka'];
 }

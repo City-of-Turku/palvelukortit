@@ -107,6 +107,36 @@ function pako_theme_suggestions_form_element_alter(&$suggestions, array $variabl
   }
 }
 
+function pako_preprocess_facets_item_list(&$variables) {
+  $facet = $variables['facet'];
+
+  // Handle only service type facets.
+  if ($facet->id() !== 'service_type') {
+    return;
+  }
+
+  // Get service card type color and set it as data-attribute for the template.
+  foreach ($variables['items'] as &$item) {
+    if (
+      isset($item['value']['#attributes']['data-drupal-facet-item-value']) &&
+      !empty($item['value']['#attributes']['data-drupal-facet-item-value'])
+    ) {
+      // Get service type color term.
+      $color = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->load($item['value']['#attributes']['data-drupal-facet-item-value']);
+
+      if ($color->hasField('field_service_type_color')) {
+        // Dig through field storage and get the color label.
+        $allowed_values = $color->getFieldDefinition('field_service_type_color')->getFieldStorageDefinition()->getSetting('allowed_values');
+        $color_value = $color->get('field_service_type_color')->value;
+        $label = strtolower($allowed_values[$color_value]);
+        $item['attributes']->addClass('color--' . $label);
+      }
+    }
+  }
+}
+
 /**
  * Implements hook_theme_suggestions_container_alter().
  */
@@ -139,18 +169,18 @@ function pako_theme_suggestions_input_alter(&$suggestions, array $variables) {
 function pako_preprocess_node(&$variables) {
   $node = $variables['node'];
 
-  // Get service card type colour and set it as variable for the template.
+  // Get service card type color and set it as variable for the template.
   if ($node->getType() === 'service_card') {
     if ($node->hasField('field_service_type')) {
       $tid = $node->field_service_type->getString();
 
       if (!empty($tid)) {
-        $colour = \Drupal::entityTypeManager()
+        $color = \Drupal::entityTypeManager()
           ->getStorage('taxonomy_term')
           ->load($tid);
 
-        if ($colour->hasField('field_colour')) {
-          $variables['service_card_colour'] = $colour->field_colour->getString();
+        if ($color->hasField('field_service_type_color')) {
+          $variables['service_card_color'] = $color->field_service_type_color->getString();
         }
       }
     }

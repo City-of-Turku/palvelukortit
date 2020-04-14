@@ -3,9 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.service_type.field_colour
+    - field.field.taxonomy_term.service_type.field_service_type_color
     - taxonomy.vocabulary.service_type
   module:
+    - options
     - text
 id: taxonomy_term.service_type.default
 targetEntityType: taxonomy_term
@@ -19,13 +20,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_colour:
-    weight: 1
-    label: hidden
-    settings:
-      link_to_entity: false
+  field_service_type_color:
+    weight: 2
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: list_default
     region: content
 hidden:
   langcode: true

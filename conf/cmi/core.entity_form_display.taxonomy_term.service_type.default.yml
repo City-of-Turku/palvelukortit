@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.service_type.field_colour
+    - field.field.taxonomy_term.service_type.field_service_type_color
     - taxonomy.vocabulary.service_type
   module:
     - path
@@ -21,13 +21,11 @@ content:
       placeholder: ''
       rows: 5
     third_party_settings: {  }
-  field_colour:
+  field_service_type_color:
     weight: 1
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: options_select
     region: content
   langcode:
     type: language_select

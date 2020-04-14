@@ -93,7 +93,14 @@
   .field__items {
     display: flex;
     flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     margin: 0 -5px;
+    padding-left: $gutter * 2;
+  }
+
+  .field__item {
+    padding-bottom: 2px;
   }
 
   a {
@@ -101,7 +108,7 @@
     @include font-weight($regular);
     background-color: $white;
     color: $black;
-    margin: 0 5px;
+    margin: 0 5px 2px;
     padding: 3px 8px;
     text-decoration: none;
 

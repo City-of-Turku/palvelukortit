@@ -1,0 +1,11 @@
+.before_content__container {
+  margin-top: $gutter * 4;
+
+  @include breakpoint($for-tablet-landscape-up) {
+    padding-left: calc(#{$gutter} * 2 + 315px);
+  }
+
+  @include breakpoint($for-desktop-up) {
+    padding-left: calc(#{$gutter} * 2 + 300px);
+  }
+}

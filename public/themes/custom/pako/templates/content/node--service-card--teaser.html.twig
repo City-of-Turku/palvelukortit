@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    'service-card-teaser',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% if service_card_colour %}
+  <article{{attributes.addClass(classes).setAttribute('style', 'border-left-color: ' ~ service_card_colour)}}>
+{% else %}
+  <article{{attributes.addClass(classes)}}>
+{% endif %}
+  <a href="{{ url }}" class="service-card-teaser__link">
+    <div class="service-card-teaser__content">
+      <div class="service-card-teaser__label-container">
+        <h3 class="service-card-teaser__label">
+          {{ label }}
+        </h3>
+
+        {% if content.field_description|render %}
+          <div class="service-card-teaser__lead">
+            {{ content.field_description }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+  <footer class="service-card-teaser__footer">
+    {% if content.field_index|render %}
+      <div class="service-card-teaser__index">
+        {{ content.field_index }}
+      </div>
+    {% endif %}
+    {% if content.field_tags|render %}
+      <div class="service-card-teaser__tags">
+        {{ content.field_tags }}
+      </div>
+    {% endif %}
+  </footer>
+</article>

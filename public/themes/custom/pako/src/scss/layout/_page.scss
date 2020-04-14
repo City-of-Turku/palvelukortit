@@ -14,16 +14,6 @@
   padding: $gutter * 2 0;
 }
 
-.before_content__container {
-  @include breakpoint($for-tablet-portrait-up) {
-    padding-left: calc(#{$gutter} * 2 + 270px);
-  }
-
-  @include breakpoint($for-tablet-landscape-up) {
-    padding-left: calc(#{$gutter} * 2 + 300px);
-  }
-}
-
 .content__wrapper {
   display: block;
 

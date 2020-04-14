@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a facet result item.
+ *
+ * Available variables:
+ * - value: The item value.
+ * - raw_value: The raw item value.
+ * - show_count: If this facet provides count.
+ * - count: The amount of results.
+ * - is_active: The item is active.
+ * - facet: The facet for this result item.
+ *   - id: the machine name for the facet.
+ *   - label: The facet label.
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div class="button button--reset button--alternative button--search facet-item__status js-facet-deactivate">
+  {% if icons_path %}
+    <svg class="icon">
+      <title>{{ attributes.value }}</title>
+      <use xlink:href="{{ icons_path|trim }}#close" />
+    </svg>
+  {% endif %}
+  <span>{{ value }}</span>
+</div>

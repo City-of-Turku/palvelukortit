@@ -32,31 +32,23 @@ content:
     region: content
   field_index:
     weight: 11
-    settings:
-      width: 50%
-      autocomplete: true
-      match_operator: CONTAINS
-      match_limit: 10
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_select
     region: content
   field_service_type:
     weight: 10
-    settings:
-      width: 50%
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_buttons
     region: content
   field_tags:
     weight: 12
     settings:
-      width: 50%
+      width: 100%
       autocomplete: true
-      match_operator: CONTAINS
-      match_limit: 10
+      match_operator: STARTS_WITH
+      match_limit: 15
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
@@ -108,13 +100,9 @@ content:
     settings: {  }
     third_party_settings: {  }
   uid:
-    type: select2_entity_reference
+    type: options_buttons
     weight: 2
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
-      width: 100%
+    settings: {  }
     region: content
     third_party_settings: {  }
 hidden: {  }

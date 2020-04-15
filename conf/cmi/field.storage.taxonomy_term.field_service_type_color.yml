@@ -12,11 +12,29 @@ type: list_string
 settings:
   allowed_values:
     -
+      value: '#282828'
+      label: Black
+    -
+      value: '#0061AD'
+      label: Blue
+    -
+      value: '#00AA7A'
+      label: Green
+    -
+      value: '#8CCDCA'
+      label: Cyan
+    -
+      value: '#EA5B0A'
+      label: Orange
+    -
       value: '#E7AA00'
       label: Yellow
     -
       value: '#E93171'
       label: Pink
+    -
+      value: '#E4072D'
+      label: Red
   allowed_values_function: ''
 module: options
 locked: false

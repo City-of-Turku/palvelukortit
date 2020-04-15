@@ -15,6 +15,7 @@ module:
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  entity_reference_revisions: 0
   facets: 0
   facets_block: 0
   facets_summary: 0
@@ -52,6 +53,7 @@ module:
   pathauto: 1
   content_translation: 10
   views: 10
+  paragraphs: 11
   minimal: 1000
 theme:
   stable: 0

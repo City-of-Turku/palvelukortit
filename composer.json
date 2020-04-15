@@ -30,6 +30,7 @@
         "drupal/magnific_popup": "^1.4",
         "drupal/menu_block": "^1.4",
         "drupal/menu_block_current_language": "^1.2",
+        "drupal/paragraphs": "^1.11",
         "drupal/pathauto": "^1.6",
         "drupal/search_api": "^1.15",
         "drupal/search_api_solr": "^3.9",

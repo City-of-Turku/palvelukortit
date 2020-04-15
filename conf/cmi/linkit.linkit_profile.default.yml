@@ -1,0 +1,25 @@
+uuid: 175909cd-f95a-4984-b5aa-ee409dc5aefd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: default
+label: Default
+description: ''
+attributes:
+  target:
+    id: target
+    weight: 0
+    settings:
+      widget_type: simple_checkbox
+matchers:
+  1de53ca8-8094-48e5-9b89-f17bc3351a6b:
+    uuid: 1de53ca8-8094-48e5-9b89-f17bc3351a6b
+    id: 'entity:node'
+    weight: 0
+    settings:
+      result_description: ''
+      bundles: {  }
+      group_by_bundle: false
+      include_unpublished: true

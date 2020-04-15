@@ -23,10 +23,10 @@
         "drupal/core-composer-scaffold": "^8.8.0",
         "drupal/core-recommended": "^8.8.0",
         "drupal/ctools": "^3.2",
-        "drupal/devel": "^2.1",
         "drupal/dropzonejs": "^2.0-alpha4",
         "drupal/facets": "^1.4",
         "drupal/facets_block": "^1.2",
+        "drupal/linkit": "^4.3",
         "drupal/magnific_popup": "^1.4",
         "drupal/menu_block": "^1.4",
         "drupal/menu_block_current_language": "^1.2",
@@ -40,12 +40,12 @@
         "drupal/twig_tweak": "^2.5",
         "drupal/views_ajax_history": "^1.2",
         "drush/drush": "^10.2",
-        "enyo/dropzone": "^5.7.0",
         "select2/select2": "^4.0.7",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^8.8.0"
+        "drupal/core-dev": "^8.8.0",
+        "drupal/devel": "^2.1"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -93,19 +93,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "enyo/dropzone",
-                "version": "5.5.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/enyo/dropzone",
-                    "type": "git",
-                    "reference": "origin/master"
-                }
-            }
         },
         {
             "type": "package",

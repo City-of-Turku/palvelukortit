@@ -3,14 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.service_card.field_additional_information
     - field.field.node.service_card.field_description
     - field.field.node.service_card.field_index
+    - field.field.node.service_card.field_service_instructions
     - field.field.node.service_card.field_service_type
     - field.field.node.service_card.field_tags
     - node.type.service_card
   module:
+    - paragraphs
     - path
     - select2
+    - text
 id: node.service_card.default
 targetEntityType: node
 bundle: service_card
@@ -22,6 +26,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_additional_information:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_description:
     weight: 9
     settings:
@@ -36,6 +48,18 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_service_instructions:
+    type: entity_reference_paragraphs
+    weight: 12
+    settings:
+      title: instruction
+      title_plural: instructions
+      edit_mode: preview
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: instruction
+    third_party_settings: {  }
+    region: content
   field_service_type:
     weight: 10
     settings: {  }
@@ -43,7 +67,7 @@ content:
     type: options_buttons
     region: content
   field_tags:
-    weight: 12
+    weight: 13
     settings:
       width: 100%
       autocomplete: true

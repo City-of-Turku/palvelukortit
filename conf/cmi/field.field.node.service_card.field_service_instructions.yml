@@ -1,0 +1,31 @@
+uuid: 55e3b491-819c-493f-aad3-5709c9ccbbf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_instructions
+    - node.type.service_card
+    - paragraphs.paragraphs_type.instruction
+  module:
+    - entity_reference_revisions
+id: node.service_card.field_service_instructions
+field_name: field_service_instructions
+entity_type: node
+bundle: service_card
+label: 'Service instructions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      instruction: instruction
+    target_bundles_drag_drop:
+      instruction:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

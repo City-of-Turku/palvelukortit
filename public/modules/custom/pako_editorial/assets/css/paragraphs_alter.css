@@ -1,0 +1,26 @@
+.field--name-field-service-instructions tr.draggable {
+  border-bottom: 0.125rem solid #d4d4d8;
+}
+
+.paragraph--type--instruction {
+  display: flex;
+}
+
+.paragraph--type--instruction .field--name-field-media {
+  margin-right: 1rem;
+  border-right: 0.0625rem solid #d4d4d8;
+  padding-right: 1rem;
+  width: 300px;
+}
+
+.paragraph--type--instruction .field--name-field-text {
+  width: 100%;
+  padding-right: 1rem;
+}
+
+.paragraph--type--instruction .field__label {
+  padding-bottom: 1rem;
+  border-bottom: 0.0625rem solid #d4d4d8;
+  margin-bottom: 1rem;
+}
+

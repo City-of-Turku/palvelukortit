@@ -3,14 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.expert
     - field.field.node.service_card.field_additional_information
+    - field.field.node.service_card.field_contact_details_of_experts
     - field.field.node.service_card.field_description
     - field.field.node.service_card.field_index
+    - field.field.node.service_card.field_programs_and_systems_used
     - field.field.node.service_card.field_service_instructions
     - field.field.node.service_card.field_service_type
     - field.field.node.service_card.field_tags
     - node.type.service_card
   module:
+    - entity_browser
     - paragraphs
     - path
     - select2
@@ -34,6 +38,21 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
+  field_contact_details_of_experts:
+    weight: 28
+    settings:
+      entity_browser: expert
+      field_widget_display: rendered_entity
+      field_widget_display_settings:
+        view_mode: default
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_replace: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
   field_description:
     weight: 9
     settings:
@@ -47,6 +66,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_programs_and_systems_used:
+    weight: 27
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_service_instructions:
     type: entity_reference_paragraphs

@@ -1,0 +1,79 @@
+uuid: 04ae27c5-ed55-4c47-a776-9c52fd4e3a01
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.expert.field_additional_information
+    - field.field.taxonomy_term.expert.field_address
+    - field.field.taxonomy_term.expert.field_email
+    - field.field.taxonomy_term.expert.field_phone_number
+    - taxonomy.vocabulary.expert
+  module:
+    - text
+id: taxonomy_term.expert.default
+targetEntityType: taxonomy_term
+bundle: expert
+mode: default
+content:
+  field_additional_information:
+    weight: 6
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_address:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_email:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_phone_number:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 7
+    region: content
+    third_party_settings: {  }
+  translation:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

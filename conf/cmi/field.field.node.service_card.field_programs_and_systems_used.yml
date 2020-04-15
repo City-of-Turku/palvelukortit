@@ -1,0 +1,21 @@
+uuid: 641bbbdb-db1a-4821-aba9-a7e8cd17af27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_programs_and_systems_used
+    - node.type.service_card
+  module:
+    - text
+id: node.service_card.field_programs_and_systems_used
+field_name: field_programs_and_systems_used
+entity_type: node
+bundle: service_card
+label: 'Programs and systems used'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

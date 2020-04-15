@@ -1,0 +1,51 @@
+uuid: e81f597a-dc1b-4061-a2e3-588018de8106
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.expert.field_additional_information
+    - field.field.taxonomy_term.expert.field_address
+    - field.field.taxonomy_term.expert.field_email
+    - field.field.taxonomy_term.expert.field_phone_number
+    - taxonomy.vocabulary.expert
+  module:
+    - text
+id: taxonomy_term.expert.default
+targetEntityType: taxonomy_term
+bundle: expert
+mode: default
+content:
+  field_additional_information:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_address:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_email:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_phone_number:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  description: true
+  langcode: true
+  search_api_excerpt: true

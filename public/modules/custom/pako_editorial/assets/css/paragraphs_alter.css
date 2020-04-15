@@ -24,3 +24,28 @@
   margin-bottom: 1rem;
 }
 
+.field--name-field-contact-details-of-experts .entities-list {
+  display: flex;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.field--name-field-contact-details-of-experts .entities-list .item-container {
+  margin: 5px;
+  min-width: 240px;
+  max-width: 330px;
+}
+
+.field--name-field-contact-details-of-experts .entities-list .item-container .edit-button,
+.field--name-field-contact-details-of-experts .entities-list .item-container .remove-button {
+  margin: 5px 0;
+  display: inline-block;
+}
+
+.taxonomy-term.vocabulary-expert {
+  padding: 1rem;
+  border: 0.0625rem solid #d4d4d8;
+}
+
+.taxonomy-term.vocabulary-expert h2 {
+  font-size: 1.2rem;
+}

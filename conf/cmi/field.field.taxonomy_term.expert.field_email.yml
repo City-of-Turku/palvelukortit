@@ -1,0 +1,19 @@
+uuid: 90dc6d7c-34d8-47df-80d9-f104defe68d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_email
+    - taxonomy.vocabulary.expert
+id: taxonomy_term.expert.field_email
+field_name: field_email
+entity_type: taxonomy_term
+bundle: expert
+label: Email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

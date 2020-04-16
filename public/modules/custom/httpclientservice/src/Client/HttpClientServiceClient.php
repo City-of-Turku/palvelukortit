@@ -97,7 +97,7 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
     );
 
     // Initialize the client with the handler option.
-    return new Client(['handler' => $stack]);
+    return new Client(['handler' => $stack, 'verify' => FALSE]);
   }
 
   /**
@@ -113,6 +113,10 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
         $this->baseURI . $this->callString,
         [
           'headers' => $this->getHttpHeaders(),
+          'verify' => FALSE,
+          'debug' => TRUE,
+          'Connection' => 'close',
+          'cookie' => TRUE
         ]
       );
       $data = $response->getBody();
@@ -152,7 +156,8 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
    */
   public function getHttpHeaders() {
     // 'YYYY-MM-DDThh:mm:ssZ' F.e. 2019-05-27T12:17:06.457Z;
-    $timestamp = date('Y-m-d\TH:i:s.v\Z');
+    $date = new \DateTime('now', new \DateTimeZone('Europe/Helsinki'));
+    $timestamp = $date->format('c');
     $payload = '';
     // @TODO Move to private file and fetch with keys.
     $apikey = 'b80d2c033069be8c3bbd114ec2bac0dc45a5a0e19c8cbe06a00bd637d562500d';

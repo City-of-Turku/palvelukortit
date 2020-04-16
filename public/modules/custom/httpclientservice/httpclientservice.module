@@ -14,7 +14,7 @@ function httpclientservice_cron() {
   $state     = \Drupal::state();
   $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
 
-  get_palvelut();
+  get_palveluluokat();
 
   // Store the timestamp in state.
   $last_time = \Drupal::time()->getRequestTime();
@@ -26,7 +26,7 @@ function httpclientservice_cron() {
  */
 function get_service($url, $query = [], $code = NULL) {
   $client = Drupal::service('httpclientservice.client');
-  $query = [];
+  $query = ['verify' => FALSE, 'debug' => TRUE];
   $url = ($code) ? $url . '/' . $code : $url;
   $request = $client->connect('GET', $url, $query);
 
@@ -37,7 +37,8 @@ function get_service($url, $query = [], $code = NULL) {
  * {@inheritdoc}
  */
 function get_palveluluokat() {
-  $data = get_service('palveluluokat');
+  $data = get_service('api/v1/palveluluokat');
+  var_dump($data); exit;
 }
 
 /**

@@ -3,6 +3,8 @@ display_configuration:
   link_text: 'Valitse asiantuntija'
 widgets:
   55a824b7-042b-4d2d-a218-555c443f5f4b:
+    settings:
+      submit_text: 'Tallenna asiantuntija'
     label: 'Luo uusi asiantuntija'
   708fb850-eae9-4338-86be-c62326c67d24:
     settings:

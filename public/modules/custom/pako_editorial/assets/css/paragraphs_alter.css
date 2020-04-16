@@ -32,8 +32,8 @@
 }
 .field--name-field-contact-details-of-experts .entities-list .item-container {
   margin: 5px;
-  min-width: 240px;
-  max-width: 330px;
+  flex: 1 1 25%;
+  max-width: 50%;
 }
 
 .field--name-field-contact-details-of-experts .entities-list .item-container .edit-button,

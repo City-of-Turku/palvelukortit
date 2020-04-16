@@ -3,7 +3,7 @@ display:
     display_options:
       exposed_form:
         options:
-          submit_button: Lähetä
+          submit_button: Hae
           reset_button_label: Tyhjennä
       fields:
         name:

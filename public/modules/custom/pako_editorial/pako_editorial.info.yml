@@ -1,0 +1,6 @@
+name: 'PaKo Editorial'
+type: module
+description: 'Performs editorial enhancements for Palvelukortit site.'
+core: 8.x
+package: 'PaKo'
+

@@ -1,0 +1,15 @@
+uuid: 5eadbf0e-45e2-4f42-81fa-eeced6037d32
+langcode: en
+status: true
+dependencies: {  }
+name: paragraph_full
+label: 'Paragraph Full HD'
+effects:
+  66a4b59f-6b21-4ec1-ac5f-2fbe4ece2426:
+    uuid: 66a4b59f-6b21-4ec1-ac5f-2fbe4ece2426
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: 1080
+      upscale: false

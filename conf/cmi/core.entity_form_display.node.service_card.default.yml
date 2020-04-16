@@ -3,14 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.expert
+    - field.field.node.service_card.field_additional_information
+    - field.field.node.service_card.field_contact_details_of_experts
     - field.field.node.service_card.field_description
     - field.field.node.service_card.field_index
+    - field.field.node.service_card.field_programs_and_systems_used
+    - field.field.node.service_card.field_service_instructions
     - field.field.node.service_card.field_service_type
     - field.field.node.service_card.field_tags
     - node.type.service_card
   module:
+    - entity_browser
+    - paragraphs
     - path
     - select2
+    - text
 id: node.service_card.default
 targetEntityType: node
 bundle: service_card
@@ -22,6 +30,29 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_additional_information:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_contact_details_of_experts:
+    weight: 28
+    settings:
+      entity_browser: expert
+      field_widget_display: rendered_entity
+      field_widget_display_settings:
+        view_mode: preview
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_replace: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
   field_description:
     weight: 9
     settings:
@@ -32,31 +63,43 @@ content:
     region: content
   field_index:
     weight: 11
-    settings:
-      width: 50%
-      autocomplete: true
-      match_operator: CONTAINS
-      match_limit: 10
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_select
+    region: content
+  field_programs_and_systems_used:
+    weight: 27
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_service_instructions:
+    type: entity_reference_paragraphs
+    weight: 12
+    settings:
+      title: instruction
+      title_plural: instructions
+      edit_mode: preview
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: instruction
+    third_party_settings: {  }
     region: content
   field_service_type:
     weight: 10
-    settings:
-      width: 50%
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_buttons
     region: content
   field_tags:
-    weight: 12
+    weight: 13
     settings:
-      width: 50%
+      width: 100%
       autocomplete: true
-      match_operator: CONTAINS
-      match_limit: 10
+      match_operator: STARTS_WITH
+      match_limit: 15
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
@@ -108,13 +151,9 @@ content:
     settings: {  }
     third_party_settings: {  }
   uid:
-    type: select2_entity_reference
+    type: options_buttons
     weight: 2
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
-      width: 100%
+    settings: {  }
     region: content
     third_party_settings: {  }
 hidden: {  }

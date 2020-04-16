@@ -1,0 +1,29 @@
+uuid: 564b8e28-49e8-4c6d-9a70-80322a4c45ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_details_of_experts
+    - node.type.service_card
+    - taxonomy.vocabulary.expert
+id: node.service_card.field_contact_details_of_experts
+field_name: field_contact_details_of_experts
+entity_type: node
+bundle: service_card
+label: 'Contact details of experts'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      expert: expert
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

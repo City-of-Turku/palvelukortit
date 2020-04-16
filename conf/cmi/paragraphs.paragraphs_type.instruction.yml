@@ -1,0 +1,10 @@
+uuid: 3ae54d6e-ff2d-436f-a809-93c6d92a7734
+langcode: en
+status: true
+dependencies: {  }
+id: instruction
+label: Instruction
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

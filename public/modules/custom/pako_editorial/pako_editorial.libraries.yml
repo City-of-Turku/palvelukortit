@@ -1,0 +1,4 @@
+pako-paragraph-alter:
+  css:
+    theme:
+      assets/css/paragraphs_alter.css: {}

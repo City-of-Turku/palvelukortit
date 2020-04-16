@@ -4,18 +4,39 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.full
+    - field.field.node.service_card.field_additional_information
+    - field.field.node.service_card.field_contact_details_of_experts
     - field.field.node.service_card.field_description
     - field.field.node.service_card.field_index
+    - field.field.node.service_card.field_programs_and_systems_used
+    - field.field.node.service_card.field_service_instructions
     - field.field.node.service_card.field_service_type
     - field.field.node.service_card.field_tags
     - node.type.service_card
   module:
+    - entity_reference_revisions
+    - text
     - user
 id: node.service_card.full
 targetEntityType: node
 bundle: service_card
 mode: full
 content:
+  field_additional_information:
+    type: text_default
+    weight: 7
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_contact_details_of_experts:
+    type: entity_reference_label
+    weight: 6
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
   field_description:
     type: basic_string
     weight: 2
@@ -31,6 +52,22 @@ content:
     settings:
       link: true
     third_party_settings: {  }
+  field_programs_and_systems_used:
+    type: text_default
+    weight: 8
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_service_instructions:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    region: content
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   field_service_type:
     type: entity_reference_label
     weight: 4
@@ -41,7 +78,7 @@ content:
     third_party_settings: {  }
   field_tags:
     type: entity_reference_label
-    weight: 5
+    weight: 9
     region: content
     label: above
     settings:

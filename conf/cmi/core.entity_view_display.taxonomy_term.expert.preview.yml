@@ -1,0 +1,64 @@
+uuid: 6fb99680-a6c1-4cd3-b560-6f2ec26127c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.preview
+    - field.field.taxonomy_term.expert.field_additional_information
+    - field.field.taxonomy_term.expert.field_address
+    - field.field.taxonomy_term.expert.field_email
+    - field.field.taxonomy_term.expert.field_phone_number
+    - taxonomy.vocabulary.expert
+  module:
+    - smart_trim
+id: taxonomy_term.expert.preview
+targetEntityType: taxonomy_term
+bundle: expert
+mode: preview
+content:
+  field_additional_information:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: ...
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      trim_options:
+        text: true
+        trim_zero: false
+      wrap_output: false
+      more_link: false
+      summary_handler: full
+    third_party_settings: {  }
+    type: smart_trim
+    region: content
+  field_address:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_email:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_phone_number:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  description: true
+  langcode: true
+  search_api_excerpt: true

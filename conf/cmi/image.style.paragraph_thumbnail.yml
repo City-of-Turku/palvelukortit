@@ -1,0 +1,15 @@
+uuid: a7c1c3f0-d72a-48a3-8dc8-bfb1a6ad590a
+langcode: en
+status: true
+dependencies: {  }
+name: paragraph_thumbnail
+label: 'Paragraph thumbnail (h275px) '
+effects:
+  cb83f76e-1e07-4ecf-b75e-534b0a48a80d:
+    uuid: cb83f76e-1e07-4ecf-b75e-534b0a48a80d
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 275
+      upscale: false

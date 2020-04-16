@@ -1,0 +1,35 @@
+uuid: e9ddb4d4-bb54-4ddb-b9a0-5e14bce3b8a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.instruction.field_media
+    - field.field.paragraph.instruction.field_text
+    - image.style.paragraph_thumbnail
+    - paragraphs.paragraphs_type.instruction
+  module:
+    - media
+    - text
+id: paragraph.instruction.default
+targetEntityType: paragraph
+bundle: instruction
+mode: default
+content:
+  field_media:
+    type: media_thumbnail
+    weight: 0
+    label: hidden
+    settings:
+      image_style: paragraph_thumbnail
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+  field_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  search_api_excerpt: true

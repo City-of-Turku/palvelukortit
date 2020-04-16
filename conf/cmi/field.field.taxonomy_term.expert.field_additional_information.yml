@@ -1,0 +1,21 @@
+uuid: 622aa636-2139-4565-b385-e6cf714265da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_additional_information
+    - taxonomy.vocabulary.expert
+  module:
+    - text
+id: taxonomy_term.expert.field_additional_information
+field_name: field_additional_information
+entity_type: taxonomy_term
+bundle: expert
+label: 'Additional information'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

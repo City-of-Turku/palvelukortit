@@ -1,0 +1,52 @@
+.field--name-field-service-instructions tr.draggable {
+  border-bottom: 0.125rem solid #d4d4d8;
+}
+
+.paragraph--type--instruction {
+  display: flex;
+}
+
+.paragraph--type--instruction .field--name-field-media {
+  margin-right: 1rem;
+  border-right: 0.0625rem solid #d4d4d8;
+  padding-right: 1rem;
+  width: 300px;
+}
+
+.paragraph--type--instruction .field--name-field-text {
+  width: 100%;
+  padding-right: 1rem;
+}
+
+.paragraph--type--instruction .field__label {
+  padding-bottom: 1rem;
+  border-bottom: 0.0625rem solid #d4d4d8;
+  margin-bottom: 1rem;
+}
+
+.field--name-field-contact-details-of-experts .entities-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.field--name-field-contact-details-of-experts .entities-list .item-container {
+  margin: 5px;
+  flex: 1 1 25%;
+  max-width: 50%;
+}
+
+.field--name-field-contact-details-of-experts .entities-list .item-container .edit-button,
+.field--name-field-contact-details-of-experts .entities-list .item-container .remove-button {
+  margin: 5px 0;
+  display: inline-block;
+}
+
+.taxonomy-term.vocabulary-expert {
+  padding: 1rem;
+  border: 0.0625rem solid #d4d4d8;
+}
+
+.taxonomy-term.vocabulary-expert h2 {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,42 @@
+uuid: 58b69953-7675-47be-894c-ce272b4be054
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.expert_entity_reference
+  module:
+    - entity_browser_entity_form
+    - views
+name: expert
+label: Expert
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: 'Select entities'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  55a824b7-042b-4d2d-a218-555c443f5f4b:
+    settings:
+      entity_type: taxonomy_term
+      bundle: expert
+      form_mode: default
+      submit_text: 'Save entity'
+    uuid: 55a824b7-042b-4d2d-a218-555c443f5f4b
+    weight: -9
+    label: 'Create new expert'
+    id: entity_form
+  708fb850-eae9-4338-86be-c62326c67d24:
+    settings:
+      view: expert_entity_reference
+      view_display: entity_browser
+      submit_text: 'Select expert'
+      auto_select: false
+    uuid: 708fb850-eae9-4338-86be-c62326c67d24
+    weight: -10
+    label: 'Select expert'
+    id: view

@@ -1,25 +1,29 @@
-.color--pink {
+$colors: (
+  black: $black,
+  blue: $blue,
+  green: $green,
+  cyan: $cyan,
+  orange: $orange,
+  yellow: $yellow,
+  pink: $pink,
+  red: $red
+);
+
+@mixin colorSet($colorName) {
   &.facet-item label {
     .facet-item__count {
-      color: $pink;
+      color: map-get($colors, $colorName);
     }
     &::after {
       .facet-block__content & {
-        background-color: $pink;
+        background-color: map-get($colors, $colorName);
       }
     }
   }
 }
 
-.color--yellow {
-  &.facet-item label {
-    .facet-item__count {
-      color: $yellow;
-    }
-    &::after {
-      .facet-block__content & {
-        background-color: $yellow;
-      }
-    }
+@each $color in $colors {
+  .color--#{$color} {
+    @include colorSet($color);
   }
 }

@@ -6,7 +6,6 @@ dependencies:
     - search_api_solr
     - node
     - search_api
-    - taxonomy
   config:
     - field.storage.node.field_description
     - field.storage.node.field_index
@@ -133,13 +132,6 @@ datasource_settings:
     languages:
       default: true
       selected: {  }
-  'entity:taxonomy_term':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: true
-      selected: {  }
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
@@ -169,7 +161,7 @@ processor_settings:
       preprocess_index: 0
 tracker_settings:
   default:
-    indexing_order: fifo
+    indexing_order: lifo
 options:
   index_directly: true
   cron_limit: 50

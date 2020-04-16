@@ -1,0 +1,14 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Hae
+          reset_button_label: Tyhjennä
+      fields:
+        name:
+          label: Nimi
+      filters:
+        name:
+          expose:
+            label: Nimi

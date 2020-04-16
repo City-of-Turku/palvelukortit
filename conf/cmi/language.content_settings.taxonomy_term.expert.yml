@@ -1,0 +1,16 @@
+uuid: 37cca48d-1fcd-401c-a3eb-2b844886deed
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.expert
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.expert
+target_entity_type_id: taxonomy_term
+target_bundle: expert
+default_langcode: fi
+language_alterable: true

@@ -1,0 +1,21 @@
+uuid: 7cf48086-5586-4a4d-9097-b20a2fcefe08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_information
+    - node.type.service_card
+  module:
+    - text
+id: node.service_card.field_additional_information
+field_name: field_additional_information
+entity_type: node
+bundle: service_card
+label: 'Additional information'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

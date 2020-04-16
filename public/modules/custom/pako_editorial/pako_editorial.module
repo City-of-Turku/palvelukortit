@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains pako_editorial.module.
+ */
+
+const ALLOWED_FORMS = [
+  'node_service_card_edit_form',
+  'node_service_card_form',
+];
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * {@inheritdoc}
+ */
+function pako_editorial_form_alter(&$form, $form_state) {
+  pako_editorial_perform_alterations($form, $form_state);
+}
+
+/**
+ * Enable custom styles for node edit forms.
+ *
+ * {@inheritDoc}
+ */
+function pako_editorial_perform_alterations(&$form, $form_state) {
+  if (!in_array($form['#form_id'], ALLOWED_FORMS)) {
+    return;
+  }
+
+  $form['#attached']['library'][] = 'pako_editorial/pako-paragraph-alter';
+}

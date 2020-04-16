@@ -13,6 +13,7 @@ services:
       APP_ENV: "${APP_ENV}"
       DRUSH_OPTIONS_URI: "https://${DRUPAL_HOSTNAME}"
       #XDEBUG_ENABLE: "true"
+      #XDEBUG_CONFIG: "remote_port=9001 remote_host=host.docker.internal remote_connect_back=0"
     networks:
       - internal
       - dev-network

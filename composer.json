@@ -27,7 +27,6 @@
         "drupal/dropzonejs": "^2.0-alpha4",
         "drupal/facets": "^1.4",
         "drupal/facets_block": "^1.2",
-        "drupal/dropzonejs": "^2.0-alpha4",
         "drupal/guzzle_cache": "^1.0",
         "drupal/key": "^1.12",
         "drupal/magnific_popup": "^1.4",

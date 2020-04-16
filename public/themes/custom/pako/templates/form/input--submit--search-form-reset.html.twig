@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+<div class="button button--reset button--search">
+  {% if icons_path %}
+    <svg class="icon">
+      <title>{{ attributes.value }}</title>
+      <use xlink:href="{{ icons_path|trim }}#close" />
+    </svg>
+  {% endif %}
+  <input{{ attributes }} />{{ children }}
+</div>
+{{ drupal_block('facets_summary_block:search') }}

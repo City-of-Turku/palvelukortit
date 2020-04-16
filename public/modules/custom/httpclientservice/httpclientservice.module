@@ -37,35 +37,35 @@ function get_service($url, $query = [], $code = NULL) {
  * {@inheritdoc}
  */
 function get_palveluluokat() {
-  $data = getService('palveluluokat');
+  $data = get_service('palveluluokat');
 }
 
 /**
  * {@inheritdoc}
  */
 function get_palveluluokka($query, $code) {
-  $data = getService('palveluluokka', $query, $code);
+  $data = get_service('palveluluokka', $query, $code);
 }
 
 /**
  * {@inheritdoc}
  */
 function get_palvelupisteet() {
-  $data = getService('palvelupisteet');
+  $data = get_service('palvelupisteet');
 }
 
 /**
  * {@inheritdoc}
  */
 function get_palvelupiste($query, $code) {
-  $data = getService('palvelupiste', $query, $code);
+  $data = get_service('palvelupiste', $query, $code);
 }
 
 /**
  * {@inheritdoc}
  */
 function get_palvelut() {
-  $data = getService('palvelut');
+  $data = get_service('api/v1/palvelut');
   var_dump($data); exit;
 }
 
@@ -73,21 +73,21 @@ function get_palvelut() {
  * {@inheritdoc}
  */
 function get_palvelu($query, $code) {
-  $data = getService('palvelu', $query, $code);
+  $data = get_service('palvelu', $query, $code);
 }
 
 /**
  * {@inheritdoc}
  */
 function get_palvelutarjoukset() {
-  $data = getService('palvelutarjoukset');
+  $data = get_service('palvelutarjoukset');
 }
 
 /**
  * {@inheritdoc}
  */
 function get_palvelutarjous($query, $code) {
-  $data = getService('palvelutarjous', $query, $code);
+  $data = get_service('palvelutarjous', $query, $code);
 }
 
 /**

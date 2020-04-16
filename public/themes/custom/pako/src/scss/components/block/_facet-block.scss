@@ -1,0 +1,128 @@
+.facet-block {
+  &__title {
+    @include font-size(22px, 30px);
+    @include font-weight($semibold);
+    border-bottom: 3px solid $blue;
+    color: $blue;
+    letter-spacing: 0;
+    padding-bottom: $gutter / 1.25;
+  }
+
+  &__content {
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .facet-item {
+      margin-bottom: $gutter / 1.25;
+
+      input[type="checkbox"] {
+        opacity: 0;
+
+        &+ label::after {
+          content: none;
+        }
+
+        &:checked + label::after {
+          content: "";
+        }
+
+        &:focus + label::before {
+          outline: $gray auto 3px;
+        }
+      }
+
+      label {
+        @include font-size(18px, 24px);
+        @include font-weight($regular);
+        cursor: pointer;
+        display: inline;
+        letter-spacing: 0;
+        margin-left: -#{$gutter};
+        padding-left: 35px;
+        position: relative;
+
+        &::before {
+          border: 1px solid $gray-medium;
+          border-radius: 5px;
+          content: "";
+          display: inline-block;
+          height: 30px;
+          left: 0;
+          position: absolute;
+          top: -3px;
+          width: 30px;
+        }
+
+        &::after {
+          background-color: $blue;
+          border-radius: 3px;
+          content: "";
+          display: inline-block;
+          height: 20px;
+          left: 5px;
+          position: absolute;
+          top: 2px;
+          width: 20px;
+        }
+
+        &:hover {
+          .facet-item__count {
+            color: $black;
+          }
+        }
+      }
+
+      .facet-item__count {
+        @include font-size(15px);
+        @include font-weight($regular);
+        color: $blue;
+        margin-left: 7px;
+        position: absolute;
+        top: 0;
+      }
+    }
+    .facets-soft-limit-link {
+      @include font-size(16px);
+      @include font-weight($regular);
+      color: $blue;
+      position: relative;
+      text-decoration: none;
+
+      &:hover,
+      &:active {
+        color: $black;
+
+        &::before {
+          background-image: url("../../icons/svg/chevron-down.svg");
+        }
+
+        &.open {
+          &::before {
+            background-image: url("../../icons/svg/chevron-up.svg");
+          }
+        }
+      }
+
+      &::before {
+        background-image: url("../../icons/svg/chevron-down--blue.svg");
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        content: "";
+        height: 32px;
+        opacity: 1;
+        position: absolute;
+        right: -40px;
+        top: 2px;
+        width: 32px;
+      }
+
+      &.open {
+        &::before {
+          background-image: url("../../icons/svg/chevron-up--blue.svg");
+        }
+      }
+    }
+  }
+}

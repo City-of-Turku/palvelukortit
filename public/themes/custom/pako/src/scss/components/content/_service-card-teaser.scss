@@ -1,0 +1,121 @@
+.service-card-teaser {
+  background: $gray-light linear-gradient(90deg, #EFEFEF 0%, #E2E2E2 100%) 0 0 no-repeat padding-box;
+  border-left: 10px solid $gray-light;
+  border-radius: 3px 0 0 3px;
+  height: 100%;
+  margin-bottom: $gutter * 1.4;
+  padding: 20px;
+
+  &:focus,
+  &:hover {
+    background: $gray-light;
+  }
+}
+
+.service-card-teaser__link {
+  border-radius: 3px 3px 0 0;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    .service-card-teaser__label {
+      text-decoration: underline;
+    }
+  }
+}
+
+.service-card-teaser__content {
+  position: relative;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+
+.service-card-teaser__label-container {
+  @include font-size(18px, 24px);
+  color: $black;
+  margin: $gutter * 0.5 0;
+  overflow-wrap: break-word;
+
+  @include breakpoint($for-tablet-portrait-up) {
+    @include font-size(22px, 28px);
+    margin: $gutter * 0.5 0 $gutter;
+  }
+
+  @include breakpoint($for-desktop-up) {
+    @include font-size(24px);
+  }
+}
+
+.service-card-teaser__label {
+  @include font-weight($semibold);
+}
+
+.service-card-teaser__lead {
+  @include font-size(16px, 22px);
+  @include font-weight($regular);
+  color: $black;
+  letter-spacing: 0;
+}
+
+.service-card-teaser__footer {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  padding: 20px 0 0;
+  text-decoration: none;
+}
+
+.service-card-teaser__index {
+  @include font-size(16px, 22px);
+  @include font-weight($semibold);
+  color: $black;
+
+  a {
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.service-card-teaser__tags {
+  .field__items {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0 -5px;
+    padding-left: $gutter * 2;
+  }
+
+  .field__item {
+    padding-bottom: 2px;
+  }
+
+  a {
+    @include font-size(12px, 12px);
+    @include font-weight($regular);
+    background-color: $white;
+    color: $black;
+    margin: 0 5px 2px;
+    padding: 3px 8px;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}

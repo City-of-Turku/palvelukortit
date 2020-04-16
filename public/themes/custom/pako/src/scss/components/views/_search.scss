@@ -1,0 +1,7 @@
+.summary-count {
+  @include font-size(22px, 30px);
+  @include font-weight($semibold);
+  color: $black;
+  margin-bottom: $gutter * 2;
+  margin-top: $gutter * 2;
+}

@@ -3,22 +3,48 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.service_card.body
+    - field.field.node.service_card.field_description
+    - field.field.node.service_card.field_index
+    - field.field.node.service_card.field_service_type
+    - field.field.node.service_card.field_tags
     - node.type.service_card
   module:
-    - text
     - user
 id: node.service_card.default
 targetEntityType: node
 bundle: service_card
 mode: default
 content:
-  body:
+  field_description:
+    weight: 105
     label: hidden
-    type: text_default
-    weight: 101
     settings: {  }
     third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_index:
+    weight: 103
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_service_type:
+    weight: 104
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tags:
+    weight: 102
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   links:
     weight: 100
@@ -27,3 +53,4 @@ content:
     third_party_settings: {  }
 hidden:
   langcode: true
+  search_api_excerpt: true

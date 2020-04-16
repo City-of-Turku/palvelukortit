@@ -1,0 +1,37 @@
+uuid: 6d159021-c2a9-41bd-b768-f627bcfa6aaf
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.service_cards_search_index
+    - views.view.faceted_search
+  module:
+    - search_api
+id: search
+name: Search
+facets:
+  service_type:
+    checked: true
+    label: 'Service type'
+    separator: ', '
+    weight: 0
+    show_count: false
+  index:
+    checked: true
+    label: Index
+    separator: ', '
+    weight: 0
+    show_count: false
+  tags:
+    checked: true
+    label: Tags
+    separator: ', '
+    weight: 0
+    show_count: false
+facet_source_id: 'search_api:views_page__faceted_search__page'
+processor_configs:
+  show_count:
+    processor_id: show_count
+    weights:
+      build: '5'
+    settings: {  }

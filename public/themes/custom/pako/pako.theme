@@ -5,6 +5,7 @@
  * Functions to support theming in the Turun palvelukortit theme.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\Entity\Node;
 
 /**
@@ -71,4 +72,141 @@ function pako_get_icons_path() {
     }
   }
   return $icon_path;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function pako_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (
+    $form_id === 'views_exposed_form' &&
+    $form['#id'] === 'views-exposed-form-faceted-search-page'
+  ) {
+    $form['text']['#placeholder'] = t('Search for service cards...');
+    $form['actions']['submit']['#attributes']['data-twig-suggestion'] = 'search_form_submit';
+    $form['actions']['submit']['#attributes']['class'][] = 'search-form__button';
+    $form['actions']['submit']['#attributes']['class'][] = 'button--search';
+    $form['actions']['submit']['#attributes']['class'][] = 'button--submit';
+    $form['actions']['reset']['#attributes']['data-twig-suggestion'] = 'search_form_reset';
+    $form['actions']['reset']['#attributes']['class'][] = 'search-form__button--reset';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element_alter().
+ */
+function pako_theme_suggestions_form_element_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestions[] = 'form_element__' . $element['#type'] . '__' . $element['#attributes']['data-twig-suggestion'];
+  }
+
+  if (isset($element['#attributes']['id'])) {
+    $suggestions[] = 'form_element__' . $element['#type'] . '__' . $element['#attributes']['id'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pako_preprocess_facets_item_list(&$variables) {
+  $facet = $variables['facet'];
+
+  // Handle only service type facets.
+  if ($facet->id() !== 'service_type') {
+    return;
+  }
+
+  // Get service card type color and set it as data-attribute for the template.
+  foreach ($variables['items'] as &$item) {
+    if (
+      isset($item['value']['#attributes']['data-drupal-facet-item-value']) &&
+      !empty($item['value']['#attributes']['data-drupal-facet-item-value'])
+    ) {
+      // Get service type color term.
+      $color = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->load($item['value']['#attributes']['data-drupal-facet-item-value']);
+
+      if ($color->hasField('field_service_type_color')) {
+        // Dig through field storage and get the color label.
+        $allowed_values = $color->getFieldDefinition('field_service_type_color')->getFieldStorageDefinition()->getSetting('allowed_values');
+        $color_value = $color->get('field_service_type_color')->value;
+        $label = strtolower($allowed_values[$color_value]);
+        $item['attributes']->addClass('color--' . $label);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_container_alter().
+ */
+function pako_theme_suggestions_container_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+
+  if (isset($element['#name'])) {
+    $suggestions[] = 'container__' . $element['#name'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_input_alter().
+ */
+function pako_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#attributes']['data-twig-suggestion'];
+  }
+
+  if (isset($element['#attributes']['id'])) {
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#attributes']['id'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pako_preprocess_node(&$variables) {
+  $node = $variables['node'];
+
+  // Get service card type color and set it as variable for the template.
+  if ($node->getType() === 'service_card') {
+    if ($node->hasField('field_service_type')) {
+      $tid = $node->field_service_type->getString();
+
+      if (!empty($tid)) {
+        $color = \Drupal::entityTypeManager()
+          ->getStorage('taxonomy_term')
+          ->load($tid);
+
+        if ($color->hasField('field_service_type_color')) {
+          $variables['service_card_color'] = $color->field_service_type_color->getString();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pako_preprocess_pager(&$variables) {
+  // Cast current to be INT instead of FLOAT.
+  $variables['current'] = isset($variables['current']) ? (int) $variables['current'] : 1;
+
+  // Check for last pager item href link.
+  if (!empty($variables['items']['last']['href'])) {
+    $splittedLink = explode("page=", $variables['items']['last']['href'])[1];
+    $variables['pagesTotalAmount'] = (int) $splittedLink + 1;
+  }
+  else {
+    if (!empty($variables['items']['pages'])) {
+      $lastArrayItem = end($variables['items']['pages'])['href'];
+      $splittedLink = explode("page=", $lastArrayItem)[1];
+      $variables['pagesTotalAmount'] = (int) $splittedLink + 1;
+    }
+  }
 }

@@ -109,12 +109,13 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
 
     // Connect to the client.
     try {
-      $response = $this->getCachedClient()->{$method}(
+      $response = $this->httpClient->{$method}(
         $this->baseURI . $this->callString,
         [
           'headers' => $this->getHttpHeaders(),
         ]
       );
+      $data = $response->getBody();
     }
     catch (RequestException $exception) {
       drupal_set_message(t('Failed to complete Asiakaspalvelijoiden palvelukortit connection "%error"', ['%error' => $exception->getMessage()]), 'error');

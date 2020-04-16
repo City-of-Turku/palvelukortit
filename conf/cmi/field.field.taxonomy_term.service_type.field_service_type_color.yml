@@ -1,0 +1,21 @@
+uuid: c50f3e8d-a20b-462f-b4cd-b789ff0b5336
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_service_type_color
+    - taxonomy.vocabulary.service_type
+  module:
+    - options
+id: taxonomy_term.service_type.field_service_type_color
+field_name: field_service_type_color
+entity_type: taxonomy_term
+bundle: service_type
+label: 'Service type color'
+description: 'Choose a color which should represent this service type.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

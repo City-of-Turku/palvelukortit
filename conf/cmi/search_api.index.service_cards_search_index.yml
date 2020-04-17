@@ -6,6 +6,7 @@ dependencies:
     - search_api_solr
     - taxonomy
     - node
+    - paragraphs
     - search_api
   config:
     - field.storage.node.field_contact_details_of_experts
@@ -19,6 +20,7 @@ dependencies:
     - field.storage.node.field_service_instructions
     - field.storage.node.field_service_type
     - field.storage.node.field_tags
+    - field.storage.paragraph.field_text
     - search_api.server.service_cards_search_server
 third_party_settings:
   search_api_solr:
@@ -180,6 +182,17 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_service_instructions
+  service_instructions_text:
+    label: 'Service card » Service instructions » Text'
+    datasource_id: 'entity:node'
+    property_path: 'field_service_instructions:entity:field_text'
+    type: 'solr_text_custom:ngram'
+    dependencies:
+      config:
+        - field.storage.node.field_service_instructions
+        - field.storage.paragraph.field_text
+      module:
+        - paragraphs
   service_node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -264,6 +277,7 @@ processor_settings:
       - service_card_description
       - service_card_programs_and_systems_used
       - service_card_service_instructions
+      - service_instructions_text
       - service_title
       - tags_name
     title: true

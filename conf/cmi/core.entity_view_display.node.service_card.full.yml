@@ -41,7 +41,7 @@ content:
     type: basic_string
     weight: 2
     region: content
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
   field_index:

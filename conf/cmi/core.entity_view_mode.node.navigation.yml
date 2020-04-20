@@ -1,0 +1,10 @@
+uuid: ca73b5ca-75e7-43ab-aed4-95dff5357427
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.navigation
+label: Navigation
+targetEntityType: node
+cache: true

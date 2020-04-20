@@ -129,3 +129,27 @@ function pako_content_form_views_exposed_form_alter(&$form, $form_state, $form_i
     }
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function pako_content_theme() {
+  return [
+    'pako_content_service_card_navigation' => [
+      'variables' => [
+        'items' => NULL,
+      ],
+    ],
+    'pako_content_service_card_navigation_field' => [
+      'variables' => [
+        'label' => NULL,
+        'label_icon' => NULL,
+      ],
+    ],
+    'pako_content_print_button' => [
+      'variables' => [
+        'button_title' => NULL,
+      ],
+    ],
+  ];
+}

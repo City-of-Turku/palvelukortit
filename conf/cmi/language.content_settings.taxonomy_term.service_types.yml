@@ -1,0 +1,16 @@
+uuid: cacc4127-1694-4120-be14-a20f391dce6a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.service_types
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.service_types
+target_entity_type_id: taxonomy_term
+target_bundle: service_types
+default_langcode: fi
+language_alterable: true

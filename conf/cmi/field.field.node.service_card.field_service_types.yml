@@ -1,0 +1,29 @@
+uuid: 6ea1236f-055d-4277-9b01-a0ffee0bf9bb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_types
+    - node.type.service_card
+    - taxonomy.vocabulary.service_types
+id: node.service_card.field_service_types
+field_name: field_service_types
+entity_type: node
+bundle: service_card
+label: 'Service Types'
+description: 'MDS API Service Types'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      service_types: service_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

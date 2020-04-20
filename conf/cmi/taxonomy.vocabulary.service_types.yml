@@ -1,0 +1,8 @@
+uuid: 236d60b6-136d-44ac-aa58-9d1ba90c2af0
+langcode: en
+status: true
+dependencies: {  }
+name: 'Service Types'
+vid: service_types
+description: 'MDS API Service Types'
+weight: 0

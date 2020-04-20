@@ -1,0 +1,36 @@
+uuid: 87fbcb26-e133-4b16-8e3f-e789c22d79b3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.service_offer.body
+    - field.field.node.service_offer.field_code
+    - field.field.node.service_offer.field_updated_date
+    - node.type.service_offer
+  module:
+    - text
+    - user
+id: node.service_offer.teaser
+targetEntityType: node
+bundle: service_offer
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_code: true
+  field_updated_date: true
+  langcode: true
+  search_api_excerpt: true

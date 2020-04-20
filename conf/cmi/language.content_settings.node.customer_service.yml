@@ -1,0 +1,16 @@
+uuid: e685e9c2-0b94-467f-ad9a-31d551a8b8bd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.customer_service
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.customer_service
+target_entity_type_id: node
+target_bundle: customer_service
+default_langcode: site_default
+language_alterable: true

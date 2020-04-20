@@ -1,0 +1,17 @@
+uuid: 06c764b3-dec8-41f9-aafe-cc1c5d1c42a1
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Customer Service'
+type: customer_service
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

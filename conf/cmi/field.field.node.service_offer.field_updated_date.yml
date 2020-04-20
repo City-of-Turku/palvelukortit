@@ -1,0 +1,21 @@
+uuid: 210c1522-1d1e-40ce-82ee-1d90bdb66acf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.service_offer
+id: node.service_offer.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: service_offer
+label: 'Updated date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1587111003
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

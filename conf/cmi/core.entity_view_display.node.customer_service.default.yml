@@ -1,0 +1,49 @@
+uuid: f8639046-65de-404b-bfc8-6c75a9a5e219
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.customer_service.field_code
+    - field.field.node.customer_service.field_description
+    - field.field.node.customer_service.field_updated_date
+    - node.type.customer_service
+  module:
+    - user
+id: node.customer_service.default
+targetEntityType: node
+bundle: customer_service
+mode: default
+content:
+  field_code:
+    weight: 102
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_description:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_updated_date:
+    weight: 103
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

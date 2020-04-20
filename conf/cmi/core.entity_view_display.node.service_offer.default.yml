@@ -1,0 +1,50 @@
+uuid: 9c080218-21ba-45b5-b4ff-e32216f2bb07
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.service_offer.body
+    - field.field.node.service_offer.field_code
+    - field.field.node.service_offer.field_updated_date
+    - node.type.service_offer
+  module:
+    - text
+    - user
+id: node.service_offer.default
+targetEntityType: node
+bundle: service_offer
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_code:
+    weight: 102
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_updated_date:
+    weight: 103
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

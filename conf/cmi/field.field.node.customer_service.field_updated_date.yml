@@ -1,0 +1,21 @@
+uuid: 179a3f68-b7d5-48e5-9557-11405463c54a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.customer_service
+id: node.customer_service.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: customer_service
+label: 'Updated date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1587044367
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

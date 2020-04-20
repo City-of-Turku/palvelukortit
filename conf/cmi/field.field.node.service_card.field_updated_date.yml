@@ -1,0 +1,21 @@
+uuid: 75a1e3f6-6e08-4f5a-8423-30500edbb9c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.service_card
+id: node.service_card.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: service_card
+label: 'Updated date'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1587378961
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

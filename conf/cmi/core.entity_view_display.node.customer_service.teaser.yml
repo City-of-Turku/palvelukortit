@@ -1,0 +1,28 @@
+uuid: 4e14f880-5835-41c3-975d-615a7b99e41c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.customer_service.field_code
+    - field.field.node.customer_service.field_description
+    - field.field.node.customer_service.field_updated_date
+    - node.type.customer_service
+  module:
+    - user
+id: node.customer_service.teaser
+targetEntityType: node
+bundle: customer_service
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_code: true
+  field_description: true
+  field_updated_date: true
+  langcode: true
+  search_api_excerpt: true

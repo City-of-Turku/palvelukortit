@@ -5,13 +5,16 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.service_card.field_additional_information
+    - field.field.node.service_card.field_code
     - field.field.node.service_card.field_contact_details_of_experts
     - field.field.node.service_card.field_description
     - field.field.node.service_card.field_index
     - field.field.node.service_card.field_programs_and_systems_used
     - field.field.node.service_card.field_service_instructions
     - field.field.node.service_card.field_service_type
+    - field.field.node.service_card.field_service_types
     - field.field.node.service_card.field_tags
+    - field.field.node.service_card.field_updated_date
     - node.type.service_card
   module:
     - smart_trim
@@ -71,8 +74,11 @@ content:
     third_party_settings: {  }
 hidden:
   field_additional_information: true
+  field_code: true
   field_contact_details_of_experts: true
   field_programs_and_systems_used: true
   field_service_instructions: true
+  field_service_types: true
+  field_updated_date: true
   langcode: true
   search_api_excerpt: true

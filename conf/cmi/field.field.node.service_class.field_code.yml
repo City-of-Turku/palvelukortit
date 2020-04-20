@@ -1,0 +1,19 @@
+uuid: f7359be5-cc3b-4586-9391-01d535011a77
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_code
+    - node.type.service_class
+id: node.service_class.field_code
+field_name: field_code
+entity_type: node
+bundle: service_class
+label: Code
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

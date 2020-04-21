@@ -1,0 +1,96 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+    'section--label'
+  ]
+%}
+{%
+  set content_classes = [
+    'section--content'
+  ]
+%}
+
+{%
+  set item_wrapper_class = [
+  'paragraph-wrapper'
+]
+%}
+
+<section class="service-card__section service-card__{{ field_name|replace(' ', '-') }}">
+  {% if label_hidden %}
+    {% if multiple %}
+      <div{{ attributes }}>
+        {% for item in items %}
+          <div{{ item.attributes }}>{{ item.content }}</div>
+        {% endfor %}
+      </div>
+    {% else %}
+      {% for item in items %}
+        <div{{ attributes }}>{{ item.content }}</div>
+      {% endfor %}
+    {% endif %}
+  {% else %}
+    <a name="{{ section_label_icon }}"></a>
+    <div class="section--label-wrapper">
+      <div{{ title_attributes.addClass(title_classes) }}>
+        {% if icons_path and section_label_icon %}
+          <div class="section--label__icon">
+            <svg class="icon">
+              <title>{{ text }}</title>
+              <use xlink:href="{{ icons_path|trim }}#{{ section_label_icon }}"/>
+            </svg>
+          </div>
+        {% endif %}
+        {{ label }}
+      </div>
+    </div>
+
+    <div{{ attributes.addClass(content_classes) }}>
+      {% for item in items %}
+        {% if loop.last %}
+          <div{{ item.attributes.addClass(item_wrapper_class).addClass('is-last') }}>{{ item.content }}</div>
+        {% else %}
+          <div{{ item.attributes.addClass(item_wrapper_class) }}>{{ item.content }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

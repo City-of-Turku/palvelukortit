@@ -39,6 +39,7 @@
     letter-spacing: -0.5px;
     padding-left: $gutter * 2;
     text-align: left;
+    text-decoration: none;
 
     @include breakpoint($for-mobile-portrait-up) {
       @include font-size(20px, 20px);

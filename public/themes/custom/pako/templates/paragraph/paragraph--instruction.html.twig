@@ -1,0 +1,30 @@
+{% extends "paragraph.html.twig" %}
+
+{% block paragraph %}
+  {% set media = content.field_media.0 %}
+  {% set text = content.field_text.0 %}
+
+  <div{{attributes.addClass(classes)}}>
+    {% block content %}
+      {% if media|render %}
+        <div class="paragraph__media">
+          {{ media }}
+
+          {% if icons_path %}
+            <div class="paragraph__media--icon">
+              <svg class="icon">
+                <title>{{ text }}</title>
+                <use xlink:href="{{ icons_path|trim }}#expand"/>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if text|render %}
+        <div class="paragraph__text">
+          {{ text }}
+        </div>
+      {% endif %}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

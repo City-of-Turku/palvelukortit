@@ -15,6 +15,10 @@ language-switcher:
   js:
     dist/js/languageSwitcher.min.js: {}
 
+service-card-navigation:
+  js:
+    dist/js/serviceCardNavigation.min.js: {}
+
 svgxuse:
   js:
     dist/js/svgxuse.min.js: {}
@@ -36,3 +40,4 @@ global-scripting:
     - pako/hyphenopoly
     - pako/language-switcher
     - pako/svgxuse
+    - pako/service-card-navigation

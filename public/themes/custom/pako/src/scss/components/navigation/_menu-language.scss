@@ -27,6 +27,7 @@
       color: $black;
 
       svg {
+        color: $black;
         fill: $black;
         transform: rotate(180deg);
       }
@@ -43,6 +44,7 @@
         color: $white;
 
         svg {
+          color: $white;
           fill: $white;
           transform: rotate(180deg);
         }
@@ -55,6 +57,7 @@
     }
 
     .icon {
+      color: $white;
       display: inline-block;
       fill: $white;
       margin-right: -3px;

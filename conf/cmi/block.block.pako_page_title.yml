@@ -1,0 +1,27 @@
+uuid: c3d18551-03c5-4fcb-84cb-5ab724f2833e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pako
+_core:
+  default_config_hash: 8yptDf6WrXxeyevUz4nP5vfr7BtxQqCBMninhV2IJ1g
+id: pako_page_title
+theme: pako
+region: content
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/search"
+    negate: true
+    context_mapping: {  }

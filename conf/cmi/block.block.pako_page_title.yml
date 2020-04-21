@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - ctools
     - system
   theme:
     - pako
@@ -22,6 +23,13 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "<front>\r\n/search"
+    pages: "\r\n"
     negate: true
     context_mapping: {  }
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      service_card: service_card
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'

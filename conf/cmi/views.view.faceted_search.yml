@@ -252,7 +252,7 @@ display:
           expose:
             label: ''
           plugin_id: search_api
-      title: Haku
+      title: 'Search for service cards'
       header: {  }
       footer: {  }
       empty: {  }
@@ -270,8 +270,10 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:search_api.index.service_cards_search_index'
   page:
     display_plugin: page
     id: page
@@ -291,5 +293,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:search_api.index.service_cards_search_index'

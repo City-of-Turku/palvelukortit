@@ -54,6 +54,7 @@
 }
 
 .service-card-teaser__label {
+  @include font-size(22px, 28px);
   @include font-weight($semibold);
 }
 

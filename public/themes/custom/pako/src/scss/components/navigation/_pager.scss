@@ -68,11 +68,13 @@
     }
 
     .icon {
+      color: $gray-dark;
       fill: $gray-dark;
     }
   }
 
   .icon {
+    color: $blue;
     fill: $blue;
     height: $gutter * 1.25;
     width: $gutter * 1.25;

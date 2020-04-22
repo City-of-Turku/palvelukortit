@@ -1,0 +1,9 @@
+<div class="service-card__navigation-wrapper">
+  {% embed "@pako/misc/container.twig" with {container_element: 'service-card__navigation'} %}
+    {% block container_content %}
+      <div class="service-card__navigation-items">
+        {{ items }}
+      </div>
+    {% endblock container_content %}
+  {% endembed %}
+</div>

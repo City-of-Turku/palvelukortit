@@ -11,7 +11,11 @@
 }
 
 .page-content {
-  padding: $gutter * 2.4 0;
+  padding: $gutter 0;
+
+  @include breakpoint($for-tablet-portrait-up) {
+    padding: $gutter * 2.4 0;
+  }
 }
 
 .content__wrapper {

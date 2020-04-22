@@ -1,0 +1,42 @@
+uuid: 0e5baf7e-bfb2-4da2-a4d0-d25afb120b41
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+name: page_title
+label: 'Page title'
+group: null
+description: ''
+requireAllConditions: false
+disabled: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      service_card: service_card
+    negate: 1
+    uuid: c4526218-c752-4945-a616-35fb7b86d92e
+    context_mapping:
+      node: '@node.node_route_context:node'
+reactions:
+  blocks:
+    blocks:
+      5f964664-735d-49cd-be3e-c7afe2a420ff:
+        id: page_title_block
+        label: 'Page title'
+        provider: core
+        label_display: 0
+        region: content
+        weight: '-10'
+        context_mapping: {  }
+        theme: pako
+        css_class: ''
+        unique: 0
+        context_id: page_title
+        uuid: 5f964664-735d-49cd-be3e-c7afe2a420ff
+    id: blocks
+    saved: false
+    uuid: 29619472-ae1b-4912-ad40-40133e03db5f
+    include_default_blocks: 0
+weight: 0

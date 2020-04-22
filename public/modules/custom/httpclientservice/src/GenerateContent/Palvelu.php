@@ -112,7 +112,7 @@ class Palvelu {
       'langcode' => 'fi',
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
-      'uid' => $uid->getApiuser(),
+      'uid' => $uid->getApiUser(),
       'status' => $status,
       'title' => $data['nimi_kieliversiot']['fi'],
       'field_description' => strip_tags($descriptions['fi']),

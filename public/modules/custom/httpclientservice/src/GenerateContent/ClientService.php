@@ -73,7 +73,7 @@ class ClientService {
 
       // Translation base field.
       $node_tr = $node->addTranslation($language);
-      $node_tr->uid = $uid->getApiuser();
+      $node_tr->uid = $uid->getApiUser();
       $node_tr->title = $titles[$language];
       $node_tr->field_code = $data['koodi'];
       $node_tr->field_updated_date = $date;

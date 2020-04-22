@@ -101,7 +101,7 @@ class Palvelutarjous {
       'langcode' => 'fi',
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
-      'uid' => $uid->getApiuser(),
+      'uid' => $uid->getApiUser(),
       'title' => $titles['fi'],
       'field_code' => $data['koodi'],
       'field_updated_date' => date('Y-m-d', strtotime($data['muutospvm']))

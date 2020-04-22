@@ -5,3 +5,4 @@ display:
         options:
           submit_button: Hae
           reset_button_label: Tyhjennä
+      title: 'Hae palvelukortteja'

@@ -1,0 +1,13 @@
+<a href="#{{ label_icon }}" class="service-card__navigation-item">
+  {% if icons_path and label_icon %}
+    <div class="service-card__navigation--icon">
+      <svg class="icon">
+        <title>{{ text }}</title>
+        <use xlink:href="{{ icons_path|trim }}#{{ label_icon }}"/>
+      </svg>
+    </div>
+  {% endif %}
+  <div class="service-card__navigation--label">
+    {{ label }}
+  </div>
+</a>

@@ -293,7 +293,7 @@ display:
           expose:
             label: ''
           plugin_id: search_api
-      title: Haku
+      title: 'Search for service cards'
       header: {  }
       footer: {  }
       empty: {  }

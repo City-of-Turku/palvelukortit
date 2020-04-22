@@ -41,7 +41,7 @@
 
   li,
   p {
-    @include font-size(18px, 27px);
+    @include font-size(16px, 22px);
     @include font-weight($regular);
   }
 

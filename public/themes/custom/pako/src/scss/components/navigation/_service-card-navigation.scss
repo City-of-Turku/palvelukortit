@@ -1,0 +1,79 @@
+.service-card__navigation-wrapper {
+  background-color: $white;
+  border-bottom: 1px solid $gray;
+  padding: $gutter / 1.5 0;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  @include breakpoint($for-tablet-portrait-up) {
+    &.fixed {
+      padding: 3px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      .service-card__navigation-items {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+
+      .service-card__navigation-item {
+        margin-bottom: 3px;
+        margin-top: 3px;
+      }
+
+      .toolbar-horizontal &,
+      .toolbar-vertical &,
+      .toolbar-vertical.toolbar-tray-open & {
+        top: 39px;
+      }
+      .toolbar-tray-open & {
+        top: 79px;
+      }
+    }
+  }
+}
+
+.service-card__navigation__container {
+}
+
+.service-card__navigation-items {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  margin: 0 -#{$gutter};
+}
+
+.service-card__navigation-item {
+  display: flex;
+  line-height: 12px;
+  margin: $gutter / 3 $gutter;
+  text-decoration: none;
+
+  &:hover,
+  &.is-active {
+    color: $blue;
+    text-decoration: underline;
+
+    .service-card__navigation--label,
+    .icon {
+      color: $blue;
+    }
+  }
+}
+
+.service-card__navigation--icon {
+  .icon {
+    color: $black;
+    max-height: 23px;
+    max-width: 23px;
+  }
+}
+
+.service-card__navigation--label {
+  @include font-size(14px, 22px);
+  @include font-weight($semibold);
+  color: $black;
+  padding-left: $gutter / 1.5;
+  text-decoration: none;
+}

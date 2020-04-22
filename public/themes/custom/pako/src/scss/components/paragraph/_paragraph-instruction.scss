@@ -1,0 +1,135 @@
+.paragraph {
+  margin: 0 0 $gutter * 4;
+}
+
+.paragraph--instruction {
+  border-bottom: 1px solid $gray-medium;
+  display: flex;
+  flex-flow: column;
+  margin-bottom: $gutter * 2;
+  padding-bottom: $gutter * 2;
+
+  @include breakpoint($for-tablet-landscape-up) {
+    flex-flow: row;
+  }
+
+  .is-last & {
+    border-bottom: 0 none;
+  }
+
+  .paragraph__media {
+    background-color: #CECBBD4D;
+    margin: 0 0 $gutter * 2;
+    max-height: 266px;
+    max-width: 100%;
+    position: relative;
+
+    @include breakpoint($for-mobile-landscape-up) {
+      max-width: 420px;
+      min-width: 420px;
+    }
+
+    @include breakpoint($for-tablet-landscape-up) {
+      margin: 0 $gutter * 2 0 0;
+    }
+
+    .field__item > a {
+      display: flex;
+      justify-content: center;
+    }
+
+    &:hover {
+      .icon {
+        box-shadow: 0 0 5px 0 $pink;
+      }
+    }
+  }
+
+  .paragraph__media--icon {
+    bottom: $gutter;
+    pointer-events: none;
+    position: absolute;
+    right: $gutter;
+
+    .icon {
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.20);
+      color: $pink;
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .paragraph__text {
+  }
+}
+
+.service-card__field_contact_details_of_experts {
+  .section--content {
+    display: flex;
+    flex-flow: column;
+
+    > div {
+      border-bottom: 1px solid $gray-medium;
+      margin-bottom: $gutter * 2;
+      padding-bottom: $gutter * 2;
+    }
+
+    > div:last-of-type {
+      border-bottom: 0 none;
+    }
+
+    h2 {
+      @include font-size(22px, 26px);
+      @include font-weight($semibold);
+    }
+
+    p {
+      @include font-size(14px, 18px);
+      @include font-weight($regular);
+      margin-bottom: 10px;
+    }
+
+    .field__label {
+      @include font-size(14px, 18px);
+      @include font-weight($semibold);
+      color: $blue;
+      display: inline-block;
+      margin-bottom: $gutter / 3;
+      text-transform: uppercase;
+    }
+
+    .content {
+      display: flex;
+      flex-flow: column;
+
+      @include breakpoint($for-mobile-landscape-up) {
+        flex-flow: row;
+        flex-wrap: wrap;
+      }
+
+      .field--name-field-address,
+      .field--name-field-phone-number,
+      .field--name-field-email {
+        flex: 0 1 33%;
+        margin-bottom: $gutter / 1.5;
+        margin-right: $gutter;
+
+        @include breakpoint($for-mobile-landscape-up) {
+          margin-bottom: 0;
+        }
+      }
+      .field--name-field-additional-information {
+        flex-basis: 100%;
+        padding-top: $gutter;
+      }
+    }
+  }
+}
+
+
+// Media paragraph image popup.
+.mfp-close {
+  @include font-size(40px, 20px);
+  @include font-weight($regular);
+  opacity: 1;
+}

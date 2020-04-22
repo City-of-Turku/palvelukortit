@@ -34,7 +34,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_additional_information:
-    weight: 26
+    weight: 13
     settings:
       rows: 5
       placeholder: ''
@@ -50,7 +50,7 @@ content:
     type: string_textfield
     region: content
   field_contact_details_of_experts:
-    weight: 28
+    weight: 15
     settings:
       entity_browser: expert
       field_widget_display: rendered_entity
@@ -79,7 +79,7 @@ content:
     type: options_select
     region: content
   field_programs_and_systems_used:
-    weight: 27
+    weight: 14
     settings:
       rows: 5
       placeholder: ''
@@ -115,7 +115,7 @@ content:
     type: select2_entity_reference
     region: content
   field_tags:
-    weight: 13
+    weight: 16
     settings:
       width: 100%
       autocomplete: true

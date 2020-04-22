@@ -109,7 +109,8 @@
     @include font-weight($regular);
     background-color: $white;
     color: $black;
-    margin: 0 5px 2px;
+    display: block;
+    margin: 4px 5px 0;
     padding: 3px 8px;
     text-decoration: none;
 

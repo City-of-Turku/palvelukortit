@@ -47,6 +47,7 @@
 
   .paragraph__media--icon {
     bottom: $gutter;
+    pointer-events: none;
     position: absolute;
     right: $gutter;
 

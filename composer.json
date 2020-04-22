@@ -40,6 +40,7 @@
         "drupal/smart_trim": "^1.2",
         "drupal/token": "^1.6",
         "drupal/twig_tweak": "^2.5",
+        "drupal/ultimate_cron": "^2.0",
         "drupal/views_ajax_history": "^1.2",
         "drush/drush": "^10.2",
         "select2/select2": "^4.0.7",

@@ -29,11 +29,19 @@ class Palvelu {
   protected $type;
 
   /**
+   * ClientService.
+   *
+   * @var object
+   */
+  protected $client;
+
+  /**
    * Palvelu class constructor.
    */
   public function __construct() {
     $this->languages = ['en', 'sv'];
     $this->type = 'service_card';
+    $this->client = new ClientService();
   }
 
   /**
@@ -43,7 +51,7 @@ class Palvelu {
    *   Data from API
    */
   public function httpclientserviceGetPalvelut() {
-    $data = ClientService::httpclientserviceGetService('api/v1/palvelut');
+    $data = $this->client->httpclientserviceGetService('api/v1/palvelut');
 
     return $data;
   }
@@ -64,7 +72,7 @@ class Palvelu {
       $code = $palvelu['koodi'];
 
       // Check if service already exist.
-      if (!ClientService::httpclientserviceCheckExist($code, $this->type)) {
+      if (!$this->client->httpclientserviceCheckExist($code, $this->type)) {
         // Check that finnish version include title.
         // Node cannot be created without title.
         if (!isset($palvelu['nimi_kieliversiot']['fi'])) {
@@ -117,7 +125,7 @@ class Palvelu {
     $node->save();
 
     // Translate entity.
-    ClientService::httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
   }
 
   /**

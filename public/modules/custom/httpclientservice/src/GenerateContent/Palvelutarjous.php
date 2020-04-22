@@ -26,11 +26,19 @@ class Palvelutarjous {
   protected $type;
 
   /**
+   * ClientService.
+   *
+   * @var object
+   */
+  protected $client;
+
+  /**
    * Palvelutarjous constructor.
    */
   public function __construct() {
     $this->languages = ['en', 'sv'];
     $this->type = 'service_offer';
+    $this->client = new ClientService();
   }
 
   /**
@@ -40,7 +48,7 @@ class Palvelutarjous {
    *   Data from API
    */
   public function httpclientserviceGetPalvelutarjoukset() {
-    $data = ClientService::httpclientserviceGetService('api/v1/palvelutarjoukset');
+    $data = $this->client->httpclientserviceGetService('api/v1/palvelutarjoukset');
 
     return $data;
   }
@@ -61,7 +69,7 @@ class Palvelutarjous {
       $code = $palvelutarjous['koodi'];
 
       // Check if service offer already exist.
-      if (!ClientService::httpclientserviceCheckExist($code, $this->type)) {
+      if (!$this->client->httpclientserviceCheckExist($code, $this->type)) {
         // Check that finnish version include title.
         // Node cannot be created without title.
         if (!isset($palvelutarjous['nimi_kieliversiot']['fi'])) {
@@ -102,7 +110,7 @@ class Palvelutarjous {
     // Saving original the node.
     $node->save();
 
-    ClientService::httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
   }
 
 }

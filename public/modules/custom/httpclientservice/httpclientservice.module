@@ -16,7 +16,8 @@ function httpclientservice_cron() {
   $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
 
   $palvelupiste = new Palvelu();
-  ClientService::httpclientserviceDeleteEntity('service_card');
+  $client = new ClientService();
+  $client->httpclientserviceDeleteEntity('service_card');
   $palvelupiste->httpclientserviceSavePalvelu();
 
   // Store the timestamp in state.

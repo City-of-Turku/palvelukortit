@@ -26,11 +26,19 @@ class Palvelupiste {
   protected $type;
 
   /**
+   * ClientService.
+   *
+   * @var object
+   */
+  protected $client;
+
+  /**
    * Palvelupiste constructor.
    */
   public function __construct() {
     $this->languages = ['en', 'sv'];
     $this->type = 'customer_service';
+    $this->client = new ClientService();
   }
 
   /**
@@ -40,7 +48,7 @@ class Palvelupiste {
    *   Data from API
    */
   public function httpclientserviceGetPalvelupisteet() {
-    $data = ClientService::httpclientserviceGetService('api/v1/palvelupisteet');
+    $data = $this->client->httpclientserviceGetService('api/v1/palvelupisteet');
 
     return $data;
   }
@@ -61,7 +69,7 @@ class Palvelupiste {
       $code = $palvelupiste['koodi'];
 
       // Check if Customer Services already exist.
-      if (!ClientService::httpclientserviceCheckExist($code, $this->type)) {
+      if (!$this->client->httpclientserviceCheckExist($code, $this->type)) {
         // Check that finnish version include title.
         // Node cannot be created without title.
         if (!isset($palvelupiste['nimi_kieliversiot']['fi'])) {
@@ -107,7 +115,7 @@ class Palvelupiste {
     $node->save();
 
     // Translate entity.
-    ClientService::httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
   }
 
 }

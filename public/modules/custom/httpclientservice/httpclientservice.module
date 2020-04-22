@@ -13,7 +13,7 @@ use Drupal\httpclientservice\GenerateContent\ClientService;
  * Implements hook_cron().
  */
 function httpclientservice_cron() {
-  $state     = \Drupal::state();
+  $state = \Drupal::state();
   $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
 
   // Remove All API content.

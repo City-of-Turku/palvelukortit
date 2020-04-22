@@ -26,16 +26,16 @@ class ApiUser {
   /**
    * API User.
    */
-  public function getApiuser() {
+  public function getApiUser() {
     return $this->apiUser;
   }
 
   /**
    * Get API User uid.
    */
-  public function httpclientserviceCheckApiuser() {
-    if (!$user = $this->httpclientserviceCheckApiuserExist()) {
-      $user = $this->httpclientserviceCreateApiuser();
+  public function httpclientserviceCheckApiUser() {
+    if (!$user = $this->httpclientserviceCheckApiUserExist()) {
+      $user = $this->httpclientserviceCreateApiUser();
     }
 
     return $user;
@@ -44,7 +44,7 @@ class ApiUser {
   /**
    * Check if APi User exiest.
    */
-  public function httpclientserviceCheckApiuserExist() {
+  public function httpclientserviceCheckApiUserExist() {
     $id = \Drupal::entityQuery('user')
       ->condition('name', 'API')
       ->range(0, 1)
@@ -60,7 +60,7 @@ class ApiUser {
   /**
    * Create a new API User.
    */
-  public function httpclientserviceCreateApiuser() {
+  public function httpclientserviceCreateApiUser() {
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     $user = User::create();

@@ -8,8 +8,8 @@ use Drupal\guzzle_cache\DrupalGuzzleCache;
 use Drupal\key\KeyRepositoryInterface;
 use Drupal\node\Entity\Node;
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Handler\StreamHandler;
 use GuzzleHttp\HandlerStack;
 use Kevinrob\GuzzleCache\CacheMiddleware;
 use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
@@ -20,13 +20,6 @@ use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
  * @package Drupal\httpclientservice\Client
  */
 class HttpClientServiceClient implements HttpClientServiceClientInterface {
-
-  /**
-   * An http client.
-   *
-   * @var \GuzzleHttp\ClientInterface
-   */
-  protected $httpClient;
 
   /**
    * A configuration instance.
@@ -68,8 +61,7 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
   /**
    * Constructor.
    */
-  public function __construct(ClientInterface $http_client, KeyRepositoryInterface $key_repo, ConfigFactory $config_factory) {
-    $this->httpClient = $http_client;
+  public function __construct(KeyRepositoryInterface $key_repo, ConfigFactory $config_factory) {
     $config = $config_factory->get('httpclientservice.settings');
     $this->caller = $config->get('httpclientservice_caller');
     $this->caller = $key_repo->getKey($this->caller)->getKeyValue();
@@ -83,7 +75,7 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
    */
   public function getCachedClient() {
     // Create default HandlerStack.
-    $stack = HandlerStack::create();
+    $stack = HandlerStack::create(new StreamHandler());
 
     // Create a Drupal Guzzle cache.
     $cache = new DrupalGuzzleCache();
@@ -109,7 +101,7 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
 
     // Connect to the client.
     try {
-      $response = $this->httpClient->{$method}(
+      $response = $this->getCachedClient()->{$method}(
         $this->baseURI . $this->callString,
         [
           'headers' => $this->getHttpHeaders(),
@@ -119,7 +111,6 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
           'cookie' => TRUE
         ]
       );
-      $data = $response->getBody();
     }
     catch (RequestException $exception) {
       drupal_set_message(t('Failed to complete Asiakaspalvelijoiden palvelukortit connection "%error"', ['%error' => $exception->getMessage()]), 'error');
@@ -153,6 +144,9 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
    *
    * @return array
    *   Return Headers.
+   *
+   * @throws \Exception
+   *   Exception Emits Exception in case of an error.
    */
   public function getHttpHeaders() {
     // 'YYYY-MM-DDThh:mm:ssZ' F.e. 2019-05-27T12:17:06.457Z;

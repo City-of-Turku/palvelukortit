@@ -106,7 +106,7 @@ class Palveluluokka {
       'langcode' => 'fi',
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
-      'uid' => $uid->getApiuser(),
+      'uid' => $uid->getApiUser(),
       'title' => $titles['fi'],
       'field_code' => $data['koodi'],
       'field_updated_date' => $dateTime

@@ -8,7 +8,7 @@ namespace Drupal\httpclientservice\Client;
 interface HttpClientServiceClientInterface {
 
   /**
-   * Utilizes Drupal's httpClient to connect to Lyyti API.
+   * Utilizes Drupal's httpClient to connect to Asiakaspalvelijoiden palvelukortit API.
    *
    * @param string $method
    *   get, post, patch, delete, etc. See Guzzle documentation.

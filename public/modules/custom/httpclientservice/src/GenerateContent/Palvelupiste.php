@@ -103,7 +103,7 @@ class Palvelupiste {
       'langcode' => 'fi',
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
-      'uid' => $uid->getApiuser(),
+      'uid' => $uid->getApiUser(),
       'status' => $status,
       'title' => $titles['fi'],
       'field_description' => $descriptions['fi'],

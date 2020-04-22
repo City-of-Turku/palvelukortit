@@ -51,7 +51,7 @@
     }
   }
 
-  ul,
+  ul:not(.pager__items),
   ol {
     margin-top: 0;
     padding-left: 0;

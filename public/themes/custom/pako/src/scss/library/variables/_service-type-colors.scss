@@ -22,7 +22,7 @@ $colors: (
   }
 }
 
-@each $color in $colors {
+@each $color, $hex  in $colors {
   .color--#{$color} {
     @include colorSet($color);
   }

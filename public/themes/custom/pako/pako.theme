@@ -210,3 +210,31 @@ function pako_preprocess_pager(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pako_preprocess_field(&$variables) {
+  $config = \Drupal::service('config.factory')
+    ->get('pako_content.service_card_navigation')
+    ->get('pako_fields');
+  $fields = reset($config);
+
+  if (!in_array($variables['field_name'], $fields)) {
+    return;
+  }
+
+  $icon = array_keys($fields, $variables['field_name']);
+  if (!empty($icon)) {
+    $variables['section_label_icon'] = reset($icon);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function pako_theme_suggestions_field_alter(&$suggestions, array $variables) {
+  if ($variables['element']['#bundle'] == 'service_card') {
+    $suggestions[] = 'field__node__' . $variables['element']['#bundle'] . '__' . $variables['element']['#view_mode'];
+  }
+}

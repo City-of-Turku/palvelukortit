@@ -20,7 +20,7 @@ class ApiUser {
    * ApiUser constructor.
    */
   public function __construct() {
-    $this->apiUser = $this->httpclientservice_check_apiuser();
+    $this->apiUser = $this->httpclientserviceCheckApiuserExist();
   }
 
   /**

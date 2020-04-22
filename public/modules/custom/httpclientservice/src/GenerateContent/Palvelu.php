@@ -102,8 +102,11 @@ class Palvelu {
     $dateTime = new DrupalDateTime($data['muutospvm'], 'UTC');
     $date = $dateTime->getTimestamp();
 
-    // Convert service types taxonomy data to Drupal taxonomies.
+    // Convert Service types taxonomy data to Drupal taxonomies.
     $service_types = $this->httpclientserviceCreateServicetypeTaxonomy($data['palvelutyypit']);
+
+    // Convert Service Offer's to Drupal reference's.
+    $service_offers = $this->httpclientserviceCreateServiceOfferReferences($data['palvelutarjoukset']);
 
     // Create node.
     $node = Node::create([
@@ -118,7 +121,8 @@ class Palvelu {
       'field_description' => strip_tags($descriptions['fi']),
       'field_code' => $data['koodi'],
       'field_updated_date' => $date,
-      'field_service_types' => $service_types
+      'field_service_types' => $service_types,
+      'field_service_offers' => $service_offers
     ]);
 
     // Saving original the node.
@@ -194,6 +198,26 @@ class Palvelu {
     }
 
     return NULL;
+  }
+
+  /**
+   * Convert service offer data to Drupal Service offers reference value.
+   */
+  public function httpclientserviceCreateServiceOfferReferences($offers) {
+    $offer_references = [];
+
+    foreach ($offers as $key => $offer) {
+      $query = \Drupal::entityQuery('node')
+        ->condition('type', 'service_offer')
+        ->condition('langcode', 'fi')
+        ->condition('field_code', $offer['koodi']);
+
+      if ($result = $query->execute()) {
+        $offer_references[$key] = reset($result);
+      }
+    }
+
+    return $offer_references;
   }
 
 }

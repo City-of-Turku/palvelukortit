@@ -1,0 +1,11 @@
+pako_fields:
+  -
+    service-instructions: field_service_instructions
+    more-information: field_additional_information
+    customers: field_customers
+    fees: field_fees
+    software: field_programs_and_systems_used
+    contact-info: field_contact_details_of_experts
+    business: field_alternative_ways_of_doing_business
+    service-package: field_service_package
+    tag: field_tags

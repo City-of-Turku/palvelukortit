@@ -5,10 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.instruction.field_media
     - field.field.paragraph.instruction.field_text
-    - image.style.paragraph_thumbnail
     - paragraphs.paragraphs_type.instruction
   module:
-    - media
     - text
 id: paragraph.instruction.default
 targetEntityType: paragraph
@@ -16,12 +14,12 @@ bundle: instruction
 mode: default
 content:
   field_media:
-    type: media_thumbnail
+    type: entity_reference_entity_view
     weight: 0
     label: hidden
     settings:
-      image_style: paragraph_thumbnail
-      image_link: ''
+      view_mode: popup
+      link: false
     third_party_settings: {  }
     region: content
   field_text:

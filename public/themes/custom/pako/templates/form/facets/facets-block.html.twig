@@ -1,0 +1,8 @@
+{% for facet in facets %}
+  <div class="facet-block">
+    {% if show_title %}
+      <h1 class="facet-block__title">{{ facet.title }}</h1>
+    {% endif %}
+    <div class="facet-block__content">{{ facet.content }}</div>
+  </div>
+{% endfor %}

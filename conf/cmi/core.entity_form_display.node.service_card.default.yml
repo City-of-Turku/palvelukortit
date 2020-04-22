@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.service_card.field_index
     - field.field.node.service_card.field_programs_and_systems_used
     - field.field.node.service_card.field_service_instructions
+    - field.field.node.service_card.field_service_offers
     - field.field.node.service_card.field_service_type
     - field.field.node.service_card.field_service_types
     - field.field.node.service_card.field_tags
@@ -34,7 +35,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_additional_information:
-    weight: 26
+    weight: 13
     settings:
       rows: 5
       placeholder: ''
@@ -50,7 +51,7 @@ content:
     type: string_textfield
     region: content
   field_contact_details_of_experts:
-    weight: 28
+    weight: 15
     settings:
       entity_browser: expert
       field_widget_display: rendered_entity
@@ -79,7 +80,7 @@ content:
     type: options_select
     region: content
   field_programs_and_systems_used:
-    weight: 27
+    weight: 14
     settings:
       rows: 5
       placeholder: ''
@@ -98,6 +99,16 @@ content:
       default_paragraph_type: instruction
     third_party_settings: {  }
     region: content
+  field_service_offers:
+    weight: 34
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_service_type:
     weight: 10
     settings: {  }
@@ -115,7 +126,7 @@ content:
     type: select2_entity_reference
     region: content
   field_tags:
-    weight: 13
+    weight: 16
     settings:
       width: 100%
       autocomplete: true

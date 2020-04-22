@@ -70,7 +70,7 @@ class Palveluluokka {
       $code = $palveluluokka['koodi'];
 
       // Check if service class already exist.
-      if (!$this->client->httpclientserviceCheckExist($code, $this->type)) {
+      if (!$this->client->httpclientserviceCheckExist($code, $this->type, 'fi')) {
         // Check that finnish version include title.
         // Node cannot be created without title.
         if (!isset($palveluluokka['nimi_kieliversiot']['fi'])) {

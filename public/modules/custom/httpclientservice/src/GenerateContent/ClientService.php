@@ -30,12 +30,14 @@ class ClientService {
    *
    * {@inheritdoc}
    */
-  public function httpclientserviceCheckExist($code, $type) {
+  public function httpclientserviceCheckExist($code, $type, $language = 'fi') {
     $query = \Drupal::entityQuery('node')
       ->condition('type', $type)
+      ->condition('langcode', $language)
       ->condition('field_code', $code);
 
     if ($result = $query->execute()) {
+      var_dump($result); exit;
       return TRUE;
     }
 

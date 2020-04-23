@@ -1,0 +1,17 @@
+uuid: 2b055e9e-3e7e-4c89-b5cd-73669455630f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - httpclientservice
+title: 'Default cron handler'
+id: httpclientservice_cron
+weight: 0
+module: httpclientservice
+callback: httpclientservice_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

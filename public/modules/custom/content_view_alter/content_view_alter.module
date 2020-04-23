@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains content_view_alter.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements form_alter().
+ */
+function content_view_alter_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  if ($current_path == '/admin/content' && $form_id == 'views_exposed_form') {
+    // Language filter options.
+    $new_options = [
+      'All' => 'All',
+      'en' => 'English',
+      'fi' => 'Finnish',
+      'sv' => 'Swedish'
+    ];
+    $form['langcode']["#options"] = $new_options;
+    // Get current language.
+    $current_lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    // Get language code parameter value.
+    $param_lang = \Drupal::request()->query->get('langcode');
+
+    // Set default value if param language if empty.
+    if (!$param_lang) {
+      $form['langcode']['#value'] = $current_lang;
+    }
+  }
+
+}

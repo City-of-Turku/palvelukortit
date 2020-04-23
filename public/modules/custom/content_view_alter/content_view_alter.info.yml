@@ -1,0 +1,5 @@
+name: 'Admin content view alter'
+type: module
+description: 'Alter admin content view filters'
+core: 8.x
+package: 'Custom'

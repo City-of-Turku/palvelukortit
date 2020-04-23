@@ -101,29 +101,42 @@ function pako_content_node_form_submit_callback($form, FormStateInterface $form_
  * Implements hook_form_FORM_ID_alter().
  */
 function pako_content_form_views_exposed_form_alter(&$form, $form_state, $form_id) {
-  if ($form['#id'] !== 'views-exposed-form-faceted-search-page') {
-    return;
+  // Get current path.
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  // Alter admin content view.
+  if ($current_path == '/admin/content' && $form_id == 'views_exposed_form') {
+    // Get current language.
+    $current_lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    // Get language code parameter value.
+    $param_lang = \Drupal::request()->query->get('langcode');
+
+    // Set default value if param language if empty.
+    if (!$param_lang) {
+      $form['langcode']['#value'] = $current_lang;
+    }
   }
 
-  $params = \Drupal::requestStack()->getCurrentRequest()->query->all();
-  $facet_manager = \Drupal::service('facets.manager');
-  $facets = $facet_manager->getEnabledFacets();
-  foreach ($facets as $facet) {
-    $filter_keys[] = empty($facet->getFacetSourceConfig()->getFilterKey())
-      ? 'f'
-      : $facet->getFacetSourceConfig()->getFilterKey();
-
-  }
-
-  if (!empty($filter_keys)) {
-    foreach (array_unique($filter_keys) as $filter_key) {
-      if (!empty($params[$filter_key]) && !empty($param_values = $params[$filter_key])) {
-        // Add facet parameters to hidden fields in the forms.
-        foreach ($param_values as $key => $value) {
-          $form[$filter_key . '[' . $key . ']'] = [
-            '#type' => 'hidden',
-            '#value' => $value,
-          ];
+  // TODO Markus lisää kommentit tähän.
+  if ($form['#id'] == 'views-exposed-form-faceted-search-page') {
+    $params = \Drupal::requestStack()->getCurrentRequest()->query->all();
+    $facet_manager = \Drupal::service('facets.manager');
+    $facets = $facet_manager->getEnabledFacets();
+    foreach ($facets as $facet) {
+      $filter_keys[] = empty($facet->getFacetSourceConfig()->getFilterKey())
+        ? 'f'
+        : $facet->getFacetSourceConfig()->getFilterKey();
+    }
+    if (!empty($filter_keys)) {
+      foreach (array_unique($filter_keys) as $filter_key) {
+        if (!empty($params[$filter_key]) && !empty($param_values = $params[$filter_key])) {
+          // Add facet parameters to hidden fields in the forms.
+          foreach ($param_values as $key => $value) {
+            $form[$filter_key . '[' . $key . ']'] = [
+              '#type' => 'hidden',
+              '#value' => $value,
+            ];
+          }
         }
       }
     }

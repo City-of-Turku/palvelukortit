@@ -248,7 +248,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Translation language'
+          label: Language
           exclude: false
           alter:
             alter_text: false
@@ -562,7 +562,10 @@ display:
           group_type: group
           admin_label: ''
           operator: in
-          value: {  }
+          value:
+            en: en
+            fi: fi
+            sv: sv
           group: 1
           exposed: true
           expose:
@@ -583,7 +586,7 @@ display:
               administrator: '0'
               content_editor: '0'
               super_administrator: '0'
-            reduce: false
+            reduce: true
           is_grouped: false
           group_info:
             label: ''

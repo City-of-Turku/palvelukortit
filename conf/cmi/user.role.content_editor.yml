@@ -52,6 +52,7 @@ permissions:
   - 'revert all revisions'
   - 'revert service_card revisions'
   - 'translate any entity'
+  - 'translate block_content'
   - 'translate expert taxonomy_term'
   - 'translate image media'
   - 'translate index taxonomy_term'

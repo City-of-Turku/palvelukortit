@@ -65,6 +65,7 @@ permissions:
   - 'revert service_card revisions'
   - 'select account cancellation method'
   - 'translate any entity'
+  - 'translate block_content'
   - 'translate expert taxonomy_term'
   - 'translate image media'
   - 'translate index taxonomy_term'

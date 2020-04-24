@@ -3,12 +3,19 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.node.customer_service.field_address
     - field.field.node.customer_service.field_code
     - field.field.node.customer_service.field_description
+    - field.field.node.customer_service.field_email
+    - field.field.node.customer_service.field_more_information_link
+    - field.field.node.customer_service.field_telephone_number
     - field.field.node.customer_service.field_updated_date
     - node.type.customer_service
   module:
+    - address
+    - link
     - path
+    - telephone
 id: node.customer_service.default
 targetEntityType: node
 bundle: customer_service
@@ -20,6 +27,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_address:
+    weight: 125
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
   field_code:
     weight: 122
     settings:
@@ -35,6 +48,29 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
+  field_email:
+    weight: 127
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_more_information_link:
+    weight: 126
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_telephone_number:
+    weight: 128
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
     region: content
   field_updated_date:
     weight: 123

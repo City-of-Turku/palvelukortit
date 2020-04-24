@@ -64,6 +64,9 @@ class Palvelutarjous {
       return;
     }
 
+    $fp = fopen('palvelutarjoukset.json', 'w');
+    fwrite($fp, json_encode($palvelutarjoukset));
+    fclose($fp);
     foreach ($palvelutarjoukset as $palvelutarjous) {
       // Service offer code value aka id.
       $code = $palvelutarjous['koodi'];

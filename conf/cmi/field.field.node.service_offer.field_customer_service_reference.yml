@@ -1,0 +1,28 @@
+uuid: 95e2c5fe-763e-4900-9496-97f73189819e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_customer_service_reference
+    - node.type.customer_service
+    - node.type.service_offer
+id: node.service_offer.field_customer_service_reference
+field_name: field_customer_service_reference
+entity_type: node
+bundle: service_offer
+label: 'Customer Service Reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      customer_service: customer_service
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

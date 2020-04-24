@@ -96,6 +96,15 @@ class Palvelupiste {
     $descriptions = $data['kuvaus_kieliversiot'];
     $status = ($data['tila']['koodi'] == '1') ? 1 : 0;
 
+    // Convert more information value into Drupal fields.
+    $links = $this->httpclientserviceConvertMoreInformationValue($data, 'fi');
+
+    // Convert telephone data into Drupal field.
+    $telephones = $this->httpclientserviceConvertPhoneValue($data);
+
+    // Adress information.
+    $address = $this->httpclientserviceGetAddressValue($data, 'fi');
+
     // Create node.
     $node = Node::create([
       // The node entity bundle in this case article.
@@ -108,7 +117,11 @@ class Palvelupiste {
       'title' => $titles['fi'],
       'field_description' => $descriptions['fi'],
       'field_code' => $data['koodi'],
-      'field_updated_date' => date('Y-m-d', strtotime($data['muutospvm']))
+      'field_updated_date' => date('Y-m-d', strtotime($data['muutospvm'])),
+      'field_email' => $data['sahkoposti'],
+      'field_more_information_link' => $links,
+      'field_telephone_number' => $telephones,
+      'field_address' => $address
     ]);
 
     // Saving original the node.
@@ -116,6 +129,62 @@ class Palvelupiste {
 
     // Translate entity.
     $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
+  }
+
+  /**
+   * Convert API phone number data into phone number value.
+   */
+  public function httpclientserviceConvertPhoneValue($data) {
+    $telephones = [];
+
+    if (isset($data['puhelinnumerot'])) {
+      foreach ($data['puhelinnumerot'] as $key => $phone) {
+        // Merge country code + phone number into one value.
+        $telephones[$key] = '+' . $phone['maakoodi'] . $phone['numero'];
+      }
+    }
+
+    return $telephones;
+  }
+
+  /**
+   * Convert API address data into address field.
+   */
+  public function httpclientserviceGetAddressValue($data, $langcode) {
+    return $address = [
+      'country_code' => 'FI',
+      'address_line1' => $data['osoitteet'][0]['katuosoite_' . $langcode],
+      'locality' => $data['osoitteet'][0]['postitoimipaikka_' . $langcode],
+      'postal_code' => $data['osoitteet'][0]['postinumero'],
+    ];
+  }
+
+  /**
+   * Convert API more information data into link field value.
+   */
+  public function httpclientserviceConvertMoreInformationValue($data, $langcode) {
+    $links = [];
+
+    if (isset($data['lisatiedot'])) {
+      foreach ($data['lisatiedot'] as $key => $link) {
+        // Check that description field include value.
+        if (empty($link['kuvaus_kieliversiot'][$langcode])) {
+          continue;
+        }
+
+        $links[$key] = [
+          'uri' => $link['kuvaus_kieliversiot'][$langcode],
+          'title' => $link['nimi_kieliversiot'][$langcode],
+          'options' => [
+            'attributes' => [
+              'target' => '_blank',
+            ]
+          ]
+        ];
+      }
+    }
+
+    return $links;
   }
 
 }

@@ -6,6 +6,7 @@
 
 .logo {
   align-items: center;
+  color: $white;
   display: flex;
   line-height: 0;
 
@@ -18,16 +19,43 @@
       padding: 0;
     }
 
-    img {
-      max-height: 40px;
+    .icon {
+      height: 40px;
+      width: 100px;
+
+      @include breakpoint($for-mobile-landscape-up) {
+        height: 50px;
+        width: 126px;
+      }
 
       @include breakpoint($for-navigation-desktop) {
-        max-height: 100%;
+        height: 60px;
+        width: 150px;
+      }
+
+      &.logo--abo {
+        height: 40px;
+        width: 75px;
+
+        @include breakpoint($for-mobile-landscape-up) {
+          height: 50px;
+          width: 94px;
+        }
+
+        @include breakpoint($for-navigation-desktop) {
+          height: 60px;
+          width: 113px;
+        }
       }
     }
 
     &:hover {
+      color: $white;
       text-decoration: none;
+
+      .icon {
+        color: $white;
+      }
     }
   }
 
@@ -37,26 +65,50 @@
     color: $white;
     font-family: $default-font-family;
     letter-spacing: -0.5px;
+    margin-top: -5px;
     padding-left: $gutter * 2;
     text-align: left;
     text-decoration: none;
 
     @include breakpoint($for-mobile-portrait-up) {
-      @include font-size(20px, 20px);
-      padding: 6px 0 0 20px;
+      margin: 0;
+      padding: 4px 0 0 10px;
+    }
 
-      &.logo--abo {
-        padding-top: 11px;
-      }
+    @include breakpoint($for-mobile-landscape-up) {
+      @include font-size(23px, 23px);
+      padding: 4px 0 0 15px;
+    }
+
+    @include breakpoint($for-tablet-portrait-up) {
+      padding: 5px 0 0 20px;
     }
 
     @include breakpoint($for-navigation-desktop) {
-      @include font-size(36px, 40px);
+      @include font-size(30px, 40px);
       padding: 6px 0 0 20px;
+    }
 
+    &.logo--abo {
+      padding: 0 0 0 30px;
 
-      &.logo--abo {
-        padding-top: 13px;
+      @include breakpoint($for-mobile-portrait-up) {
+        margin: 0;
+        padding: 4px 0 0 10px;
+      }
+
+      @include breakpoint($for-mobile-landscape-up) {
+        @include font-size(23px, 23px);
+        padding: 4px 0 0 15px;
+      }
+
+      @include breakpoint($for-tablet-portrait-up) {
+        padding: 5px 0 0 20px;
+      }
+
+      @include breakpoint($for-navigation-desktop) {
+        @include font-size(30px, 40px);
+        padding: 6px 0 0 20px;
       }
     }
   }

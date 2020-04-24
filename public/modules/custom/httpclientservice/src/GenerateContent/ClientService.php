@@ -5,6 +5,7 @@ namespace Drupal\httpclientservice\GenerateContent;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\httpclientservice\GenerateContent\ApiUser;
+use Drupal\httpclientservice\GenerateContent\Palvelupiste;
 
 /**
  * An example controller.
@@ -85,6 +86,20 @@ class ClientService {
         $descriptions = $data['kuvaus_kieliversiot'];
         $node_tr->field_description = (isset($descriptions[$language])) ? strip_tags($descriptions[$language]) : '';
         $node_tr->status = ($data['tila']['koodi'] == '1') ? 1 : 0;
+      }
+
+      // Customer serivice content type fields.
+      if ($type = 'customer_service') {
+        $palvelupiste = new Palvelupiste();
+
+        // Convert more information value into Drupal fields.
+        $node_tr->field_more_information_link = $palvelupiste->httpclientserviceConvertMoreInformationValue($data, $language);
+
+        // Convert telephone data into Drupal field.
+        $node_tr->field_telephone_number = $palvelupiste->httpclientserviceConvertPhoneValue($data['puhelinnumerot']);
+
+        // Address information.
+        $node_tr->field_address = $palvelupiste->httpclientserviceGetAddressValue($data, $language);
       }
 
       // Saving translation.

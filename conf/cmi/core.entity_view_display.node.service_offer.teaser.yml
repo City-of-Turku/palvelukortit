@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.service_offer.body
     - field.field.node.service_offer.field_code
+    - field.field.node.service_offer.field_customer_service_reference
     - field.field.node.service_offer.field_updated_date
     - node.type.service_offer
   module:
@@ -31,6 +32,7 @@ content:
     region: content
 hidden:
   field_code: true
+  field_customer_service_reference: true
   field_updated_date: true
   langcode: true
   search_api_excerpt: true

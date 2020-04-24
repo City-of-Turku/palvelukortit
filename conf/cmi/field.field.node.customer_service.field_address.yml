@@ -1,0 +1,56 @@
+uuid: 3ecd8d63-4d29-400d-abe1-32186be92cff
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.customer_service
+  module:
+    - address
+id: node.customer_service.field_address
+field_name: field_address
+entity_type: node
+bundle: customer_service
+label: Address
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    country_code: FI
+    langcode: ''
+    organization: ''
+    given_name: ''
+    family_name: ''
+    address_line1: ''
+    address_line2: ''
+    postal_code: ''
+    locality: ''
+    additional_name: null
+    sorting_code: null
+    dependent_locality: null
+    administrative_area: null
+default_value_callback: ''
+settings:
+  available_countries:
+    FI: FI
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine2:
+      override: hidden
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

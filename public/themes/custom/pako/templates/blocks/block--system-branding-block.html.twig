@@ -15,16 +15,22 @@
 #}
 {% block content %}
   <a href="{{ path('<front>') }}" class="logo logo--header" title="{{ 'Back to front page'|t }}" rel="home">
+    {% set logo = 'turku' %}
+    {% set logo_class = '' %}
+    {% set logo_alt = 'Turku' %}
+
     {% if current_language == 'sv' %}
-      {% set logo = '/themes/custom/pako/images/logo_sv.png' %}
+      {% set logo = 'abo' %}
       {% set logo_class = 'logo--abo' %}
       {% set logo_alt = 'Åbo' %}
-    {% else %}
-      {% set logo = '/themes/custom/pako/images/logo.png' %}
-      {% set logo_class = '' %}
-      {% set logo_alt = 'Turku' %}
     {% endif %}
-    <img src="{{ logo }}" alt="{{ logo_alt }}" />
+
+    {% if icons_path %}
+      <svg class="icon {{ logo_class }}">
+        <title>{{ logo_alt }}</title>
+        <use xlink:href="{{ icons_path|trim }}#{{ logo }}" />
+      </svg>
+    {% endif %}
     <span class="logo--text {{ logo_class }}">{{ site_name }}</span>
   </a>
 {% endblock %}

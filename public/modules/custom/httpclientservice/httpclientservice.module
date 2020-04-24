@@ -7,6 +7,7 @@
 
 use Drupal\httpclientservice\GenerateContent\Palvelu;
 use Drupal\httpclientservice\GenerateContent\Palvelutarjous;
+use Drupal\httpclientservice\GenerateContent\Palvelupiste;
 use Drupal\httpclientservice\GenerateContent\ClientService;
 
 /**
@@ -17,15 +18,18 @@ function httpclientservice_cron() {
   $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
 
   // Remove All API content.
-  $client = new ClientService();
-  $client->httpclientserviceDeleteEntity('service_card');
-  $client->httpclientserviceDeleteEntity('service_offer');
+  // $client = new ClientService();
+  // $client->httpclientserviceDeleteEntity('service_card');
+  // $client->httpclientserviceDeleteEntity('service_offer');
 
-  $palvelutarjous = new Palvelutarjous();
-  $palvelutarjous->httpclientserviceSavePalvelutarjoukset();
+  // $palvelupisteet = new Palvelupiste();
+  // $palvelupisteet->httpclientserviceSavePavelupisteet();
 
-  $palvelupiste = new Palvelu();
-  $palvelupiste->httpclientserviceSavePalvelu();
+  // $palvelutarjous = new Palvelutarjous();
+  // $palvelutarjous->httpclientserviceSavePalvelutarjoukset();
+
+  // $palvelupiste = new Palvelu();
+  // $palvelupiste->httpclientserviceSavePalvelu();
 
   // Store the timestamp in state.
   $last_time = \Drupal::time()->getRequestTime();

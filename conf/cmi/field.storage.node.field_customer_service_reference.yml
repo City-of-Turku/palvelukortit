@@ -1,0 +1,19 @@
+uuid: 8497087e-9d48-4fc9-9f0a-6bb226c4a7fc
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_customer_service_reference
+field_name: field_customer_service_reference
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

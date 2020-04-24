@@ -1,0 +1,23 @@
+uuid: 5d5a4b70-5b86-43dd-9987-ca5f99fdadb5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_more_information_link
+    - node.type.customer_service
+  module:
+    - link
+id: node.customer_service.field_more_information_link
+field_name: field_more_information_link
+entity_type: node
+bundle: customer_service
+label: 'More information link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

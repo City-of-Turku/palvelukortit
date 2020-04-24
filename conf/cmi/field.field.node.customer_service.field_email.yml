@@ -1,0 +1,19 @@
+uuid: b50bb8ea-80f5-4259-a455-ecde7696158d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.customer_service
+id: node.customer_service.field_email
+field_name: field_email
+entity_type: node
+bundle: customer_service
+label: Email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

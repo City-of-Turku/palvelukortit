@@ -8,7 +8,7 @@ dependencies:
     - field.field.node.customer_service.field_description
     - field.field.node.customer_service.field_email
     - field.field.node.customer_service.field_more_information_link
-    - field.field.node.customer_service.field_telephone_number
+    - field.field.node.customer_service.field_telephone
     - field.field.node.customer_service.field_updated_date
     - node.type.customer_service
   module:
@@ -61,12 +61,13 @@ content:
     third_party_settings: {  }
     type: link
     region: content
-  field_telephone_number:
+  field_telephone:
     weight: 108
     label: above
-    settings: {  }
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    type: basic_string
+    type: string
     region: content
   field_updated_date:
     weight: 103

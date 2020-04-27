@@ -25,6 +25,7 @@ module:
   facets_block: 0
   facets_summary: 0
   field: 0
+  field_permissions: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -55,7 +56,6 @@ module:
   smart_trim: 0
   system: 0
   taxonomy: 0
-  telephone: 0
   text: 0
   token: 0
   toolbar: 0

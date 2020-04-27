@@ -28,6 +28,7 @@
         "drupal/entity_browser": "^2.4",
         "drupal/facets": "^1.4",
         "drupal/facets_block": "^1.2",
+        "drupal/field_permissions": "^1.0",
         "drupal/guzzle_cache": "^1.0",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/key": "^1.12",

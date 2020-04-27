@@ -2,6 +2,7 @@
 
 namespace Drupal\httpclientservice\GenerateContent;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\node\Entity\Node;
 use Drupal\httpclientservice\GenerateContent\ApiUser;
 use Drupal\httpclientservice\GenerateContent\ClientService;
@@ -87,6 +88,16 @@ class Palvelupiste {
   }
 
   /**
+   * Save One Customer Services.
+   */
+  public function httpclientserviceSavePavelupisteDev($id = 1407) {
+    $palvelupisteet = $this->httpclientserviceGetPalvelupisteet();
+    $palvelupiste = $palvelupisteet[$id];
+    // Create Customer Services.
+    $this->httpclientserviceCreatePalvelupiste($palvelupiste);
+  }
+
+  /**
    * Create Customer Services from data.
    */
   public function httpclientserviceCreatePalvelupiste($data) {
@@ -95,6 +106,10 @@ class Palvelupiste {
     $titles = $data['nimi_kieliversiot'];
     $descriptions = $data['kuvaus_kieliversiot'];
     $status = ($data['tila']['koodi'] == '1') ? 1 : 0;
+
+    // Convert change date value from APi to Drupal date time.
+    $dateTime = new DrupalDateTime($data['muutospvm'], 'UTC');
+    $date = $dateTime->getTimestamp();
 
     // Convert more information value into Drupal fields.
     $links = $this->httpclientserviceConvertMoreInformationValue($data, 'fi');
@@ -117,10 +132,10 @@ class Palvelupiste {
       'title' => $titles['fi'],
       'field_description' => $descriptions['fi'],
       'field_code' => $data['koodi'],
-      'field_updated_date' => date('Y-m-d', strtotime($data['muutospvm'])),
+      'field_updated_date' => $date,
       'field_email' => $data['sahkoposti'],
       'field_more_information_link' => $links,
-      'field_telephone_number' => $telephones,
+      'field_telephone' => $telephones,
       'field_address' => $address
     ]);
 
@@ -140,7 +155,7 @@ class Palvelupiste {
     if (isset($data['puhelinnumerot'])) {
       foreach ($data['puhelinnumerot'] as $key => $phone) {
         // Merge country code + phone number into one value.
-        $telephones[$key] = '+' . $phone['maakoodi'] . $phone['numero'];
+        $telephones[$key]['value'] = '+' . $phone['maakoodi'] . $phone['numero'];
       }
     }
 
@@ -151,11 +166,17 @@ class Palvelupiste {
    * Convert API address data into address field.
    */
   public function httpclientserviceGetAddressValue($data, $langcode) {
-    return $address = [
+    $address = (isset($data['fyysinenPaikka']['osoitteet'][0])) ? $data['fyysinenPaikka']['osoitteet'][0] : NULL;
+
+    if (!$address) {
+      return [];
+    }
+
+    return [
       'country_code' => 'FI',
-      'address_line1' => $data['osoitteet'][0]['katuosoite_' . $langcode],
-      'locality' => $data['osoitteet'][0]['postitoimipaikka_' . $langcode],
-      'postal_code' => $data['osoitteet'][0]['postinumero'],
+      'address_line1' => $address['katuosoite_' . $langcode],
+      'locality' => $address['postitoimipaikka_' . $langcode],
+      'postal_code' => $address['postinumero']
     ];
   }
 
@@ -172,9 +193,11 @@ class Palvelupiste {
           continue;
         }
 
+        $title = (!empty($link['nimi_kieliversiot'][$langcode])) ? $link['nimi_kieliversiot'][$langcode] : $link['kuvaus_kieliversiot'][$langcode];
+
         $links[$key] = [
           'uri' => $link['kuvaus_kieliversiot'][$langcode],
-          'title' => $link['nimi_kieliversiot'][$langcode],
+          'title' => $title,
           'options' => [
             'attributes' => [
               'target' => '_blank',

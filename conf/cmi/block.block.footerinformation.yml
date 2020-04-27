@@ -1,0 +1,25 @@
+uuid: ef705923-da7d-4532-91a9-eb945c17b230
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:text:56a3e8eb-8573-4bde-b513-094d7cc110b0'
+  module:
+    - block_content
+  theme:
+    - pako
+id: footerinformation
+theme: pako
+region: footer
+weight: 0
+provider: null
+plugin: 'block_content:56a3e8eb-8573-4bde-b513-094d7cc110b0'
+settings:
+  id: 'block_content:56a3e8eb-8573-4bde-b513-094d7cc110b0'
+  label: 'Footer information'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

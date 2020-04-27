@@ -10,8 +10,8 @@ dependencies:
     - pako
 id: footerinformation
 theme: pako
-region: footer
-weight: 0
+region: after_footer
+weight: -4
 provider: null
 plugin: 'block_content:56a3e8eb-8573-4bde-b513-094d7cc110b0'
 settings:

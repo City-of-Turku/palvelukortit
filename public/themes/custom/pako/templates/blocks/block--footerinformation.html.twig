@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ */
+#}
+{% block content %}
+  {% set logo = 'turku' %}
+  {% set logo_class = 'logo' %}
+  {% set logo_alt = 'Turku' %}
+
+  {% if current_language == 'sv' %}
+    {% set logo = 'abo' %}
+    {% set logo_class = 'logo--abo' %}
+    {% set logo_alt = 'Åbo' %}
+  {% endif %}
+
+  {% if icons_path %}
+    <svg class="icon {{ logo_class }}">
+      <title>{{ logo_alt }}</title>
+      <use xlink:href="{{ icons_path|trim }}#{{ logo }}" />
+    </svg>
+  {% endif %}
+  {{ content }}
+{% endblock %}

@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.customer_service.field_description
     - field.field.node.customer_service.field_email
     - field.field.node.customer_service.field_more_information_link
-    - field.field.node.customer_service.field_telephone_number
+    - field.field.node.customer_service.field_telephone
     - field.field.node.customer_service.field_updated_date
     - node.type.customer_service
   module:
@@ -30,7 +30,7 @@ hidden:
   field_description: true
   field_email: true
   field_more_information_link: true
-  field_telephone_number: true
+  field_telephone: true
   field_updated_date: true
   langcode: true
   search_api_excerpt: true

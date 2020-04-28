@@ -90,6 +90,17 @@ class Palvelu {
   }
 
   /**
+   * Save services to Drupal.
+   */
+  public function httpclientserviceSavePalveluDev($id = 18) {
+    // Get service content type data from API.
+    $palvelut = $this->httpclientserviceGetPalvelut();
+    $palvelu = $palvelut[$id];
+    // Create service node.
+    $this->httpclientserviceCreatePalvelu($palvelu);
+  }
+
+  /**
    * Create service node from data.
    */
   public function httpclientserviceCreatePalvelu($data) {

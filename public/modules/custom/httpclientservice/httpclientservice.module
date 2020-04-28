@@ -18,18 +18,19 @@ function httpclientservice_cron() {
   $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
 
   // Remove All API content.
-  // $client = new ClientService();
-  // $client->httpclientserviceDeleteEntity('service_card');
-  // $client->httpclientserviceDeleteEntity('service_offer');
+  $client = new ClientService();
+  $client->httpclientserviceDeleteEntity('customer_service');
+  $client->httpclientserviceDeleteEntity('service_card');
+  $client->httpclientserviceDeleteEntity('service_offer');
 
-  // $palvelupisteet = new Palvelupiste();
-  // $palvelupisteet->httpclientserviceSavePavelupisteet();
+  $palvelupisteet = new Palvelupiste();
+  $palvelupisteet->httpclientserviceSavePavelupisteDev();
 
-  // $palvelutarjous = new Palvelutarjous();
-  // $palvelutarjous->httpclientserviceSavePalvelutarjoukset();
+  $palvelutarjous = new Palvelutarjous();
+  $palvelutarjous->httpclientserviceSavePalvelutarjousDev();
 
-  // $palvelupiste = new Palvelu();
-  // $palvelupiste->httpclientserviceSavePalvelu();
+  $palvelupiste = new Palvelu();
+  $palvelupiste->httpclientserviceSavePalveluDev();
 
   // Store the timestamp in state.
   $last_time = \Drupal::time()->getRequestTime();

@@ -1,4 +1,4 @@
-uuid: a995be46-e0b5-4faa-a05f-dfabe15ba8aa
+uuid: cfcafcfc-ad57-4dd3-8d2d-fab14aaf36f5
 langcode: fi
 status: true
 dependencies:
@@ -7,9 +7,9 @@ dependencies:
     - node
 third_party_settings:
   field_permissions:
-    permission_type: custom
-id: node.field_code
-field_name: field_code
+    permission_type: public
+id: node.field_terms
+field_name: field_terms
 entity_type: node
 type: string
 settings:

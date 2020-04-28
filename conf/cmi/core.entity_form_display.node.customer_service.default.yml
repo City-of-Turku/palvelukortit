@@ -8,14 +8,13 @@ dependencies:
     - field.field.node.customer_service.field_description
     - field.field.node.customer_service.field_email
     - field.field.node.customer_service.field_more_information_link
-    - field.field.node.customer_service.field_telephone_number
+    - field.field.node.customer_service.field_telephone
     - field.field.node.customer_service.field_updated_date
     - node.type.customer_service
   module:
     - address
     - link
     - path
-    - telephone
 id: node.customer_service.default
 targetEntityType: node
 bundle: customer_service
@@ -65,12 +64,13 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
-  field_telephone_number:
+  field_telephone:
     weight: 128
     settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: telephone_default
+    type: string_textfield
     region: content
   field_updated_date:
     weight: 123

@@ -1,4 +1,4 @@
-uuid: 95e2c5fe-763e-4900-9496-97f73189819e
+uuid: 5f6e3cf6-8aed-4cfc-83fa-12f1fe77c793
 langcode: fi
 status: true
 dependencies:
@@ -13,7 +13,7 @@ bundle: service_offer
 label: 'Customer Service Reference'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

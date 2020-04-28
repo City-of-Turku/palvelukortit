@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: super_administrator
-label: 'Super administrator'
+label: Super administrator
 weight: 2
 is_admin: null
 permissions:
@@ -67,6 +67,8 @@ permissions:
   - 'cancel account'
   - 'change own username'
   - 'create content translations'
+  - 'create field_code'
+  - 'create field_updated_date'
   - 'create image media'
   - 'create media'
   - 'create service_card content'
@@ -92,6 +94,10 @@ permissions:
   - 'edit any image media'
   - 'edit any service_card content'
   - 'edit behavior plugin settings'
+  - 'edit field_code'
+  - 'edit field_updated_date'
+  - 'edit own field_code'
+  - 'edit own field_updated_date'
   - 'edit own image media'
   - 'edit own service_card content'
   - 'edit terms in expert'
@@ -124,6 +130,10 @@ permissions:
   - 'use text format no_filters'
   - 'view all media revisions'
   - 'view all revisions'
+  - 'view field_code'
+  - 'view field_updated_date'
+  - 'view own field_code'
+  - 'view own field_updated_date'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view service_card revisions'

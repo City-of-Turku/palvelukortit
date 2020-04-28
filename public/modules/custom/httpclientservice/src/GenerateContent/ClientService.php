@@ -38,7 +38,6 @@ class ClientService {
       ->condition('field_code', $code);
 
     if ($result = $query->execute()) {
-      var_dump($result); exit;
       return TRUE;
     }
 
@@ -50,7 +49,7 @@ class ClientService {
    *
    * {@inheritdoc}
    */
-  public function httpclientserviceTranslateEntity($node, $data, $†ype) {
+  public static function httpclientserviceTranslateEntity($node, $data, $†ype) {
     // Get API user uid.
     $uid = new ApiUser();
     $languages = ['en', 'sv'];
@@ -96,10 +95,15 @@ class ClientService {
         $node_tr->field_more_information_link = $palvelupiste->httpclientserviceConvertMoreInformationValue($data, $language);
 
         // Convert telephone data into Drupal field.
-        $node_tr->field_telephone_number = $palvelupiste->httpclientserviceConvertPhoneValue($data['puhelinnumerot']);
+        $node_tr->field_telephone‎ = $palvelupiste->httpclientserviceConvertPhoneValue($data['puhelinnumerot']);
 
         // Address information.
         $node_tr->field_address = $palvelupiste->httpclientserviceGetAddressValue($data, $language);
+      }
+
+      // Service offer type fields.
+      if ($type = 'service_offer') {
+        $node_tr->field_terms = $data['palvelunsaanninEhdot_kieliversiot'][$language];
       }
 
       // Saving translation.

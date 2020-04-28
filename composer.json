@@ -34,6 +34,7 @@
         "drupal/menu_block_current_language": "^1.2",
         "drupal/paragraphs": "^1.11",
         "drupal/pathauto": "^1.6",
+        "drupal/role_delegation": "^1.1",
         "drupal/search_api": "^1.15",
         "drupal/search_api_solr": "^3.9",
         "drupal/select2": "^1.1",

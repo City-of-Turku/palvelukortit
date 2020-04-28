@@ -44,6 +44,7 @@ module:
   pako_editorial: 0
   path: 0
   path_alias: 0
+  role_delegation: 0
   search_api: 0
   search_api_solr: 0
   select2: 0

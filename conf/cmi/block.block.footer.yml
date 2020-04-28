@@ -1,0 +1,29 @@
+uuid: e4bf517b-383b-4a46-b855-3490537d6f72
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - menu_block_current_language
+  theme:
+    - pako
+id: footer
+theme: pako
+region: footer
+weight: -5
+provider: null
+plugin: 'menu_block_current_language:footer'
+settings:
+  id: 'menu_block_current_language:footer'
+  label: Footer
+  provider: menu_block_current_language
+  label_display: '0'
+  translation_providers:
+    views: views
+    menu_link_content: menu_link_content
+    default: '0'
+  level: 1
+  depth: 3
+  expand_all_items: true
+visibility: {  }

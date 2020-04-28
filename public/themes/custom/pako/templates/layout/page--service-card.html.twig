@@ -99,7 +99,7 @@
     {% endblock %}
   </div>
 
-  {% if page.footer %}
+  {% if page.footer or page.after_footer %}
     <footer class="page-footer" id="footer" role="contentinfo">
       {% set footer_container_class = 'l-footer page-footer' %}
       {% if has_sidebar_first %}
@@ -110,6 +110,13 @@
           {{ page.footer }}
         {% endblock container_content %}
       {% endembed %}
+      <div class="page-after-footer-wrapper">
+        {% embed "@pako/misc/container.twig" with {container_element: 'page-after-footer'} %}
+          {% block container_content %}
+            {{ page.after_footer }}
+          {% endblock container_content %}
+        {% endembed %}
+      </div>
     </footer>
   {% endif %}
 </div>

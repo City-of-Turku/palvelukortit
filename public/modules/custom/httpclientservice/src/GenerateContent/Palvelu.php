@@ -15,13 +15,6 @@ use Drupal\httpclientservice\GenerateContent\ClientService;
 class Palvelu {
 
   /**
-   * API Base URL.
-   *
-   * @var string
-   */
-  protected $languages;
-
-  /**
    * This Class Content Type.
    *
    * @var string
@@ -39,7 +32,6 @@ class Palvelu {
    * Palvelu class constructor.
    */
   public function __construct() {
-    $this->languages = ['en', 'sv'];
     $this->type = 'service_card';
     $this->client = new ClientService();
   }
@@ -72,19 +64,16 @@ class Palvelu {
       $code = $palvelu['koodi'];
 
       // Check if service already exist.
-      if (!$this->client->httpclientserviceCheckExist($code, $this->type)) {
-        // Check that finnish version include title.
-        // Node cannot be created without title.
-        if (!isset($palvelu['nimi_kieliversiot']['fi'])) {
-          // Logs a notice.
-          \Drupal::logger('httpclientservice')->notice('@type: API save failed because empty title', ['@type' => 'Customer Service']);
+      if (!$this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
 
-          // Cannot save data if title is empty.
-          continue;
+        // Check if default language version has title. If not, search for other
+        // languages and create the node with an existing language.
+        $langcode = $this->client->retrieveOriginalLanguageTitle($palvelu, $code, $this->type);
+
+        // Create Service card node.
+        if ($langcode) {
+          $this->httpclientserviceCreatePalvelu($palvelu, $langcode);
         }
-
-        // Create service node.
-        $this->httpclientserviceCreatePalvelu($palvelu);
       }
     }
   }
@@ -97,64 +86,85 @@ class Palvelu {
     $palvelut = $this->httpclientserviceGetPalvelut();
     $palvelu = $palvelut[$id];
     // Create service node.
-    $this->httpclientserviceCreatePalvelu($palvelu);
+    $this->httpclientserviceCreatePalvelu($palvelu, 'fi');
   }
 
   /**
    * Create service node from data.
    */
-  public function httpclientserviceCreatePalvelu($data) {
+  public function httpclientserviceCreatePalvelu($data, $langcode) {
     // Get APi user uid which create node.
     $uid = new ApiUser();
-    $descriptions = $data['kuvaus_kieliversiot'];
     $status = ($data['tila']['koodi'] == '1') ? 1 : 0;
-
-    // Convert change date value from APi to Drupal date time.
-    $dateTime = new DrupalDateTime($data['muutospvm'], 'UTC');
-    $date = $dateTime->getTimestamp();
-
-    // Convert Service types taxonomy data to Drupal taxonomies.
-    $service_types = $this->httpclientserviceCreateServicetypeTaxonomy($data['palvelutyypit']);
-
-    // Convert Service Offer's to Drupal reference's.
-    $service_offers = $this->httpclientserviceCreateServiceOfferReferences($data['palvelutarjoukset']);
 
     // Create node.
     $node = Node::create([
       // The node entity bundle in this case article.
       'type' => $this->type,
-      'langcode' => 'fi',
+      'langcode' => $langcode,
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
       'uid' => $uid->getApiUser(),
       'status' => $status,
-      'title' => $data['nimi_kieliversiot']['fi'],
-      'field_description' => strip_tags($descriptions['fi']),
-      'field_code' => $data['koodi'],
-      'field_updated_date' => $date,
-      'field_service_types' => $service_types,
-      'field_service_offers' => $service_offers
+      'title' => $data['nimi_kieliversiot'][$langcode],
     ]);
+
+    // Set description.
+    if (isset($data['kuvaus_kieliversiot'][$langcode])) {
+      $node->set('field_description', strip_tags($data['kuvaus_kieliversiot'][$langcode]));
+    }
+
+    // Set code.
+    if (!empty($data['koodi'])) {
+      $node->set('field_code', $data['koodi']);
+    }
+
+    // Convert change date value from APi to Drupal date time.
+    $dateTime = new DrupalDateTime($data['muutospvm'], 'UTC');
+    $date = $dateTime->getTimestamp();
+
+    // Set date.
+    if (!empty($date)) {
+      $node->set('field_updated_date', $date);
+    }
+
+    // Convert Service types taxonomy data to Drupal taxonomies.
+    $service_types = (isset($data['palvelutyypit']))
+      ? $this->httpclientserviceCreateServicetypeTaxonomy($data['palvelutyypit'], $langcode)
+      : '';
+
+    // Set service types.
+    if (!empty($service_types)) {
+      $node->set('field_service_types', $service_types);
+    }
+
+    // Convert Service Offer's to Drupal reference's.
+    $service_offers = $this->httpclientserviceCreateServiceOfferReferences($data['palvelutarjoukset'], $langcode);
+
+    // Set service offers.
+    if (!empty($service_offers)) {
+      $node->set('field_service_offers', $service_offers);
+    }
 
     // Saving original the node.
     $node->save();
 
     // Translate entity.
-    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type, $langcode);
   }
 
   /**
    * Convert service types data to Drupal taxonomies.
    */
-  public function httpclientserviceCreateServicetypeTaxonomy($taxonomies) {
+  public function httpclientserviceCreateServicetypeTaxonomy($taxonomies, $langcode) {
     $service_types = [];
+    $languages = array_combine($this->client->getLanguages(), $this->client->getLanguages());
+    unset($languages[$langcode]);
 
     foreach ($taxonomies as $key => $taxonomy) {
-      $languages = ['en', 'sv'];
-
       // Check that data include finnish title.
       // Cannot save taxonomy term without title.
-      if (!isset($taxonomy['nimi_kieliversiot']['fi']) || empty($taxonomy['nimi_kieliversiot']['fi'])) {
+      if (!isset($taxonomy['nimi_kieliversiot'][$langcode]) || empty($taxonomy['nimi_kieliversiot'][$langcode])) {
         continue;
       }
 
@@ -164,10 +174,11 @@ class Palvelu {
         $service_types[$key] = $term;
       }
       else {
+        $a = 1;
         // If taxonomy term not exist. Create a new taxonomy term.
         $newterm = Term::create([
           'parent' => [],
-          'name' => $taxonomy['nimi_kieliversiot']['fi'],
+          'name' => $taxonomy['nimi_kieliversiot'][$langcode],
           'vid' => 'service_types',
           'field_code' => $taxonomy['koodi']
         ]);
@@ -214,13 +225,13 @@ class Palvelu {
   /**
    * Convert service offer data to Drupal Service offers reference value.
    */
-  public function httpclientserviceCreateServiceOfferReferences($offers) {
+  public function httpclientserviceCreateServiceOfferReferences($offers, $langcode) {
     $offer_references = [];
 
     foreach ($offers as $key => $offer) {
       $query = \Drupal::entityQuery('node')
         ->condition('type', 'service_offer')
-        ->condition('langcode', 'fi')
+        ->condition('langcode', $langcode)
         ->condition('field_code', $offer['koodi']);
 
       if ($result = $query->execute()) {

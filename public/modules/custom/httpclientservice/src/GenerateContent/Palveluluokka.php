@@ -13,13 +13,6 @@ use Drupal\httpclientservice\GenerateContent\ApiUser;
 class Palveluluokka {
 
   /**
-   * API Base URL.
-   *
-   * @var string
-   */
-  protected $languages;
-
-  /**
    * This Class Content Type.
    *
    * @var string
@@ -37,7 +30,6 @@ class Palveluluokka {
    * Palveluluokka constructor.
    */
   public function __construct() {
-    $this->languages = ['en', 'sv'];
     $this->type = 'service_class';
     $this->client = new ClientService();
   }
@@ -70,19 +62,16 @@ class Palveluluokka {
       $code = $palveluluokka['koodi'];
 
       // Check if service class already exist.
-      if (!$this->client->httpclientserviceCheckExist($code, $this->type, 'fi')) {
-        // Check that finnish version include title.
-        // Node cannot be created without title.
-        if (!isset($palveluluokka['nimi_kieliversiot']['fi'])) {
-          // Logs a notice.
-          \Drupal::logger('httpclientservice')->notice('@type: API save failed because empty title', ['@type' => 'Customer Service']);
+      if (!$this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
 
-          // Cannot save data if title is empty.
-          continue;
-        }
+        // Check if default language version has title. If not, search for other
+        // languages and create the node with an existing language.
+        $langcode = $this->client->retrieveOriginalLanguageTitle($palveluluokka, $code, $this->type);
 
         // Create service class node.
-        $this->httpclientserviceCreatePalveluluokka($palveluluokka);
+        if ($langcode) {
+          $this->httpclientserviceCreatePalveluluokka($palveluluokka, $langcode);
+        }
       }
     }
   }
@@ -90,7 +79,7 @@ class Palveluluokka {
   /**
    * Create service class node from data.
    */
-  public function httpclientserviceCreatePalveluluokka($data) {
+  public function httpclientserviceCreatePalveluluokka($data, $langcode) {
     // Get APi user uid which create node.
     $uid = new ApiUser();
     $titles = $data['nimi_kieliversiot'];
@@ -103,11 +92,11 @@ class Palveluluokka {
     $node = Node::create([
       // The node entity bundle in this case article.
       'type' => $this->type,
-      'langcode' => 'fi',
+      'langcode' => $langcode,
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
       'uid' => $uid->getApiUser(),
-      'title' => $titles['fi'],
+      'title' => $titles[$langcode],
       'field_code' => $data['koodi'],
       'field_updated_date' => $dateTime
     ]);
@@ -115,7 +104,7 @@ class Palveluluokka {
     // Saving original the node.
     $node->save();
 
-    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type, $langcode);
   }
 
 }

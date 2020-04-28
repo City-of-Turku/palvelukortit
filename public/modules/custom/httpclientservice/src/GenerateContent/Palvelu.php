@@ -167,17 +167,16 @@ class Palvelu {
       if (!isset($taxonomy['nimi_kieliversiot'][$langcode]) || empty($taxonomy['nimi_kieliversiot'][$langcode])) {
         continue;
       }
-
       // Check if taxonomy term already exist.
       if ($term = $this->httpclientserviceCheckTaxonomyExist($taxonomy['koodi'])) {
         // Use exist taxonomy term id.
         $service_types[$key] = $term;
       }
       else {
-        $a = 1;
         // If taxonomy term not exist. Create a new taxonomy term.
         $newterm = Term::create([
           'parent' => [],
+          'langcode' => $langcode,
           'name' => $taxonomy['nimi_kieliversiot'][$langcode],
           'vid' => 'service_types',
           'field_code' => $taxonomy['koodi']

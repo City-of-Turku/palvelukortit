@@ -1,22 +1,20 @@
-uuid: cfcafcfc-ad57-4dd3-8d2d-fab14aaf36f5
-langcode: fi
+uuid: 634214aa-e819-4ff7-845e-41ccbe874c3b
+langcode: en
 status: true
 dependencies:
   module:
     - field_permissions
     - node
+    - text
 third_party_settings:
   field_permissions:
     permission_type: public
-id: node.field_terms
-field_name: field_terms
+id: node.field_service_terms
+field_name: field_service_terms
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true

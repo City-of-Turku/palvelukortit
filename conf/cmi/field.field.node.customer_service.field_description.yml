@@ -1,5 +1,5 @@
 uuid: 798b309e-99ec-4deb-8576-822682b76ffa
-langcode: fi
+langcode: en
 status: true
 dependencies:
   config:

@@ -1,12 +1,12 @@
 uuid: 8b7b8678-44ac-4584-80ba-b1f6d7c7d596
-langcode: fi
+langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.service_offer.body
     - field.field.node.service_offer.field_code
     - field.field.node.service_offer.field_customer_service_reference
-    - field.field.node.service_offer.field_terms
+    - field.field.node.service_offer.field_service_terms
     - field.field.node.service_offer.field_updated_date
     - node.type.service_offer
   module:
@@ -51,13 +51,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_terms:
-    weight: 125
+  field_service_terms:
+    weight: 127
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: text_textarea
     region: content
   field_updated_date:
     weight: 123

@@ -134,7 +134,7 @@ class ClientService {
 
       // Service offer type fields.
       if ($type = 'service_offer' && isset($data['palvelunsaanninEhdot_kieliversiot'][$language])) {
-        $node_tr->field_terms = $data['palvelunsaanninEhdot_kieliversiot'][$language];
+        $node_tr->field_service_terms = $data['palvelunsaanninEhdot_kieliversiot'][$language];
       }
 
       // Saving translation.

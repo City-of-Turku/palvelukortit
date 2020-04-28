@@ -114,7 +114,7 @@ class Palvelutarjous {
       'title' => $titles[$langcode],
       'field_code' => $data['koodi'],
       'field_updated_date' => $date,
-      'field_terms' => isset($data['palvelunsaanninEhdot_kieliversiot'][$langcode]) ? $data['palvelunsaanninEhdot_kieliversiot'][$langcode] : '',
+      'field_service_terms' => isset($data['palvelunsaanninEhdot_kieliversiot'][$langcode]) ? $data['palvelunsaanninEhdot_kieliversiot'][$langcode] : '',
     ]);
 
     // Set service offers.

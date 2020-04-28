@@ -1,5 +1,5 @@
 uuid: cacc4127-1694-4120-be14-a20f391dce6a
-langcode: fi
+langcode: en
 status: true
 dependencies:
   config:

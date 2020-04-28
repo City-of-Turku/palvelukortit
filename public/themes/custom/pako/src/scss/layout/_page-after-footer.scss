@@ -1,0 +1,91 @@
+//
+// @file
+//
+// This file includes everything related to the page footer styling.
+//
+.page-after-footer-wrapper {
+  background-color: $blue;
+  border-top: 1px solid $white;
+  color: $white;
+  width: 100%;
+
+  .logo {
+    max-height: 40px;
+    max-width: 100px;
+    min-height: 40px;
+    min-width: 100px;
+
+    &--abo {
+      max-height: 40px;
+      max-width: 76px;
+      min-height: 40px;
+      min-width: 76px;
+    }
+  }
+}
+
+.page-after-footer__container {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: left;
+  min-height: 70px;
+  padding-bottom: $gutter;
+  padding-top: $gutter;
+
+  @include breakpoint($for-tablet-portrait-up) {
+    flex-flow: row;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .field__item {
+    width: 100%;
+
+    @include breakpoint($for-tablet-portrait-up) {
+      margin-left: auto;
+      padding-top: 7px;
+    }
+  }
+
+  ul {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+
+    @include breakpoint($for-tablet-portrait-up) {
+      flex-flow: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin: 0;
+    }
+  }
+
+  li {
+    @include font-size(14px, 22px);
+    @include font-weight($semibold);
+    display: block;
+    margin: 0 $gutter * 1.4;
+    min-width: 120px;
+    padding: 0;
+    position: relative;
+
+    @include breakpoint($for-tablet-portrait-up) {
+      &:not(:first-of-type) {
+        &:before {
+          background-color: white;
+          border-radius: 100%;
+          content: '';
+          height: 5px;
+          left: -24px;
+          position: absolute;
+          top: 9px;
+          width: 5px;
+        }
+      }
+    }
+  }
+}

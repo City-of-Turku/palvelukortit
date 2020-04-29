@@ -1,3 +1,4 @@
+uuid: da51b1e8-5236-4e3f-b507-f4304ca2c760
 langcode: en
 status: true
 dependencies:
@@ -9,7 +10,7 @@ field_name: field_comments
 entity_type: node
 type: comment
 settings:
-  comment_type: comment
+  comment_type: amending_proposals
 module: comment
 locked: false
 cardinality: 1

@@ -8,6 +8,7 @@ weight: 2
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access comments'
   - 'access content overview'
   - 'access expert entity browser pages'
   - 'access files overview'
@@ -43,12 +44,14 @@ permissions:
   - 'delete terms in tags'
   - 'edit any image media'
   - 'edit any service_card content'
+  - 'edit own comments'
   - 'edit own image media'
   - 'edit own service_card content'
   - 'edit terms in expert'
   - 'edit terms in index'
   - 'edit terms in service_type'
   - 'edit terms in tags'
+  - 'post comments'
   - 'revert all revisions'
   - 'revert service_card revisions'
   - 'translate any entity'

@@ -1,0 +1,11 @@
+uuid: 509fad79-5abb-4bc3-a35f-5ff8cab9ae98
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.amending_proposals
+id: comment.amending_proposals
+target_entity_type_id: comment
+target_bundle: amending_proposals
+default_langcode: fi
+language_alterable: false

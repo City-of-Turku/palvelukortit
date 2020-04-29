@@ -44,6 +44,12 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
+  field_comments:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
+    region: content
   field_contact_details_of_experts:
     weight: 15
     settings:
@@ -58,12 +64,6 @@ content:
       field_widget_replace: false
     third_party_settings: {  }
     type: entity_browser_entity_reference
-    region: content
-  field_comments:
-    weight: 25
-    settings: {  }
-    third_party_settings: {  }
-    type: comment_default
     region: content
   field_description:
     weight: 9

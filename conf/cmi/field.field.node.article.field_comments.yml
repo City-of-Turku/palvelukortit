@@ -1,10 +1,10 @@
-uuid: 4d733b8b-d03a-44e1-93d4-6bce6ded8406
+uuid: 3696bf25-c865-4465-8b7f-aad4594702fb
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_comments
-    - node.type.service_card
+    - node.type.article
   module:
     - comment
     - comments_order
@@ -12,12 +12,12 @@ third_party_settings:
   comments_order:
     order: DESC
     children_natural_order: 1
-id: node.service_card.field_comments
+id: node.article.field_comments
 field_name: field_comments
 entity_type: node
-bundle: service_card
-label: 'Amending proposals'
-description: 'Is something missing or there''s an error in this service card? Please submit your suggestions to fix the problem using the form below.'
+bundle: article
+label: Comments
+description: ''
 required: false
 translatable: false
 default_value:
@@ -32,7 +32,7 @@ default_value_callback: ''
 settings:
   default_mode: 1
   per_page: 50
-  anonymous: 2
-  form_location: false
+  anonymous: 0
+  form_location: true
   preview: 0
 field_type: comment

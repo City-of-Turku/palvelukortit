@@ -1,14 +1,15 @@
+uuid: 8fa5f127-dc91-49d3-86b0-554295aa76ee
 langcode: en
 status: true
 dependencies:
   config:
-    - comment.type.comment
-    - field.field.comment.comment.comment_body
+    - comment.type.amending_proposals
+    - field.field.comment.amending_proposals.comment_body
   module:
     - text
-id: comment.comment.default
+id: comment.amending_proposals.default
 targetEntityType: comment
-bundle: comment
+bundle: amending_proposals
 mode: default
 content:
   author:
@@ -18,12 +19,19 @@ content:
     third_party_settings: {  }
   comment_body:
     type: text_textarea
-    weight: 1
-    region: content
+    weight: 2
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+    region: content
+  subject:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   langcode: true
-  subject: true

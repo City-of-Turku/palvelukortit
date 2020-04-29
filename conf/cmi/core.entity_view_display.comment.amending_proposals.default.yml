@@ -1,24 +1,24 @@
-uuid: 996668ff-271b-4bd3-aacd-dfcd6621d58d
+uuid: 93dce0e1-9701-4ba0-9d29-619afbea0c2d
 langcode: en
 status: true
 dependencies:
   config:
-    - comment.type.comment
-    - field.field.comment.comment.comment_body
+    - comment.type.amending_proposals
+    - field.field.comment.amending_proposals.comment_body
   module:
     - text
-id: comment.comment.default
+id: comment.amending_proposals.default
 targetEntityType: comment
-bundle: comment
+bundle: amending_proposals
 mode: default
 content:
   comment_body:
     label: hidden
     type: text_default
     weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
     region: content

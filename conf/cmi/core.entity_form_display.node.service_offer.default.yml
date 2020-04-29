@@ -6,10 +6,13 @@ dependencies:
     - field.field.node.service_offer.body
     - field.field.node.service_offer.field_code
     - field.field.node.service_offer.field_customer_service_reference
+    - field.field.node.service_offer.field_opening_hours_reference
+    - field.field.node.service_offer.field_pricing_reference
     - field.field.node.service_offer.field_terms
     - field.field.node.service_offer.field_updated_date
     - node.type.service_offer
   module:
+    - paragraphs
     - path
     - text
 id: node.service_offer.default
@@ -50,6 +53,30 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_opening_hours_reference:
+    type: entity_reference_paragraphs
+    weight: 127
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: opening_hours
+    third_party_settings: {  }
+    region: content
+  field_pricing_reference:
+    type: entity_reference_paragraphs
+    weight: 128
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: pricing
+    third_party_settings: {  }
     region: content
   field_terms:
     weight: 125
@@ -109,9 +136,9 @@ content:
     third_party_settings: {  }
   translation:
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5

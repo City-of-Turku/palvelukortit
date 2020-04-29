@@ -1,0 +1,37 @@
+uuid: cc43a786-a5ea-4c08-a775-57014a4c2fbe
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pricing_reference
+    - node.type.service_offer
+    - paragraphs.paragraphs_type.pricing
+  module:
+    - entity_reference_revisions
+id: node.service_offer.field_pricing_reference
+field_name: field_pricing_reference
+entity_type: node
+bundle: service_offer
+label: 'Pricing reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      pricing: pricing
+    target_bundles_drag_drop:
+      pricing:
+        enabled: true
+        weight: 4
+      instruction:
+        weight: 5
+        enabled: false
+      opening_hours:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

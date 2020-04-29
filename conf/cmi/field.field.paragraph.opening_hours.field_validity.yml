@@ -1,0 +1,21 @@
+uuid: 2006b542-ac1e-4e65-acb7-bad7e5dd0e53
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_validity
+    - paragraphs.paragraphs_type.opening_hours
+  module:
+    - datetime_range
+id: paragraph.opening_hours.field_validity
+field_name: field_validity
+entity_type: paragraph
+bundle: opening_hours
+label: Validity
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

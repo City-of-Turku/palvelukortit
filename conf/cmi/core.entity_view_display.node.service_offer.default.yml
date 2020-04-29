@@ -6,10 +6,13 @@ dependencies:
     - field.field.node.service_offer.body
     - field.field.node.service_offer.field_code
     - field.field.node.service_offer.field_customer_service_reference
+    - field.field.node.service_offer.field_opening_hours_reference
+    - field.field.node.service_offer.field_pricing_reference
     - field.field.node.service_offer.field_terms
     - field.field.node.service_offer.field_updated_date
     - node.type.service_offer
   module:
+    - entity_reference_revisions
     - text
     - user
 id: node.service_offer.default
@@ -39,6 +42,24 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_opening_hours_reference:
+    type: entity_reference_revisions_entity_view
+    weight: 107
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_pricing_reference:
+    type: entity_reference_revisions_entity_view
+    weight: 108
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   field_terms:
     weight: 105

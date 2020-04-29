@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: super_administrator
-label: Super administrator
+label: Ylläpitäjä
 weight: 2
 is_admin: null
 permissions:

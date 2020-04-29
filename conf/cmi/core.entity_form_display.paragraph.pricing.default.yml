@@ -1,0 +1,41 @@
+uuid: 97fb0ed4-abeb-4588-8985-efc961ed4653
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pricing.field_pricing
+    - field.field.paragraph.pricing.field_pricing_description
+    - field.field.paragraph.pricing.field_pricing_type
+    - paragraphs.paragraphs_type.pricing
+id: paragraph.pricing.default
+targetEntityType: paragraph
+bundle: pricing
+mode: default
+content:
+  field_pricing:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_pricing_description:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_pricing_type:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

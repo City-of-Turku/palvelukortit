@@ -38,7 +38,7 @@ class ClientService {
       ->condition('field_code', $code);
 
     if ($result = $query->execute()) {
-      return TRUE;
+      return reset($result);
     }
 
     return FALSE;
@@ -74,7 +74,13 @@ class ClientService {
       }
 
       // Translation base field.
-      $node_tr = $node->addTranslation($language);
+      if ($node->hasTranslation($language)) {
+        $node_tr = $node->getTranslation($language);
+      }
+      else {
+        $node_tr = $node->addTranslation($language);
+      }
+
       $node_tr->uid = $uid->getApiUser();
       $node_tr->title = $titles[$language];
       $node_tr->field_code = $data['koodi'];
@@ -103,7 +109,18 @@ class ClientService {
 
       // Service offer type fields.
       if ($type = 'service_offer') {
+        $palvelutarjous = new Palvelutarjous();
+
         $node_tr->field_terms = $data['palvelunsaanninEhdot_kieliversiot'][$language];
+
+        // Create and get opening hours paragraph data.
+        $opening_hours = $palvelutarjous->httpclientserviceTranslateOpenHourParagraph($node_tr->field_opening_hours_reference, $data, $language);
+
+        // Create and get pricing paragraph data.
+        $pricing = $palvelutarjous->httpclientserviceTranslatePricingParagraph($node_tr->field_pricing_reference, $data, $language);
+
+        $node_tr->field_opening_hours_reference = $opening_hours;
+        $node_tr->field_pricing_reference = $pricing;
       }
 
       // Saving translation.
@@ -153,6 +170,27 @@ class ClientService {
     $controller = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
     $entities = $controller->loadMultiple($tids);
     $controller->delete($entities);
+  }
+
+  /**
+   * Convert change date value from APi to Drupal date time.
+   */
+  public function httpclientserviceConvertTimeStamp($date) {
+    $dateTime = new DrupalDateTime($date, 'UTC');
+    return $dateTime->getTimestamp();
+  }
+
+  /**
+   * Delete multiple paragraphs.
+   *
+   * {@inheritdoc}
+   */
+  public function httpclientserviceDeleteParagraph($paragraphs) {
+    $paragraphs = $paragraphs->referencedEntities();
+
+    foreach ($paragraphs as $paragraph) {
+      $paragraph->delete();
+    }
   }
 
 }

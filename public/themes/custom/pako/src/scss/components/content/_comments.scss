@@ -1,0 +1,160 @@
+.comments {
+  &__container {
+    margin-top: $gutter * 2;
+    padding-top: $gutter;
+  }
+
+  .indented {
+    border-top: 0 none;
+    padding-left: $gutter * 2;
+    padding-top: $gutter;
+  }
+
+  .title {
+    @include font-size(22px, 28px);
+    @include font-weight($semibold);
+  }
+}
+
+.comment {
+  border-top: 1px solid $gray-medium;
+  margin-top: $gutter;
+  padding-top: $gutter * 2;
+
+  &:first-of-type {
+    border-top: 0 none;
+  }
+
+  &__meta {
+    align-items: center;
+    display: flex;
+  }
+
+  &__avatar {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    margin-right: $gutter * 2;
+
+    img {
+      border-radius: 100%;
+      max-height: 65px;
+      max-width: 65px;
+      min-height: 65px;
+      min-width: 65px;
+    }
+
+    &--letter {
+      @include font-size(24px);
+      @include font-weight($bold);
+      align-items: center;
+      background-color: $blue-light;
+      border-radius: 100%;
+      color: $white;
+      display: flex;
+      height: 65px;
+      justify-content: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 65px;
+
+      .community__link:hover & {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__author-wrapper {
+    display: flex;
+    flex-flow: column;
+  }
+
+  &__author {
+    @include font-size(18px, 24px);
+    @include font-weight($regular);
+    color: $blue-light;
+    letter-spacing: 0;
+    margin: 0 $gutter 0 0;
+  }
+
+  &__time {
+    @include font-size(18px, 27px);
+    @include font-weight($regular);
+    color: $gray-dark;
+    margin: 0 $gutter 0 0;
+
+    em {
+      color: $gray-dark;
+    }
+  }
+
+  &__permalink {
+    display: none;
+  }
+
+  &__content {
+    margin-top: $gutter;
+  }
+
+  .links {
+    float: right;
+    margin: 10px 0 10px;
+  }
+
+  .indented & {
+    border-top: 0 none;
+  }
+}
+
+.section--content form.comment-form {
+  border-bottom: 1px solid $gray-medium;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0 0 $gutter * 2;
+
+  .comment__avatar {
+    display: none;
+
+    @include breakpoint($for-tablet-portrait-up) {
+      display: flex;
+    }
+  }
+
+  .form-actions {
+    display: block;
+    margin: 0;
+    text-align: right;
+    width: 100%;
+  }
+
+  .form-submit {
+    @include font-size(16px);
+    padding: 8px 20px;
+  }
+
+  .field--name-comment-body {
+    flex-grow: 1;
+  }
+
+  .form-type-textarea {
+    margin-top: 4px;
+    > label {
+      display: none !important;
+      visibility: hidden;
+    }
+  }
+
+  &.ajax-comments-form-edit,
+  &.ajax-comments-form-reply {
+    border-bottom: 0 none;
+    padding-top: $gutter * 2;
+
+    textarea {
+      min-height: 200px;
+    }
+  }
+
+  details {
+    display: none;
+  }
+}

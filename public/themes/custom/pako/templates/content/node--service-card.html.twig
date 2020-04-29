@@ -41,4 +41,10 @@
   <div class="service-card__content">
     {{ content|without('field_description', 'field_service_type', 'field_index') }}
   </div>
+
+  {% if content.field_comments|render %}
+    <div class="comments comments__container">
+      {{ content.field_comments }}
+    </div>
+  {% endif %}
 </article>

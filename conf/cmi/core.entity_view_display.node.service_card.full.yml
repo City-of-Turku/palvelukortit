@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
+    - field.field.node.service_card.field_comments
     - core.entity_view_mode.node.full
     - field.field.node.service_card.field_additional_information
     - field.field.node.service_card.field_code
@@ -18,6 +20,7 @@ dependencies:
     - field.field.node.service_card.field_updated_date
     - node.type.service_card
   module:
+    - comment
     - entity_reference_revisions
     - text
     - user
@@ -41,6 +44,15 @@ content:
     settings:
       link: true
       view_mode: default
+    third_party_settings: {  }
+  field_comments:
+    type: comment_default
+    weight: 10
+    region: content
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
     third_party_settings: {  }
   field_description:
     type: basic_string

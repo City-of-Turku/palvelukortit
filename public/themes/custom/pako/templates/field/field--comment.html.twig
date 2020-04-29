@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Theme override for comment fields.
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    'comment-wrapper',
+  ]
+%}
+{%
+  set title_classes = [
+    'title',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+<section{{ attributes.addClass(classes) }}>
+  <h3{{ title_attributes.addClass(title_classes) }}>{{ 'Comments'|t }}</h3>
+
+  {% if comment_form %}
+    {{ comment_form }}
+  {% elseif not comments %}
+    {% set login_path = path('user.login') %}
+    {% set register_path = path('user.register') %}
+    {% trans %}
+      <a href="{{ login_path }}">Log in</a> or <a href="{{ register_path }}">register</a> to post comments
+    {% endtrans %}
+  {% endif %}
+
+  {{ comments }}
+</section>

@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.service_card.field_additional_information
     - field.field.node.service_card.field_code
+    - field.field.node.service_card.field_comments
     - field.field.node.service_card.field_contact_details_of_experts
     - field.field.node.service_card.field_description
     - field.field.node.service_card.field_index
@@ -84,3 +85,5 @@ hidden:
   field_updated_date: true
   langcode: true
   search_api_excerpt: true
+  field_comments: true
+

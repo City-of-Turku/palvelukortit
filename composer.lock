@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71458581b536f96e9de362923094da10",
+    "content-hash": "6805929378de2444ffb243a1b9e4b19f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5609,10 +5609,10 @@
         },
         {
             "name": "select2/select2",
-            "version": "4.0.7",
+            "version": "4.0.13",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/select2/select2/archive/4.0.7.zip"
+                "url": "https://github.com/select2/select2/archive/4.0.13.zip"
             },
             "type": "drupal-library",
             "extra": {

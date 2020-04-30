@@ -3,6 +3,7 @@
 namespace Drupal\pako_content\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\node;
 
 /**
  * Provides a 'ServiceCardNavigationBlock' block.
@@ -21,7 +22,7 @@ class ServiceCardNavigationBlock extends BlockBase {
     $build = [];
     $node = \Drupal::routeMatch()->getParameter('node');
 
-    if ($node instanceof \Drupal\node\NodeInterface) {
+    if ($node instanceof NodeInterface) {
       if ($node->getType() == 'service_card') {
         $config = \Drupal::service('config.factory')
           ->get('pako_content.service_card_navigation')

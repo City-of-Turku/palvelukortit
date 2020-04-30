@@ -19,8 +19,9 @@ class ServiceCardNavigationBlock extends BlockBase {
    */
   public function build() {
     $build = [];
+    $node = \Drupal::routeMatch()->getParameter('node');
 
-    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node instanceof \Drupal\node\NodeInterface) {
       if ($node->getType() == 'service_card') {
         $config = \Drupal::service('config.factory')
           ->get('pako_content.service_card_navigation')

@@ -75,6 +75,16 @@ class Palvelu {
           $this->httpclientserviceCreatePalvelu($palvelu, $langcode);
         }
       }
+      else {
+        // Check if default language version has title. If not, search for other
+        // languages and create the node with an existing language.
+        $langcode = $this->client->retrieveOriginalLanguageTitle($palvelu, $code, $this->type);
+
+        // Create Customer service node.
+        if ($langcode) {
+          $this->httpclientserviceUpdatePalvelu($nid, $palvelu, $langcode);
+        }
+      }
     }
   }
 
@@ -122,6 +132,60 @@ class Palvelu {
     // Convert change date value from APi to Drupal date time.
     $dateTime = new DrupalDateTime($data['muutospvm'], 'UTC');
     $date = $dateTime->getTimestamp();
+
+    // Set date.
+    if (!empty($date)) {
+      $node->set('field_updated_date', $date);
+    }
+
+    // Convert Service types taxonomy data to Drupal taxonomies.
+    $service_types = (isset($data['palvelutyypit']))
+      ? $this->httpclientserviceCreateServicetypeTaxonomy($data['palvelutyypit'], $langcode)
+      : '';
+
+    // Set service types.
+    if (!empty($service_types)) {
+      $node->set('field_service_types', $service_types);
+    }
+
+    // Convert Service Offer's to Drupal reference's.
+    $service_offers = $this->httpclientserviceCreateServiceOfferReferences($data['palvelutarjoukset'], $langcode);
+
+    // Set service offers.
+    if (!empty($service_offers)) {
+      $node->set('field_service_offers', $service_offers);
+    }
+
+    // Saving original the node.
+    $node->save();
+
+    // Translate entity.
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type, $langcode);
+  }
+
+  /**
+   * Create service node from data.
+   */
+  public function httpclientserviceUpdatePalvelu($nid, $data, $langcode) {
+    $node = Node::load($nid);
+    $status = ($data['tila']['koodi'] == '1') ? 1 : 0;
+
+    $node->set('changed', \Drupal::time()->getRequestTime());
+    $node->set('title', $data['nimi_kieliversiot'][$langcode]);
+    $node->set('status', $status);
+
+    // Set description.
+    if (isset($data['kuvaus_kieliversiot'][$langcode])) {
+      $node->set('field_description', strip_tags($data['kuvaus_kieliversiot'][$langcode]));
+    }
+
+    // Set code.
+    if (!empty($data['koodi'])) {
+      $node->set('field_code', $data['koodi']);
+    }
+
+    // Convert change date value from APi to Drupal date time.
+    $date = $this->client->httpclientserviceConvertTimeStamp($data['muutospvm']);
 
     // Set date.
     if (!empty($date)) {

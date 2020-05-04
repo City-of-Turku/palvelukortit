@@ -178,7 +178,6 @@ class Palvelupiste {
     // Address information.
     $address = $this->httpclientserviceGetAddressValue($data, $langcode);
 
-    $node->set('created', \Drupal::time()->getRequestTime());
     $node->set('changed', \Drupal::time()->getRequestTime());
     $node->set('title', $data['nimi_kieliversiot'][$langcode]);
     $node->set('status', $status);

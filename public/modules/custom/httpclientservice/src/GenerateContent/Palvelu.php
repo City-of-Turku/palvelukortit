@@ -64,7 +64,7 @@ class Palvelu {
       $code = $palvelu['koodi'];
 
       // Check if service already exist.
-      if (!$this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
+      if (!$nid = $this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
 
         // Check if default language version has title. If not, search for other
         // languages and create the node with an existing language.
@@ -95,8 +95,12 @@ class Palvelu {
     // Get service content type data from API.
     $palvelut = $this->httpclientserviceGetPalvelut();
     $palvelu = $palvelut[$id];
+    $code = $palvelu['koodi'];
+    $id = $this->client->httpclientserviceCheckExist($code, $this->type, 'fi');
     // Create service node.
-    $this->httpclientserviceCreatePalvelu($palvelu, 'fi');
+    // $this->httpclientserviceCreatePalvelu($palvelu, 'fi');
+    // Update service node.
+    $this->httpclientserviceUpdatePalvelu($id, $palvelu, 'fi');
   }
 
   /**
@@ -130,8 +134,7 @@ class Palvelu {
     }
 
     // Convert change date value from APi to Drupal date time.
-    $dateTime = new DrupalDateTime($data['muutospvm'], 'UTC');
-    $date = $dateTime->getTimestamp();
+    $date = $this->client->httpclientserviceConvertTimeStamp($data['muutospvm']);
 
     // Set date.
     if (!empty($date)) {
@@ -195,12 +198,9 @@ class Palvelu {
     // Convert Service types taxonomy data to Drupal taxonomies.
     $service_types = (isset($data['palvelutyypit']))
       ? $this->httpclientserviceCreateServicetypeTaxonomy($data['palvelutyypit'], $langcode)
-      : '';
+      : [];
 
-    // Set service types.
-    if (!empty($service_types)) {
-      $node->set('field_service_types', $service_types);
-    }
+    $node->set('field_service_types', $service_types);
 
     // Convert Service Offer's to Drupal reference's.
     $service_offers = $this->httpclientserviceCreateServiceOfferReferences($data['palvelutarjoukset'], $langcode);

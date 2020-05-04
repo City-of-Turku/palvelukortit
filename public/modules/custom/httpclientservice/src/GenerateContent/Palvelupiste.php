@@ -158,7 +158,7 @@ class Palvelupiste {
   }
 
   /**
-   * Upadte Customer Services from data.
+   * Update Customer Services from data.
    */
   public function httpclientserviceUpdatePalvelupiste($nid, $data, $langcode) {
     $node = Node::load($nid);

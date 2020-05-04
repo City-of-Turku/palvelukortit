@@ -23,34 +23,53 @@
 
   &:first-of-type {
     border-top: 0 none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid $gray-medium;
+    margin-bottom: $gutter;
+    padding-bottom: $gutter;
   }
 
   &__meta {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    @include breakpoint($for-tablet-landscape-up) {
+      flex-flow: row;
+    }
   }
 
   &__author-wrapper {
     display: flex;
     flex-flow: column;
+
+    @include breakpoint($for-tablet-landscape-up) {
+      border-left: 1px solid $gray-medium;
+      margin-left: $gutter;
+      padding-left: $gutter;
+      padding-top: $gutter / 3;
+    }
   }
 
-  &__author {
-    @include font-size(18px, 24px);
-    @include font-weight($regular);
-    color: $blue-light;
-    letter-spacing: 0;
-    margin: 0 $gutter 0 0;
-  }
-
+  &__author,
   &__time {
-    @include font-size(18px, 27px);
+    @include font-size(14px, 18px);
     @include font-weight($regular);
-    color: $gray-dark;
-    margin: 0 $gutter 0 0;
+    display: flex;
 
-    em {
-      color: $gray-dark;
+    label {
+      @include font-size(14px, 18px);
+      @include font-weight($semibold);
+      color: $blue;
+      display: inline-block;
+      margin-bottom: $gutter / 3;
+      min-width: 70px;
+      text-transform: uppercase;
     }
   }
 
@@ -70,10 +89,16 @@
   .indented & {
     border-top: 0 none;
   }
+
+  .comment-translate,
+  .comment-approve,
+  .comment-edit,
+  .comment-reply {
+    display: none;
+  }
 }
 
 .section--content form.comment-form {
-  border-bottom: 1px solid $gray-medium;
   flex-flow: row wrap;
   margin: 0;
   padding: 0 0 $gutter * 2;

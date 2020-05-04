@@ -20,37 +20,30 @@
     server which comments are new for the user. Rendering the final "new"
     indicator here would break the render cache.
   #}
-  <span class="visually-hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></span>
+  <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
 
   <footer class="comment__meta">
-    <div class="comment__avatar">
-      {% if avatar is not empty %}
-        {{ avatar }}
-      {% else %}
-        <span class="comment__avatar--letter">
-          {{ avatar_abbreviation|first|upper }}
+    {% if title %}
+      <h3{{ title_attributes }}>{{ title }}</h3>
+    {% endif %}
+
+    <div class="comment__author-wrapper">
+      {% if author is not empty  %}
+        <span class="comment__author">
+          <label>{{ 'Author'|t }}</label>
+          {{ author }}
+        </span>
+      {% endif %}
+
+      {% if created %}
+        <span class="comment__time">
+          <label>{{ 'Created'|t }}</label>
+          {{ created }}
         </span>
       {% endif %}
     </div>
-
-    <div class="comment__author-wrapper">
-      <span class="comment__author">
-        {% if first_name is not empty and last_name is not empty %}
-          {{ first_name }} {{ last_name }}
-        {% else %}
-          {{ avatar_abbreviation }}
-        {% endif %}
-      </span>
-      <span class="comment__time">
-        {% if comment_created %}
-          {{ comment_created }}
-        {% endif %}
-        {% if comment_changed %}
-          <em>({{ 'Updated'|t }}: {{ comment_changed }})</em>
-        {% endif %}
-      </span>
-    </div>
     <span class="comment__permalink">{{ permalink }}</span>
+
     {#
       Indicate the semantic relationship between parent and child comments
       for accessibility. The list is difficult to navigate in a screen

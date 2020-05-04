@@ -90,6 +90,17 @@ function pako_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     $form['actions']['reset']['#attributes']['data-twig-suggestion'] = 'search_form_reset';
     $form['actions']['reset']['#attributes']['class'][] = 'search-form__button--reset';
   }
+
+  if ($form_id == 'comment_amending_proposal_form') {
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    $form['subject']['widget'][0]['value']['#title'] = t('Subject', [], ['langcode' => $langcode]);
+    $form['actions']['submit']['#value'] = t('Save', [], ['langcode' => $langcode]);
+
+    if (\Drupal::currentUser()->id() == 0) {
+      $form['author']['name']['#title'] = t('Your name', [], ['langcode' => $langcode]);
+    }
+  }
 }
 
 /**
@@ -242,25 +253,8 @@ function pako_theme_suggestions_field_alter(&$suggestions, array $variables) {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function pako_preprocess_comment__field_comments(&$variables) {
-  $user = $variables['user_picture']['#user'];
+function pako_preprocess_comment__field_amending_proposal(&$variables) {
   $comment = $variables['comment'];
-
-  if (!$user->user_picture->isEmpty()) {
-    $variables['avatar'] = $user->user_picture->view('medium');
-  }
-
-  if ($user->hasField('field_first_name') && !$user->field_first_name->isEmpty()) {
-    $variables['first_name'] = $user->field_first_name->value;
-    $variables['avatar_abbreviation'] = $user->field_first_name->value;
-  }
-  else {
-    $variables['avatar_abbreviation'] = $user->name->value;
-  }
-
-  if ($user->hasField('field_last_name') && !$user->field_last_name->isEmpty()) {
-    $variables['last_name'] = $user->field_last_name->value;
-  }
 
   if (!$comment->created->isEmpty()) {
     $variables['comment_created'] = Drupal::service('date.formatter')->format($comment->created->value, 'date_time');

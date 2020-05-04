@@ -117,7 +117,7 @@ function pako_content_form_views_exposed_form_alter(&$form, $form_state, $form_i
     }
   }
 
-  // TODO Markus lisää kommentit tähän.
+  // Include selected facets to the faceted view.
   if ($form['#id'] == 'views-exposed-form-faceted-search-page') {
     $params = \Drupal::requestStack()->getCurrentRequest()->query->all();
     $facet_manager = \Drupal::service('facets.manager');

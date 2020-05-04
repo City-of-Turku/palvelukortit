@@ -1,23 +1,16 @@
-uuid: 13caff69-9a18-454c-89a6-c867469a41ef
+uuid: cee19819-ea6f-47d1-bbaa-e11252a11fad
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.customer_service.field_address
-    - field.field.node.customer_service.field_code
-    - field.field.node.customer_service.field_description
-    - field.field.node.customer_service.field_email
-    - field.field.node.customer_service.field_more_information_link
-    - field.field.node.customer_service.field_telephone
-    - field.field.node.customer_service.field_updated_date
-    - node.type.customer_service
+    - field.field.node.service_class.field_code
+    - field.field.node.service_class.field_updated_date
+    - node.type.service_class
   module:
-    - address
-    - link
     - path
-id: node.customer_service.default
+id: node.service_class.default
 targetEntityType: node
-bundle: customer_service
+bundle: service_class
 mode: default
 content:
   created:
@@ -26,46 +19,8 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_address:
-    weight: 125
-    settings: {  }
-    third_party_settings: {  }
-    type: address_default
-    region: content
   field_code:
-    weight: 122
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_description:
-    weight: 124
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textarea
-    region: content
-  field_email:
-    weight: 127
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: email_default
-    region: content
-  field_more_information_link:
-    weight: 126
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
-  field_telephone:
-    weight: 128
+    weight: 121
     settings:
       size: 60
       placeholder: ''
@@ -73,7 +28,7 @@ content:
     type: string_textfield
     region: content
   field_updated_date:
-    weight: 123
+    weight: 122
     settings: {  }
     third_party_settings: {  }
     type: datetime_timestamp

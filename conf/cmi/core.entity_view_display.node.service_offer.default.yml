@@ -1,5 +1,5 @@
 uuid: 9c080218-21ba-45b5-b4ff-e32216f2bb07
-langcode: fi
+langcode: en
 status: true
 dependencies:
   config:
@@ -8,7 +8,7 @@ dependencies:
     - field.field.node.service_offer.field_customer_service_reference
     - field.field.node.service_offer.field_opening_hours_reference
     - field.field.node.service_offer.field_pricing_reference
-    - field.field.node.service_offer.field_terms
+    - field.field.node.service_offer.field_service_terms
     - field.field.node.service_offer.field_updated_date
     - node.type.service_offer
   module:
@@ -61,13 +61,12 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_terms:
-    weight: 105
+  field_service_terms:
+    weight: 107
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: text_default
     region: content
   field_updated_date:
     weight: 103

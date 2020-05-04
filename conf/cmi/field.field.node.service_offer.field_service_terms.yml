@@ -1,23 +1,21 @@
-uuid: fe5b1e71-5071-473f-8527-b6045ca64c3d
+uuid: 41f0997e-8a78-4e11-aecc-4c006d44f7d3
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_service_terms
     - node.type.service_offer
   module:
     - text
-id: node.service_offer.body
-field_name: body
+id: node.service_offer.field_service_terms
+field_name: field_service_terms
 entity_type: node
 bundle: service_offer
-label: Body
+label: 'Service terms'
 description: ''
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-  required_summary: false
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

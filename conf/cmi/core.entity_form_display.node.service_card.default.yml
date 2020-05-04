@@ -42,14 +42,6 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_code:
-    weight: 29
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_contact_details_of_experts:
     weight: 15
     settings:
@@ -99,31 +91,11 @@ content:
       default_paragraph_type: instruction
     third_party_settings: {  }
     region: content
-  field_service_offers:
-    weight: 34
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_service_type:
     weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
-  field_service_types:
-    weight: 31
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
-      width: 100%
-    third_party_settings: {  }
-    type: select2_entity_reference
     region: content
   field_tags:
     weight: 16
@@ -131,15 +103,9 @@ content:
       width: 100%
       autocomplete: true
       match_operator: STARTS_WITH
-      match_limit: 15
+      match_limit: 0
     third_party_settings: {  }
     type: select2_entity_reference
-    region: content
-  field_updated_date:
-    weight: 33
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_timestamp
     region: content
   langcode:
     type: language_select
@@ -194,4 +160,8 @@ content:
     settings: {  }
     region: content
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_code: true
+  field_service_offers: true
+  field_service_types: true
+  field_updated_date: true

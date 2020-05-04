@@ -1,0 +1,26 @@
+uuid: 43d88d3a-aa09-4c9c-84fe-d433e06343a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.service_class.field_code
+    - field.field.node.service_class.field_updated_date
+    - node.type.service_class
+  module:
+    - user
+id: node.service_class.teaser
+targetEntityType: node
+bundle: service_class
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_code: true
+  field_updated_date: true
+  langcode: true
+  search_api_excerpt: true

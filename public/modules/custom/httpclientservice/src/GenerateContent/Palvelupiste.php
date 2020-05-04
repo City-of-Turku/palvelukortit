@@ -13,13 +13,6 @@ use Drupal\httpclientservice\GenerateContent\ClientService;
 class Palvelupiste {
 
   /**
-   * API Base URL.
-   *
-   * @var string
-   */
-  protected $languages;
-
-  /**
    * This Class Content Type.
    *
    * @var string
@@ -37,7 +30,6 @@ class Palvelupiste {
    * Palvelupiste constructor.
    */
   public function __construct() {
-    $this->languages = ['en', 'sv'];
     $this->type = 'customer_service';
     $this->client = new ClientService();
   }
@@ -57,7 +49,7 @@ class Palvelupiste {
   /**
    * Save Customer Services to Drupal.
    */
-  public function httpclientserviceSavePavelupisteet() {
+  public function httpclientserviceSavePalvelupisteet() {
     // Get custom service content type data from API.
     $palvelupisteet = $this->httpclientserviceGetPalvelupisteet();
 
@@ -69,20 +61,17 @@ class Palvelupiste {
       // Customer services code value aka id.
       $code = $palvelupiste['koodi'];
 
-      // Check if Customer Services already exist.
-      if (!$this->client->httpclientserviceCheckExist($code, $this->type)) {
-        // Check that finnish version include title.
-        // Node cannot be created without title.
-        if (!isset($palvelupiste['nimi_kieliversiot']['fi'])) {
-          // Logs a notice.
-          \Drupal::logger('httpclientservice')->notice('@type: API save failed because empty title', ['@type' => 'Customer Service']);
+      // Check if Customer service node already exist.
+      if (!$this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
 
-          // Cannot save data if title is empty.
-          continue;
+        // Check if default language version has title. If not, search for other
+        // languages and create the node with an existing language.
+        $langcode = $this->client->retrieveOriginalLanguageTitle($palvelupiste, $code, $this->type);
+
+        // Create Customer service node.
+        if ($langcode) {
+          $this->httpclientserviceCreatePalvelupiste($palvelupiste, $langcode);
         }
-
-        // Create Customer Services.
-        $this->httpclientserviceCreatePalvelupiste($palvelupiste);
       }
     }
   }
@@ -90,21 +79,21 @@ class Palvelupiste {
   /**
    * Save One Customer Services.
    */
-  public function httpclientserviceSavePavelupisteDev($id = 1453) {
+  public function httpclientserviceSavePalvelupisteDev($id = 1453) {
     $palvelupisteet = $this->httpclientserviceGetPalvelupisteet();
     $palvelupiste = $palvelupisteet[$id];
     // Create Customer Services.
-    $this->httpclientserviceCreatePalvelupiste($palvelupiste);
+    $this->httpclientserviceCreatePalvelupiste($palvelupiste, 'fi');
   }
 
   /**
    * Create Customer Services from data.
    */
-  public function httpclientserviceCreatePalvelupiste($data) {
+  public function httpclientserviceCreatePalvelupiste($data, $langcode) {
     // Get APi user uid which create node.
     $uid = new ApiUser();
     $titles = $data['nimi_kieliversiot'];
-    $descriptions = $data['kuvaus_kieliversiot'];
+    $descriptions = isset($data['kuvaus_kieliversiot']) ? $data['kuvaus_kieliversiot'] : [];
     $status = ($data['tila']['koodi'] == '1') ? 1 : 0;
 
     // Convert change date value from APi to Drupal date time.
@@ -112,38 +101,50 @@ class Palvelupiste {
     $date = $dateTime->getTimestamp();
 
     // Convert more information value into Drupal fields.
-    $links = $this->httpclientserviceConvertMoreInformationValue($data, 'fi');
+    $links = $this->httpclientserviceConvertMoreInformationValue($data, $langcode);
 
     // Convert telephone data into Drupal field.
     $telephones = $this->httpclientserviceConvertPhoneValue($data);
 
-    // Adress information.
-    $address = $this->httpclientserviceGetAddressValue($data, 'fi');
+    // Address information.
+    $address = $this->httpclientserviceGetAddressValue($data, $langcode);
 
     // Create node.
     $node = Node::create([
       // The node entity bundle in this case article.
       'type' => $this->type,
-      'langcode' => 'fi',
+      'langcode' => $langcode,
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
       'uid' => $uid->getApiUser(),
       'status' => $status,
-      'title' => $titles['fi'],
-      'field_description' => $descriptions['fi'],
+      'title' => $titles[$langcode],
       'field_code' => $data['koodi'],
       'field_updated_date' => $date,
-      'field_email' => $data['sahkoposti'],
-      'field_more_information_link' => $links,
       'field_telephone' => $telephones,
       'field_address' => $address
     ]);
+
+    // Set description.
+    if (isset($descriptions[$langcode])) {
+      $node->set('field_description', $descriptions[$langcode]);
+    }
+
+    // Set more information link.
+    if (!empty($links)) {
+      $node->set('field_more_information_link', $links);
+    }
+
+    // Set email.
+    if (isset($data['sahkoposti'])) {
+      $node->set('field_email', $data['sahkoposti']);
+    }
 
     // Saving original the node.
     $node->save();
 
     // Translate entity.
-    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type, $langcode);
   }
 
   /**
@@ -190,6 +191,14 @@ class Palvelupiste {
       foreach ($data['lisatiedot'] as $key => $link) {
         // Check that description field include value.
         if (empty($link['kuvaus_kieliversiot'][$langcode])) {
+          continue;
+        }
+
+        // Check that description field type is suitable for links (code 6).
+        if (
+          !array_key_exists('koodi', $link['lisatietotyyppi']) ||
+          $link['lisatietotyyppi']['koodi'] != 6
+        ) {
           continue;
         }
 

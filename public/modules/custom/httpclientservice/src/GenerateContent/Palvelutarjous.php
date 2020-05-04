@@ -15,13 +15,6 @@ use Drupal\httpclientservice\GenerateContent\ApiUser;
 class Palvelutarjous {
 
   /**
-   * API Base URL.
-   *
-   * @var string
-   */
-  protected $languages;
-
-  /**
    * This Class Content Type.
    *
    * @var string
@@ -39,7 +32,6 @@ class Palvelutarjous {
    * Palvelutarjous constructor.
    */
   public function __construct() {
-    $this->languages = ['en', 'sv'];
     $this->type = 'service_offer';
     $this->client = new ClientService();
   }
@@ -71,23 +63,20 @@ class Palvelutarjous {
       // Service offer code value aka id.
       $code = $palvelutarjous['koodi'];
 
-      // Check if service offer already exist.
-      if (!$id = $this->client->httpclientserviceCheckExist($code, $this->type)) {
-        // Check that finnish version include title.
-        // Node cannot be created without title.
-        if (!isset($palvelutarjous['nimi_kieliversiot']['fi'])) {
-          // Logs a notice.
-          \Drupal::logger('httpclientservice')->notice('@type: API save failed because empty title', ['@type' => 'Customer Service']);
+      // Check if Service offer already exist.
+      if (!$id = $this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
 
-          // Cannot save data if title is empty.
-          continue;
+        // Check if default language version has title. If not, search for other
+        // languages and create the node with an existing language.
+        $langcode = $this->client->retrieveOriginalLanguageTitle($palvelutarjous, $code, $this->type);
+
+        // Create Service offer node.
+        if ($langcode) {
+          $this->httpclientserviceCreatePalvelutarjous($palvelutarjous, $langcode);
         }
-
-        // Create service offer node.
-        $this->httpclientserviceCreatePalvelutarjous($palvelutarjous);
       }
       else {
-        $this->httpclientserviceUpdatePalvelutarjous($id, $palvelutarjous);
+        $this->httpclientserviceUpdatePalvelutarjous($id, $palvelutarjous, $this->client->getDefaultLanguage());
       }
     }
   }
@@ -99,17 +88,17 @@ class Palvelutarjous {
     $palvelutarjoukset = $this->httpclientserviceGetPalvelutarjoukset();
     $palvelutarjous = $palvelutarjoukset[$id];
     $code = $palvelutarjous['koodi'];
-    $id = $this->client->httpclientserviceCheckExist($code, $this->type);
+    $id = $this->client->httpclientserviceCheckExist($code, $this->type, 'fi');
     // Create Customer Services.
-    $this->httpclientserviceCreatePalvelutarjous($palvelutarjous);
+    $this->httpclientserviceCreatePalvelutarjous($palvelutarjous, 'fi');
     // Update customer service.
-    // $this->httpclientserviceUpdatePalvelutarjous($id,$palvelutarjous);.
+    /* $this->httpclientserviceUpdatePalvelutarjous($id,$palvelutarjous); */
   }
 
   /**
    * Create Services Offer from data.
    */
-  public function httpclientserviceCreatePalvelutarjous($data) {
+  public function httpclientserviceCreatePalvelutarjous($data, $langcode) {
     // Get APi user uid which create node.
     $uid = new ApiUser();
     $titles = $data['nimi_kieliversiot'];
@@ -118,7 +107,9 @@ class Palvelutarjous {
     $date = $this->client->httpclientserviceConvertTimeStamp($data['muutospvm']);
 
     // Convert palvelupiste data into Drupal field.
-    $service_reference = $this->httpclientserviceCreateCustomerServiceReferences($data['palvelupiste']['koodi']);
+    if (isset($data['palvelupiste'])) {
+      $service_reference = $this->httpclientserviceCreateCustomerServiceReferences($data['palvelupiste']['koodi'], $langcode);
+    }
 
     // Create and get opening hours paragraph data.
     $opening_hours = $this->httpclientserviceCreateOpenHourParagraph($data);
@@ -130,29 +121,34 @@ class Palvelutarjous {
     $node = Node::create([
       // The node entity bundle in this case article.
       'type' => $this->type,
-      'langcode' => 'fi',
+      'langcode' => $langcode,
       'created' => \Drupal::time()->getRequestTime(),
       'changed' => \Drupal::time()->getRequestTime(),
       'uid' => $uid->getApiUser(),
-      'title' => $titles['fi'],
+      'title' => $titles[$langcode],
       'field_code' => $data['koodi'],
       'field_updated_date' => $date,
-      'field_terms' => $data['palvelunsaanninEhdot_kieliversiot']['fi'],
+      'field_service_terms' => isset($data['palvelunsaanninEhdot_kieliversiot'][$langcode]) ? $data['palvelunsaanninEhdot_kieliversiot'][$langcode] : '',
       'field_customer_service_reference' => $service_reference,
       'field_opening_hours_reference' => $opening_hours,
-      'field_pricing_reference' => $pricing
+      'field_pricing_reference' => $pricing,
     ]);
+
+    // Set service offers.
+    if (!empty($service_reference)) {
+      $node->set('field_customer_service_reference', $service_reference);
+    }
 
     // Saving original the node.
     $node->save();
 
-    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type, $langcode);
   }
 
   /**
    * Update Services Offer from data.
    */
-  public function httpclientserviceUpdatePalvelutarjous($nid, $data) {
+  public function httpclientserviceUpdatePalvelutarjous($nid, $data, $langcode = 'fi') {
     $node = Node::load($nid);
     // $node->field_opening_hours_reference
     $this->client->httpclientserviceDeleteParagraph($node->field_opening_hours_reference);
@@ -169,9 +165,9 @@ class Palvelutarjous {
 
     $node->set('created', \Drupal::time()->getRequestTime());
     $node->set('changed', \Drupal::time()->getRequestTime());
-    $node->set('title', $data['nimi_kieliversiot']['fi']);
+    $node->set('title', $data['nimi_kieliversiot'][$langcode]);
     $node->set('field_updated_date', $date);
-    $node->set('field_terms', $data['palvelunsaanninEhdot_kieliversiot']['fi']);
+    $node->set('field_terms', $data['palvelunsaanninEhdot_kieliversiot'][$langcode]);
     $node->set('field_customer_service_reference', $service_reference);
     $node->set('field_opening_hours_reference', $opening_hours);
     $node->set('field_pricing_reference', $pricing);
@@ -179,7 +175,7 @@ class Palvelutarjous {
     // Saving original the node.
     $node->save();
 
-    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type);
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type, $langcode);
   }
 
   /**
@@ -307,12 +303,12 @@ class Palvelutarjous {
   /**
    * Convert service offer data to Drupal Service offers reference value.
    */
-  public function httpclientserviceCreateCustomerServiceReferences($id) {
+  public function httpclientserviceCreateCustomerServiceReferences($id, $langcode) {
     $service_references = [];
 
     $query = \Drupal::entityQuery('node')
       ->condition('type', 'customer_service')
-      ->condition('langcode', 'fi')
+      ->condition('langcode', $langcode)
       ->condition('field_code', $id);
 
     if ($result = $query->execute()) {

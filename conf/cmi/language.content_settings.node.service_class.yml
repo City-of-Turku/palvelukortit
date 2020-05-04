@@ -1,18 +1,16 @@
-uuid: e685e9c2-0b94-467f-ad9a-31d551a8b8bd
+uuid: 3bee2546-bc8e-4bb8-928f-dada97dbd2ea
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.customer_service
+    - node.type.service_class
   module:
     - content_translation
 third_party_settings:
   content_translation:
     enabled: true
-    bundle_settings:
-      untranslatable_fields_hide: '0'
-id: node.customer_service
+id: node.service_class
 target_entity_type_id: node
-target_bundle: customer_service
+target_bundle: service_class
 default_langcode: site_default
 language_alterable: true

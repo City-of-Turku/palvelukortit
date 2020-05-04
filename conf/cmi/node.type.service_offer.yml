@@ -1,5 +1,5 @@
 uuid: ed0e2dbb-4470-44b9-a974-3067ada26dd8
-langcode: fi
+langcode: en
 status: true
 dependencies:
   module:
@@ -12,6 +12,6 @@ name: Palvelutarjous
 type: service_offer
 description: ''
 help: ''
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: false

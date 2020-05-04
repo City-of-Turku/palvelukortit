@@ -1,14 +1,14 @@
-uuid: 4b0981da-bc33-4627-9603-65dcdc32ac8b
+uuid: 03039521-8fde-46fe-9d36-9301c581e743
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.service_offer
-id: node.service_offer.promote
+    - node.type.service_class
+id: node.service_class.promote
 field_name: promote
 entity_type: node
-bundle: service_offer
-label: 'Näytetään etusivulla'
+bundle: service_class
+label: 'Promoted to front page'
 description: ''
 required: false
 translatable: true
@@ -17,6 +17,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: Käytössä
-  off_label: 'Pois päältä'
+  on_label: On
+  off_label: Off
 field_type: boolean

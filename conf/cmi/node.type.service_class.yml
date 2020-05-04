@@ -1,4 +1,4 @@
-uuid: 06c764b3-dec8-41f9-aafe-cc1c5d1c42a1
+uuid: 5c47b1bf-da1c-4042-bb6a-e5031f1a7836
 langcode: en
 status: true
 dependencies:
@@ -8,10 +8,10 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: Palvelupiste
-type: customer_service
+name: 'Service Class'
+type: service_class
 description: ''
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 1
 display_submitted: false

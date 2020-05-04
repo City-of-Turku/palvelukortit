@@ -45,6 +45,7 @@
         "drupal/search_api_solr": "^3.9",
         "drupal/select2": "^1.1",
         "drupal/smart_trim": "^1.2",
+        "drupal/time_field": "^1.13",
         "drupal/token": "^1.6",
         "drupal/twig_tweak": "^2.5",
         "drupal/ultimate_cron": "^2.0",

@@ -81,7 +81,7 @@ class Palvelu {
   /**
    * Save services to Drupal.
    */
-  public function httpclientserviceSavePalveluDev($id = 18) {
+  public function httpclientserviceSavePalveluDev($id = 4) {
     // Get service content type data from API.
     $palvelut = $this->httpclientserviceGetPalvelut();
     $palvelu = $palvelut[$id];

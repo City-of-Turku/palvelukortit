@@ -17,6 +17,7 @@ module:
   contextual: 0
   ctools: 0
   datetime: 0
+  datetime_range: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
@@ -60,6 +61,7 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  time_field: 0
   token: 0
   toolbar: 0
   twig_tweak: 0

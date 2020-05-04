@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: content_editor
-label: 'Content Editor'
+label: Sisällöntuottaja
 weight: 2
 is_admin: null
 permissions:

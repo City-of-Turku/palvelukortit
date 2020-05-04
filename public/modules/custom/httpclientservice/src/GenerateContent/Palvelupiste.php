@@ -79,7 +79,7 @@ class Palvelupiste {
   /**
    * Save One Customer Services.
    */
-  public function httpclientserviceSavePalvelupisteDev($id = 1407) {
+  public function httpclientserviceSavePalvelupisteDev($id = 1453) {
     $palvelupisteet = $this->httpclientserviceGetPalvelupisteet();
     $palvelupiste = $palvelupisteet[$id];
     // Create Customer Services.

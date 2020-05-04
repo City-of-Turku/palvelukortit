@@ -36,9 +36,9 @@ content:
 hidden:
   field_code: true
   field_customer_service_reference: true
-  field_service_terms: true
   field_opening_hours_reference: true
   field_pricing_reference: true
+  field_service_terms: true
   field_updated_date: true
   langcode: true
   search_api_excerpt: true

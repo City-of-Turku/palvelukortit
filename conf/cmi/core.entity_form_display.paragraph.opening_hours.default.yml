@@ -1,0 +1,65 @@
+uuid: fc356379-ea83-42a5-b75d-325f06ed907d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.opening_hours.field_opening_description
+    - field.field.paragraph.opening_hours.field_opening_hours
+    - field.field.paragraph.opening_hours.field_opening_type
+    - field.field.paragraph.opening_hours.field_validity
+    - field.field.paragraph.opening_hours.field_week_day
+    - paragraphs.paragraphs_type.opening_hours
+  module:
+    - datetime_range
+    - time_field
+id: paragraph.opening_hours.default
+targetEntityType: paragraph
+bundle: opening_hours
+mode: default
+content:
+  field_opening_description:
+    weight: 5
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_opening_hours:
+    weight: 4
+    settings:
+      enabled: false
+      step: 5
+    third_party_settings: {  }
+    type: time_range_widget
+    region: content
+  field_opening_type:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_validity:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_week_day:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  translation:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

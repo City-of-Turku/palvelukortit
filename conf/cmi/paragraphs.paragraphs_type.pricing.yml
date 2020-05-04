@@ -1,0 +1,10 @@
+uuid: 5b127ebf-ce3f-4dea-884b-a4d45c522f9a
+langcode: en
+status: true
+dependencies: {  }
+id: pricing
+label: Pricing
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

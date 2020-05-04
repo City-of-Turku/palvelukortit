@@ -1,0 +1,34 @@
+uuid: 9bab297a-94b1-49c9-a528-515428607253
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opening_hours_reference
+    - node.type.service_offer
+    - paragraphs.paragraphs_type.opening_hours
+  module:
+    - entity_reference_revisions
+id: node.service_offer.field_opening_hours_reference
+field_name: field_opening_hours_reference
+entity_type: node
+bundle: service_offer
+label: 'Opening hours reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      opening_hours: opening_hours
+    target_bundles_drag_drop:
+      instruction:
+        weight: 3
+        enabled: false
+      opening_hours:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

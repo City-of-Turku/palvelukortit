@@ -124,6 +124,7 @@ permissions:
   - 'revert all revisions'
   - 'revert service_card revisions'
   - 'select account cancellation method'
+  - 'skip comment approval'
   - 'synchronize configuration'
   - 'translate any entity'
   - 'translate block_content'

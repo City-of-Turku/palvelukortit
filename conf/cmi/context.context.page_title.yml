@@ -1,24 +1,20 @@
 uuid: 0e5baf7e-bfb2-4da2-a4d0-d25afb120b41
 langcode: en
 status: true
-dependencies:
-  module:
-    - ctools
+dependencies: {  }
 name: page_title
 label: 'Page title'
 group: null
 description: ''
-requireAllConditions: false
+requireAllConditions: true
 disabled: false
 conditions:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      service_card: service_card
-    negate: 1
-    uuid: c4526218-c752-4945-a616-35fb7b86d92e
-    context_mapping:
-      node: '@node.node_route_context:node'
+  request_path_exclusion:
+    id: request_path_exclusion
+    pages: "*/node/*/revisions/*\r\n*/node/*"
+    negate: null
+    uuid: 1e8b6668-6a11-4281-9322-65a63f302c48
+    context_mapping: {  }
 reactions:
   blocks:
     blocks:

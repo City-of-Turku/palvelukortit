@@ -9,3 +9,4 @@ pako_fields:
     business: field_alternative_ways_of_doing_business
     service-package: field_service_package
     tag: field_tags
+    edit: field_amending_proposal

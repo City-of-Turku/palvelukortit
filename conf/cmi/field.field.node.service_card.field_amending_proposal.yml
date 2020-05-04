@@ -1,0 +1,38 @@
+uuid: f5e606c7-2dc6-45e1-a22c-7e3fb2b61520
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_amending_proposal
+    - node.type.service_card
+  module:
+    - comment
+    - comments_order
+third_party_settings:
+  comments_order:
+    order: DESC
+    children_natural_order: 1
+id: node.service_card.field_amending_proposal
+field_name: field_amending_proposal
+entity_type: node
+bundle: service_card
+label: 'Amending proposal'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    status: 2
+    cid: 0
+    last_comment_timestamp: 0
+    last_comment_name: null
+    last_comment_uid: 0
+    comment_count: 0
+default_value_callback: ''
+settings:
+  default_mode: 0
+  per_page: 50
+  anonymous: 0
+  form_location: true
+  preview: 0
+field_type: comment

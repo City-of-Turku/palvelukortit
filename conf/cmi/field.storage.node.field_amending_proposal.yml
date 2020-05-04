@@ -1,0 +1,20 @@
+uuid: 8f17b807-48ab-4927-b551-d852ab9b2d5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - node
+id: node.field_amending_proposal
+field_name: field_amending_proposal
+entity_type: node
+type: comment
+settings:
+  comment_type: amending_proposal
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

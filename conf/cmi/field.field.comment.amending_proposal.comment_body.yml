@@ -1,0 +1,21 @@
+uuid: 6a91ff56-f2ab-4ca1-b192-ea5d2f7eff74
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.amending_proposal
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.amending_proposal.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: amending_proposal
+label: Amendment
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

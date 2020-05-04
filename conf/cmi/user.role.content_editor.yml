@@ -54,6 +54,7 @@ permissions:
   - 'post comments'
   - 'revert all revisions'
   - 'revert service_card revisions'
+  - 'skip comment approval'
   - 'translate any entity'
   - 'translate block_content'
   - 'translate expert taxonomy_term'

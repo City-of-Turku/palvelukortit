@@ -96,6 +96,36 @@
   .comment-reply {
     display: none;
   }
+
+  .comment-delete {
+    @include font-size(16px);
+    @include font-weight($semibold);
+
+    > a {
+      color: $blue;
+      position: relative;
+
+      &:hover {
+        color: $black;
+
+        &::before {
+          color: $black;
+        }
+      }
+
+      &::before {
+        background: url('../../icons/svg/delete.svg') no-repeat 0 0 transparent;
+        color: $blue;
+        content: "";
+        display: block;
+        height: 25px;
+        left: -28px;
+        position: absolute;
+        top: 0;
+        width: 22px;
+      }
+    }
+  }
 }
 
 .section--content form.comment-form {

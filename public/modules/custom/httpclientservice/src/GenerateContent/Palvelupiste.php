@@ -62,7 +62,7 @@ class Palvelupiste {
       $code = $palvelupiste['koodi'];
 
       // Check if Customer service node already exist.
-      if (!$this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
+      if (!$id = $this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
 
         // Check if default language version has title. If not, search for other
         // languages and create the node with an existing language.
@@ -80,7 +80,7 @@ class Palvelupiste {
 
         // Create Customer service node.
         if ($langcode) {
-          $this->httpclientserviceUpdatePalvelupiste($palvelupiste, $langcode);
+          $this->httpclientserviceUpdatePalvelupiste($id, $palvelupiste, $langcode);
         }
       }
     }

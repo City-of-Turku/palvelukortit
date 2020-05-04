@@ -195,3 +195,12 @@ function _remove_text_format_box($form_element, FormStateInterface $form_state) 
 
   return $form_element;
 }
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function pako_content_entity_type_alter(array &$entity_types) {
+  // Alter the comment entity definition to use this module's forms.
+  $entity_types['comment']->setFormClass('default', 'Drupal\pako_content\Form\PakoCommentForm');
+  $entity_types['comment']->setFormClass('delete', 'Drupal\pako_content\Form\PakoCommentDeleteForm');
+}

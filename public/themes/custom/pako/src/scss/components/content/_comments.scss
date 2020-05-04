@@ -30,40 +30,6 @@
     display: flex;
   }
 
-  &__avatar {
-    align-content: center;
-    display: flex;
-    justify-content: center;
-    margin-right: $gutter * 2;
-
-    img {
-      border-radius: 100%;
-      max-height: 65px;
-      max-width: 65px;
-      min-height: 65px;
-      min-width: 65px;
-    }
-
-    &--letter {
-      @include font-size(24px);
-      @include font-weight($bold);
-      align-items: center;
-      background-color: $blue-light;
-      border-radius: 100%;
-      color: $white;
-      display: flex;
-      height: 65px;
-      justify-content: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      width: 65px;
-
-      .community__link:hover & {
-        text-decoration: none;
-      }
-    }
-  }
-
   &__author-wrapper {
     display: flex;
     flex-flow: column;
@@ -112,18 +78,9 @@
   margin: 0;
   padding: 0 0 $gutter * 2;
 
-  .comment__avatar {
-    display: none;
-
-    @include breakpoint($for-tablet-portrait-up) {
-      display: flex;
-    }
-  }
-
   .form-actions {
     display: block;
     margin: 0;
-    text-align: right;
     width: 100%;
   }
 
@@ -138,10 +95,6 @@
 
   .form-type-textarea {
     margin-top: 4px;
-    > label {
-      display: none !important;
-      visibility: hidden;
-    }
   }
 
   &.ajax-comments-form-edit,

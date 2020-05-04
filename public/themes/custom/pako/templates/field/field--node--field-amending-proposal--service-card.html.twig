@@ -27,35 +27,48 @@
  */
 #}
 
-
-{#
-/**
- * @file
- * Theme override for comment fields.
- */
-#}
-{%
-  set classes = [
-    'field',
-    'field--name-' ~ field_name|clean_class,
-    'field--type-' ~ field_type|clean_class,
-    'field--label-' ~ label_display,
-    'comment-wrapper',
-  ]
-%}
 {%
   set title_classes = [
-    'title',
     label_display == 'visually_hidden' ? 'visually-hidden',
+    'section--label'
   ]
 %}
-<section{{ attributes.addClass(classes) }}>
-  <h3{{ title_attributes.addClass(title_classes) }}>{{ 'Amending proposals'|t }}</h3>
+{%
+  set content_classes = [
+    'section--content',
+    'comment-wrapper'
+  ]
+%}
 
-  <<<<< JOS KIRJAUTUNUT  {{ comments }}
-  >>>>>
+{%
+  set item_wrapper_class = [
+    'paragraph-wrapper'
+  ]
+%}
 
-  {% if comment_form %}
-    {{ comment_form }}
-  {% endif %}
+<section class="service-card__section service-card__{{ field_name|replace(' ', '-') }}">
+  <a name="{{ section_label_icon }}"></a>
+  <div class="section--label-wrapper">
+    <div{{ title_attributes.addClass(title_classes) }}>
+      {% if icons_path and section_label_icon %}
+        <div class="section--label__icon">
+          <svg class="icon">
+            <title>{{ text }}</title>
+            <use xlink:href="{{ icons_path|trim }}#{{ section_label_icon }}"/>
+          </svg>
+        </div>
+      {% endif %}
+      {{ label }}
+    </div>
+  </div>
+  <div{{ attributes.addClass(content_classes) }}>
+    {{ comments }}
+
+    {% if comment_form %}
+      {% trans %}
+        <p><strong>Is there something missing or an error in this service card?</strong><br />Please submit your suggestions to fix the problem using the form below.</p>
+      {% endtrans %}
+      {{ comment_form }}
+    {% endif %}
+  </div>
 </section>

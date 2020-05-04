@@ -90,9 +90,9 @@ class Palvelutarjous {
     $code = $palvelutarjous['koodi'];
     $id = $this->client->httpclientserviceCheckExist($code, $this->type, 'fi');
     // Create Customer Services.
-    $this->httpclientserviceCreatePalvelutarjous($palvelutarjous, 'fi');
+    // $this->httpclientserviceCreatePalvelutarjous($palvelutarjous, 'fi');
     // Update customer service.
-    /* $this->httpclientserviceUpdatePalvelutarjous($id,$palvelutarjous); */
+    $this->httpclientserviceUpdatePalvelutarjous($id, $palvelutarjous);
   }
 
   /**
@@ -157,7 +157,7 @@ class Palvelutarjous {
     // Convert change date value from APi to Drupal date time.
     $date = $this->client->httpclientserviceConvertTimeStamp($data['muutospvm']);
     // Convert palvelupiste data into Drupal field.
-    $service_reference = $this->httpclientserviceCreateCustomerServiceReferences($data['palvelupiste']['koodi']);
+    $service_reference = $this->httpclientserviceCreateCustomerServiceReferences($data['palvelupiste']['koodi'], $langcode);
     // Create and get opening hours paragraph data.
     $opening_hours = $this->httpclientserviceCreateOpenHourParagraph($data);
     // Create and get pricing paragraph data.
@@ -167,7 +167,7 @@ class Palvelutarjous {
     $node->set('changed', \Drupal::time()->getRequestTime());
     $node->set('title', $data['nimi_kieliversiot'][$langcode]);
     $node->set('field_updated_date', $date);
-    $node->set('field_terms', $data['palvelunsaanninEhdot_kieliversiot'][$langcode]);
+    $node->set('field_service_terms', $data['palvelunsaanninEhdot_kieliversiot'][$langcode]);
     $node->set('field_customer_service_reference', $service_reference);
     $node->set('field_opening_hours_reference', $opening_hours);
     $node->set('field_pricing_reference', $pricing);

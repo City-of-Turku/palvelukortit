@@ -1,0 +1,40 @@
+uuid: ca71f681-0f67-427a-b4ab-7bf86bbe2d53
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pricing.field_pricing
+    - field.field.paragraph.pricing.field_pricing_description
+    - field.field.paragraph.pricing.field_pricing_type
+    - paragraphs.paragraphs_type.pricing
+id: paragraph.pricing.default
+targetEntityType: paragraph
+bundle: pricing
+mode: default
+content:
+  field_pricing:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pricing_description:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pricing_type:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

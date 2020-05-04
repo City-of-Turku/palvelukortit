@@ -1,0 +1,19 @@
+uuid: dfb711c5-bd39-4aa4-9fa9-6bec7bd5fe9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_week_day
+    - paragraphs.paragraphs_type.opening_hours
+id: paragraph.opening_hours.field_week_day
+field_name: field_week_day
+entity_type: paragraph
+bundle: opening_hours
+label: 'Week day'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

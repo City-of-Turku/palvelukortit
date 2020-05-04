@@ -186,9 +186,6 @@ class Palvelupiste {
     $node->set('field_telephone', $telephones);
     $node->set('field_address', $address);
 
-    // Saving original the node.
-    $node->save();
-
     // Set description.
     if (isset($descriptions[$langcode])) {
       $node->set('field_description', $descriptions[$langcode]);

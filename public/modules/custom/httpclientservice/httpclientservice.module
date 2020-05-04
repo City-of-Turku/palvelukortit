@@ -16,8 +16,8 @@ use Drupal\httpclientservice\GenerateContent\ClientService;
 function httpclientservice_cron() {
   $now = \Drupal::time()->getRequestTime();
 
-  if (httpclientserviceRunCron($now)) {
-    httpclientserviceQueueTasks();
+  if (httpclientservice_run_cron($now)) {
+    httpclientservice_queue_tasks();
     $this->state->set('httpclientservice.last_cron', $now);
   }
 
@@ -25,18 +25,24 @@ function httpclientservice_cron() {
   $last_time = $state->get('httpclientservice.last_cron', FALSE);
 }
 
-function httpclientserviceRunCron($now) {
+/**
+ * Check if cron should run.
+ */
+function httpclientservice_run_cron($now) {
   $state = \Drupal::state();
   $last_time = $state->get('httpclientservice.last_cron', FALSE);
 
   if ($now > $last_time) {
-    return true;
+    return TRUE;
   }
 
-  return false;
+  return FALSE;
 }
 
-function httpclientserviceQueueTasks() {
+/**
+ * Includes cron tasks.
+ */
+function httpclientservice_queue_tasks() {
   // Remove All API content.
   // $client = new ClientService();
   // $client->httpclientserviceDeleteEntity('customer_service');

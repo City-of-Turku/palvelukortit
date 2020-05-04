@@ -298,7 +298,7 @@ class ClientService {
    * {@inheritdoc}
    */
   public function httpclientserviceGetChangedate() {
-    $changeday = date("Y-m-d", strtotime( '-1 days' ));
+    $changeday = date("Y-m-d", strtotime('-1 days'));
     $changeday = '?changedate=' . $changeday;
 
     return $changeday;

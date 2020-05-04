@@ -12,6 +12,6 @@ name: 'Customer Service'
 type: customer_service
 description: ''
 help: ''
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: false

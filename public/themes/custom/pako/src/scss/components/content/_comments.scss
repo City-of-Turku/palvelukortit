@@ -104,10 +104,11 @@
     > a {
       color: $blue;
       position: relative;
+      text-decoration: none;
 
       &:hover {
         color: $black;
-
+        text-decoration: underline;
         &::before {
           color: $black;
         }

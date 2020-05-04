@@ -43,7 +43,8 @@ class Palvelu {
    *   Data from API
    */
   public function httpclientserviceGetPalvelut() {
-    $data = $this->client->httpclientserviceGetService('api/v1/palvelut');
+    $changeday = $this->client->httpclientserviceGetChangedate();
+    $data = $this->client->httpclientserviceGetService('api/v1/palvelut', $query = [], $changeday);
 
     return $data;
   }

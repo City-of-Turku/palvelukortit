@@ -41,7 +41,8 @@ class Palvelupiste {
    *   Data from API
    */
   public function httpclientserviceGetPalvelupisteet() {
-    $data = $this->client->httpclientserviceGetService('api/v1/palvelupisteet');
+    $changeday = $this->client->httpclientserviceGetChangedate();
+    $data = $this->client->httpclientserviceGetService('api/v1/palvelupisteet', $query = [], $changeday);
 
     return $data;
   }

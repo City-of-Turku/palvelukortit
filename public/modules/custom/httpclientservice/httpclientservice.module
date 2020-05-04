@@ -14,9 +14,29 @@ use Drupal\httpclientservice\GenerateContent\ClientService;
  * Implements hook_cron().
  */
 function httpclientservice_cron() {
-  $state = \Drupal::state();
-  $last_time = $state->get('httpclientservice.import_palvelut', FALSE);
+  $now = \Drupal::time()->getRequestTime();
 
+  if (httpclientserviceRunCron($now)) {
+    httpclientserviceQueueTasks();
+    $this->state->set('httpclientservice.last_cron', $now);
+  }
+
+  $state = \Drupal::state();
+  $last_time = $state->get('httpclientservice.last_cron', FALSE);
+}
+
+function httpclientserviceRunCron($now) {
+  $state = \Drupal::state();
+  $last_time = $state->get('httpclientservice.last_cron', FALSE);
+
+  if ($now > $last_time) {
+    return true;
+  }
+
+  return false;
+}
+
+function httpclientserviceQueueTasks() {
   // Remove All API content.
   // $client = new ClientService();
   // $client->httpclientserviceDeleteEntity('customer_service');
@@ -37,8 +57,4 @@ function httpclientservice_cron() {
   // $palvelupisteet->httpclientserviceSavePalvelupisteDev();
   // $palvelutarjous->httpclientserviceSavePalvelutarjousDev();
   // $palvelukortti->httpclientserviceSavePalveluDev();
-
-  // Store the timestamp in state.
-  $last_time = \Drupal::time()->getRequestTime();
-  \Drupal::state()->set('httpclientservice.import_palvelut', $last_time);
 }

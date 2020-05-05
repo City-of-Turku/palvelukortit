@@ -14,11 +14,12 @@ use Drupal\httpclientservice\GenerateContent\ClientService;
  * Implements hook_cron().
  */
 function httpclientservice_cron() {
+  $state = \Drupal::state();
   $now = \Drupal::time()->getRequestTime();
 
   if (httpclientservice_run_cron()) {
     httpclientservice_queue_tasks();
-    $this->state->set('httpclientservice.last_cron', $now);
+    $state->set('httpclientservice.last_cron', $now);
   }
 }
 

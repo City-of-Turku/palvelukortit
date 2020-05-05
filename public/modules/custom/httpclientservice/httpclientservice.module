@@ -16,23 +16,20 @@ use Drupal\httpclientservice\GenerateContent\ClientService;
 function httpclientservice_cron() {
   $now = \Drupal::time()->getRequestTime();
 
-  if (httpclientservice_run_cron($now)) {
+  if (httpclientservice_run_cron()) {
     httpclientservice_queue_tasks();
     $this->state->set('httpclientservice.last_cron', $now);
   }
-
-  $state = \Drupal::state();
-  $last_time = $state->get('httpclientservice.last_cron', FALSE);
 }
 
 /**
  * Check if cron should run.
  */
-function httpclientservice_run_cron($now) {
+function httpclientservice_run_cron() {
   $state = \Drupal::state();
   $last_time = $state->get('httpclientservice.last_cron', FALSE);
 
-  if ($now > $last_time) {
+  if ($last_time < strtotime('-1 days')) {
     return TRUE;
   }
 

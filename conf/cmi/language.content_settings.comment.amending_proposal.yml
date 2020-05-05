@@ -1,0 +1,16 @@
+uuid: d758fe3a-9ed2-40f0-94fe-1cd89ea63e6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.amending_proposal
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: comment.amending_proposal
+target_entity_type_id: comment
+target_bundle: amending_proposal
+default_langcode: current_interface
+language_alterable: false

@@ -117,7 +117,7 @@ function pako_content_form_views_exposed_form_alter(&$form, $form_state, $form_i
     }
   }
 
-  // TODO Markus lisää kommentit tähän.
+  // Include selected facets to the faceted view.
   if ($form['#id'] == 'views-exposed-form-faceted-search-page') {
     $params = \Drupal::requestStack()->getCurrentRequest()->query->all();
     $facet_manager = \Drupal::service('facets.manager');
@@ -165,4 +165,44 @@ function pako_content_theme() {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function pako_content_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  $formats = [
+    'comment_body' => ['plain_text'],
+  ];
+
+  $field_name = $context['items']->getFieldDefinition()->getName();
+
+  if (array_key_exists($field_name, $formats)) {
+    $element['#allowed_formats'] = $formats[$field_name];
+    $element['#after_build'][] = '_remove_text_format_box';
+  }
+}
+
+/**
+ * After build callback for widget form alter.
+ */
+function _remove_text_format_box($form_element, FormStateInterface $form_state) {
+  // Remove help, guidelines and wrappers.
+  unset($form_element['format']['help']);
+  unset($form_element['format']['guidelines']);
+  unset($form_element['format']['#type']);
+  unset($form_element['format']['#theme_wrappers']);
+
+  return $form_element;
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function pako_content_entity_type_alter(array &$entity_types) {
+  // Alter the comment entity definition to use this module's forms.
+  if (isset($entity_types['comment'])) {
+    $entity_types['comment']->setFormClass('default', 'Drupal\pako_content\Form\PakoCommentForm');
+    $entity_types['comment']->setFormClass('delete', 'Drupal\pako_content\Form\PakoCommentDeleteForm');
+  }
 }

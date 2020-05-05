@@ -1,0 +1,29 @@
+uuid: 5e9d6ab0-0b53-4a68-a845-a6ebf89d3084
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.amending_proposal
+    - field.field.comment.amending_proposal.comment_body
+  module:
+    - text
+id: comment.amending_proposal.default
+targetEntityType: comment
+bundle: amending_proposal
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  search_api_excerpt: true

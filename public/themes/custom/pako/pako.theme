@@ -90,6 +90,17 @@ function pako_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     $form['actions']['reset']['#attributes']['data-twig-suggestion'] = 'search_form_reset';
     $form['actions']['reset']['#attributes']['class'][] = 'search-form__button--reset';
   }
+
+  if ($form_id == 'comment_amending_proposal_form') {
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    $form['subject']['widget'][0]['value']['#title'] = t('Subject', [], ['langcode' => $langcode]);
+    $form['actions']['submit']['#value'] = t('Save', [], ['langcode' => $langcode]);
+
+    if (\Drupal::currentUser()->id() == 0) {
+      $form['author']['name']['#title'] = t('Your name', [], ['langcode' => $langcode]);
+    }
+  }
 }
 
 /**
@@ -236,5 +247,23 @@ function pako_preprocess_field(&$variables) {
 function pako_theme_suggestions_field_alter(&$suggestions, array $variables) {
   if ($variables['element']['#bundle'] == 'service_card') {
     $suggestions[] = 'field__node__' . $variables['element']['#bundle'] . '__' . $variables['element']['#view_mode'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pako_preprocess_comment__field_amending_proposal(&$variables) {
+  $comment = $variables['comment'];
+
+  if (!$comment->created->isEmpty()) {
+    $variables['comment_created'] = Drupal::service('date.formatter')->format($comment->created->value, 'date_time');
+
+    if (
+      !$comment->changed->isEmpty() &&
+      $comment->changed->value !== $comment->created->value
+    ) {
+      $variables['comment_changed'] = Drupal::service('date.formatter')->format($comment->changed->value, 'date_time');
+    }
   }
 }

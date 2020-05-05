@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.expert
     - field.field.node.service_card.field_additional_information
+    - field.field.node.service_card.field_amending_proposals
     - field.field.node.service_card.field_code
     - field.field.node.service_card.field_contact_details_of_experts
     - field.field.node.service_card.field_description
@@ -18,6 +19,7 @@ dependencies:
     - field.field.node.service_card.field_updated_date
     - node.type.service_card
   module:
+    - comment
     - entity_browser
     - paragraphs
     - path
@@ -41,6 +43,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_amending_proposals:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
     region: content
   field_contact_details_of_experts:
     weight: 15

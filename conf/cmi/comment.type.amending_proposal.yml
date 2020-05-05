@@ -1,0 +1,8 @@
+uuid: c2f921eb-2e79-4cc5-8cc1-ff60968ed29f
+langcode: en
+status: true
+dependencies: {  }
+id: amending_proposal
+label: 'Amending proposal'
+target_entity_type_id: node
+description: ''

@@ -1,0 +1,21 @@
+uuid: 1dc8eeb8-4931-4eca-be41-1916724b1e0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sc_service_methods
+    - node.type.service_card
+  module:
+    - text
+id: node.service_card.field_sc_service_methods
+field_name: field_sc_service_methods
+entity_type: node
+bundle: service_card
+label: 'Alternative methods of service'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

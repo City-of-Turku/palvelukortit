@@ -15,17 +15,5 @@ extract((new Druidfi\Omen\DrupalEnvDetector(__DIR__))->getConfiguration());
 // Hash salt.
 $settings['hash_salt'] = 'oNbAEGiCIhNhXU-hNBmZMLSSR11HUqnXVUdG9IwMDFBft67IXRV4xjao1W20AQ_O5pRQ07PNMg';
 
-/**
- * Only in Wodby environment. @see https://wodby.com/docs/stacks/drupal/#overriding-settings-from-wodbysettingsphp
- */
-
-if (isset($_SERVER['WODBY_APP_NAME'])) {
-  // The include won't be added automatically if it's already there.
-  include '/var/www/conf/wodby.settings.php';
-
-  // Override setting from wodby.settings.php.
-  $settings['config_sync_directory'] = '../conf/cmi';
-}
-
 // Private files path
 $settings['file_private_path'] = realpath(__DIR__ . '/../../../files_private');

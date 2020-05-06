@@ -5,7 +5,6 @@ namespace Drupal\httpclientservice\Client;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\guzzle_cache\DrupalGuzzleCache;
-use Drupal\key\KeyRepositoryInterface;
 use Drupal\node\Entity\Node;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -61,12 +60,10 @@ class HttpClientServiceClient implements HttpClientServiceClientInterface {
   /**
    * Constructor.
    */
-  public function __construct(KeyRepositoryInterface $key_repo, ConfigFactory $config_factory) {
+  public function __construct(ConfigFactory $config_factory) {
     $config = $config_factory->get('httpclientservice.settings');
     $this->caller = $config->get('httpclientservice_caller');
-    $this->caller = $key_repo->getKey($this->caller)->getKeyValue();
     $this->publicKey = $config->get('httpclientservice_public_key');
-    $this->publicKey = $key_repo->getKey($this->publicKey)->getKeyValue();
     $this->baseURI = $config->get('httpclientservice_base_uri');
   }
 

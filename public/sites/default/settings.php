@@ -26,3 +26,6 @@ if (isset($_SERVER['WODBY_APP_NAME'])) {
   // Override setting from wodby.settings.php.
   $settings['config_sync_directory'] = '../conf/cmi';
 }
+
+// Private files path
+$settings['file_private_path'] = realpath(__DIR__ . '/../../../files_private');

@@ -1,0 +1,14 @@
+uuid: eb286b65-8776-4596-a74b-ce476c7c047b
+langcode: en
+status: true
+dependencies:
+  config:
+    - httpclientservice.settings
+    - key.key.mds_url
+id: mds_url_override
+label: MDS-URL-OVERRIDE
+config_type: system.simple
+config_prefix: ''
+config_name: httpclientservice.settings
+config_item: httpclientservice_base_uri
+key_id: mds_url

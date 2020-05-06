@@ -26,7 +26,7 @@ function httpclientservice_cron() {
   // Services.
   // $palvelupisteet = new Palvelupiste();
   // $palvelutarjous = new Palvelutarjous();
-  // $palvelukortti = new Palvelu();
+   $palvelukortti = new Palvelu();
 
   // Retrieve all data.
   // $palvelupisteet->httpclientserviceSavePalvelupisteet();
@@ -36,7 +36,7 @@ function httpclientservice_cron() {
   // For development purposes retrieve just one item per each.
   // $palvelupisteet->httpclientserviceSavePalvelupisteDev();
   // $palvelutarjous->httpclientserviceSavePalvelutarjousDev();
-  // $palvelukortti->httpclientserviceSavePalveluDev();
+   $palvelukortti->httpclientserviceSavePalveluDev();
 
   // Store the timestamp in state.
   $last_time = \Drupal::time()->getRequestTime();

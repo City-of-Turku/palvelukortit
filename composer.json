@@ -14,6 +14,7 @@
     "prefer-stable": true,
     "require": {
         "brainmaestro/composer-git-hooks": "^2.7",
+        "ckeditor/pastefromword": "4.13.0",
         "cweagans/composer-patches": "^1.6.5",
         "dimsemenov/magnific-popup": "^1.1",
         "druidfi/omen": "^0.1.0",
@@ -21,6 +22,7 @@
         "drupal/admin_toolbar": "^2.2",
         "drupal/ajax_comments": "^1.0@beta",
         "drupal/better_exposed_filters": "^4.0@alpha",
+        "drupal/ckeditor_pastefromword": "^1.0@RC",
         "drupal/comments_order": "^1.1",
         "drupal/context": "^4.0@beta",
         "drupal/core-composer-scaffold": "^8.8.0",
@@ -133,6 +135,21 @@
                 },
                 "dist": {
                     "url": "https://github.com/dimsemenov/Magnific-Popup/archive/1.1.0.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/pastefromword",
+                "version": "4.13.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "ckeditor/plugins/pastefromword"
+                },
+                "dist": {
+                    "url": "https://download.ckeditor.com/pastefromword/releases/pastefromword_4.13.0.zip",
                     "type": "zip"
                 }
             }

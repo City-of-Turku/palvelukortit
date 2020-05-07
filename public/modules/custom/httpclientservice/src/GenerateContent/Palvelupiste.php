@@ -156,7 +156,7 @@ class Palvelupiste {
     if (isset($data['puhelinnumerot'])) {
       foreach ($data['puhelinnumerot'] as $key => $phone) {
         // Merge country code + phone number into one value.
-        $telephones[$key]['value'] = '+' . $phone['maakoodi'] . $phone['numero'];
+        $telephones[$key]['value'] = $phone['maakoodi'] . $phone['numero'];
       }
     }
 

@@ -8,7 +8,7 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: 'Customer Service'
+name: 'Customer service'
 type: customer_service
 description: ''
 help: ''

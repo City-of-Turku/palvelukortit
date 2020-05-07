@@ -1,0 +1,40 @@
+table {
+  border: 1px solid $gray-medium;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+
+  caption {
+    color: $black;
+    padding: 1em 0;
+    text-align: center;
+  }
+
+  td,
+  th {
+    border-left: 1px solid $gray-medium;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: 0.5em 1em;
+  }
+
+  tbody > tr:last-child > td {
+    border-bottom-width: 0;
+  }
+
+  thead {
+    background-color: $white;
+    color: $black;
+    text-align: left;
+    vertical-align: bottom;
+  }
+
+  td {
+    border-bottom: 1px solid $gray-medium;
+  }
+
+  tr:nth-child(2n-1) td {
+    background-color: $gray-light;
+  }
+}

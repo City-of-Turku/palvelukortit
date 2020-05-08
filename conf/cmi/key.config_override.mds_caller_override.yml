@@ -1,0 +1,14 @@
+uuid: af6eeae8-793e-4076-a99e-aae0eb1b31c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - httpclientservice.settings
+    - key.key.mds_caller
+id: mds_caller_override
+label: MDS-CALLER-OVERRIDE
+config_type: system.simple
+config_prefix: ''
+config_name: httpclientservice.settings
+config_item: httpclientservice_caller
+key_id: mds_caller

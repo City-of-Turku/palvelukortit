@@ -8,6 +8,7 @@ public/themes/contrib
 public/sites/default/files
 vendor
 cghooks.lock
+files_private
 
 # Ignore the folder created by PhpStorm
 .idea/*

@@ -1,9 +1,9 @@
 httpclientservice_private_key: caller
-httpclientservice_public_key: api
-httpclientservice_base_uri: 'https://testidigiaurajoki.turku.fi/kuntapalvelut/'
+httpclientservice_public_key: null
+httpclientservice_base_uri: null
 submit: 'Save configuration'
 form_build_id: form-gqJb8BGd31K1bc9TUq5uqyLRKIvxzgJiIImw0SgTkcM
 form_token: 3g_27FGyUgVYC-5fc_K2bCnjNxQ5oz8i7t3fX80X0OU
 form_id: httpclientservice_settings_form
 op: 'Save configuration'
-httpclientservice_caller: caller
+httpclientservice_caller: null

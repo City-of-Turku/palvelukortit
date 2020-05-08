@@ -1,3 +1,139 @@
 @media print {
+  @page {
+    size: A4 portrait;
+    border-collapse: separate !important;
+    page-break-after: avoid;
+    page-break-before: avoid;
+  }
 
+  html,
+  body {
+    font-size: 75%;
+  }
+
+  .menu--account,
+  .menu--account__button,
+  .menu--account__dropdown,
+  .block-language,
+  .service-card__navigation-wrapper,
+  .tools__container,
+  .print-wrapper,
+  .page-footer,
+  .service-card__field_amending_proposals,
+  .paragraph__media--icon {
+    display: none !important;
+  }
+
+  .dialog-off-canvas-main-canvas {
+    background-color: transparent;
+    border: 0 none;
+
+    // Display inline-block or flex will cause page breaks.
+    div,
+    span {
+      display: block;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .page-header {
+    background-color: transparent;
+
+    .logo,
+    .logo--text {
+      color: $black;
+    }
+
+    .block-menu,
+    .block-language {
+      display: none;
+    }
+  }
+
+  .page-content {
+    padding: 0;
+  }
+
+  .service-card {
+    display: block;
+
+    .service-card__header {
+      border-left: 0 none;
+      margin-bottom: 0;
+      padding: 0;
+    }
+
+    .service-card__updated-on {
+      display: none !important;
+
+      > span::after {
+        display: none;
+      }
+    }
+
+    .service-card__content {
+      display: block;
+    }
+
+    .service-card__section {
+      border-top: 1px solid #888;
+      display: block;
+      padding-bottom: 1.5rem;
+      padding-top: 2rem;
+
+      .section--label {
+        @include font-size(20px);
+        color: $black;
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+        .section--label__icon {
+          display: inline;
+          margin-right: 5px;
+          vertical-align: sub;
+
+          .icon {
+            color: $black;
+            height: 1.4rem;
+            width: 1.4rem;
+          }
+        }
+      }
+
+      .service-card__field_contact_details_of_experts {
+        .section--content {
+          .field__label {
+            color: $black;
+            display: block;
+          }
+        }
+
+        .taxonomy-term--expert {
+          h2 {
+            @include font-size(14px, 14px);
+          }
+        }
+      }
+
+      .paragraph--instruction {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+
+        .paragraph__media .field__item>a {
+          display: block;
+        }
+      }
+    }
+  }
+
+  img {
+    display: block;
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    page-break-after: auto;
+    page-break-before: auto;
+  }
 }

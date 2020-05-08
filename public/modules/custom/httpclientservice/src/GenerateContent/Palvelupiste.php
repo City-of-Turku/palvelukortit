@@ -41,7 +41,8 @@ class Palvelupiste {
    *   Data from API
    */
   public function httpclientserviceGetPalvelupisteet() {
-    $data = $this->client->httpclientserviceGetService('api/v1/palvelupisteet');
+    $changeday = $this->client->httpclientserviceGetChangedate();
+    $data = $this->client->httpclientserviceGetService('api/v1/palvelupisteet', $query = [], $changeday);
 
     return $data;
   }
@@ -62,7 +63,7 @@ class Palvelupiste {
       $code = $palvelupiste['koodi'];
 
       // Check if Customer service node already exist.
-      if (!$this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
+      if (!$id = $this->client->httpclientserviceCheckExist($code, $this->type, $this->client->getDefaultLanguage())) {
 
         // Check if default language version has title. If not, search for other
         // languages and create the node with an existing language.
@@ -71,6 +72,16 @@ class Palvelupiste {
         // Create Customer service node.
         if ($langcode) {
           $this->httpclientserviceCreatePalvelupiste($palvelupiste, $langcode);
+        }
+      }
+      else {
+        // Check if default language version has title. If not, search for other
+        // languages and create the node with an existing language.
+        $langcode = $this->client->retrieveOriginalLanguageTitle($palvelupiste, $code, $this->type);
+
+        // Create Customer service node.
+        if ($langcode) {
+          $this->httpclientserviceUpdatePalvelupiste($id, $palvelupiste, $langcode);
         }
       }
     }
@@ -124,6 +135,56 @@ class Palvelupiste {
       'field_telephone' => $telephones,
       'field_address' => $address
     ]);
+
+    // Set description.
+    if (isset($descriptions[$langcode])) {
+      $node->set('field_description', $descriptions[$langcode]);
+    }
+
+    // Set more information link.
+    if (!empty($links)) {
+      $node->set('field_more_information_link', $links);
+    }
+
+    // Set email.
+    if (isset($data['sahkoposti'])) {
+      $node->set('field_email', $data['sahkoposti']);
+    }
+
+    // Saving original the node.
+    $node->save();
+
+    // Translate entity.
+    $this->client->httpclientserviceTranslateEntity($node, $data, $this->type, $langcode);
+  }
+
+  /**
+   * Update Customer Services from data.
+   */
+  public function httpclientserviceUpdatePalvelupiste($nid, $data, $langcode) {
+    $node = Node::load($nid);
+    $titles = $data['nimi_kieliversiot'];
+    $descriptions = isset($data['kuvaus_kieliversiot']) ? $data['kuvaus_kieliversiot'] : [];
+    $status = ($data['tila']['koodi'] == '1') ? 1 : 0;
+
+    // Convert change date value from APi to Drupal date time.
+    $date = $this->client->httpclientserviceConvertTimeStamp($data['muutospvm']);
+
+    // Convert more information value into Drupal fields.
+    $links = $this->httpclientserviceConvertMoreInformationValue($data, $langcode);
+
+    // Convert telephone data into Drupal field.
+    $telephones = $this->httpclientserviceConvertPhoneValue($data);
+
+    // Address information.
+    $address = $this->httpclientserviceGetAddressValue($data, $langcode);
+
+    $node->set('changed', \Drupal::time()->getRequestTime());
+    $node->set('title', $data['nimi_kieliversiot'][$langcode]);
+    $node->set('status', $status);
+    $node->set('field_updated_date', $date);
+    $node->set('field_telephone', $telephones);
+    $node->set('field_address', $address);
 
     // Set description.
     if (isset($descriptions[$langcode])) {

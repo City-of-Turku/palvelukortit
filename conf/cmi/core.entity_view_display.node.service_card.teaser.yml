@@ -11,6 +11,10 @@ dependencies:
     - field.field.node.service_card.field_description
     - field.field.node.service_card.field_index
     - field.field.node.service_card.field_programs_and_systems_used
+    - field.field.node.service_card.field_sc_customers
+    - field.field.node.service_card.field_sc_fees
+    - field.field.node.service_card.field_sc_service_methods
+    - field.field.node.service_card.field_sc_service_package
     - field.field.node.service_card.field_service_instructions
     - field.field.node.service_card.field_service_offers
     - field.field.node.service_card.field_service_type
@@ -80,6 +84,10 @@ hidden:
   field_code: true
   field_contact_details_of_experts: true
   field_programs_and_systems_used: true
+  field_sc_customers: true
+  field_sc_fees: true
+  field_sc_service_methods: true
+  field_sc_service_package: true
   field_service_instructions: true
   field_service_offers: true
   field_service_types: true

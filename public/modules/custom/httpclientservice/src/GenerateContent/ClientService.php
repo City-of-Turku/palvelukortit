@@ -164,6 +164,9 @@ class ClientService {
    * {@inheritdoc}
    */
   public function httpclientserviceDeleteEntity($type, $nid = NULL) {
+    // Get API user uid.
+    $uid = new ApiUser();
+
     if ($nid) {
       $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
@@ -174,6 +177,7 @@ class ClientService {
     else {
       $nodes = \Drupal::entityQuery("node")
         ->condition('type', $type)
+        ->condition('uid', $uid->getApiUser())
         ->execute();
 
       $storage_handler = \Drupal::entityTypeManager()->getStorage("node");

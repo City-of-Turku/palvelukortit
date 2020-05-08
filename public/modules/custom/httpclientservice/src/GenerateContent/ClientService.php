@@ -177,7 +177,7 @@ class ClientService {
     else {
       $nodes = \Drupal::entityQuery("node")
         ->condition('type', $type)
-        ->condition('uid', $uid)
+        ->condition('uid', $uid->getApiUser())
         ->execute();
 
       $storage_handler = \Drupal::entityTypeManager()->getStorage("node");

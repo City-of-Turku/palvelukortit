@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\suopa_content\Plugin\Block;
+namespace Drupal\pako_content\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 
@@ -21,7 +21,7 @@ class ContentPrintButtonBlock extends BlockBase {
     $build = [];
 
     $build['#button_title'] = t('Print this page');
-    $build['#theme'] = 'suopa_content_print_button';
+    $build['#theme'] = 'pako_content_print_button';
 
     return $build;
   }

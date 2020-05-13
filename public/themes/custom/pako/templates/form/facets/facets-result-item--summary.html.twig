@@ -21,7 +21,7 @@
   {% if icons_path %}
     <svg class="icon">
       <title>{{ attributes.value }}</title>
-      <use xlink:href="{{ icons_path|trim }}#close" />
+      <use href="{{ icons_path|trim }}#close" />
     </svg>
   {% endif %}
   <span>{{ value }}</span>

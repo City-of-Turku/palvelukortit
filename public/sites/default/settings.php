@@ -11,6 +11,3 @@
 // These files are loaded automatically if found.
 //
 require_once 'drupal.configurator.php';
-
-// Private files path
-$settings['file_private_path'] = realpath(__DIR__ . '/../../../files_private');

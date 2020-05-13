@@ -1,0 +1,21 @@
+uuid: 8c0907ff-4297-4988-bcff-670b0dfff7a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sc_service_package
+    - node.type.service_card
+  module:
+    - text
+id: node.service_card.field_sc_service_package
+field_name: field_sc_service_package
+entity_type: node
+bundle: service_card
+label: 'Service package'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

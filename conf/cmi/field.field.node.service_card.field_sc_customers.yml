@@ -1,0 +1,21 @@
+uuid: 8468d1ce-bacc-4eec-ba71-154383a6911f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sc_customers
+    - node.type.service_card
+  module:
+    - text
+id: node.service_card.field_sc_customers
+field_name: field_sc_customers
+entity_type: node
+bundle: service_card
+label: Customers
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

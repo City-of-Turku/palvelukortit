@@ -28,7 +28,7 @@
     {% if icons_path %}
       <svg class="icon {{ logo_class }}">
         <title>{{ logo_alt }}</title>
-        <use xlink:href="{{ icons_path|trim }}#{{ logo }}" />
+        <use href="{{ icons_path|trim }}#{{ logo }}" />
       </svg>
     {% endif %}
     <span class="logo--text {{ logo_class }}">{{ site_name }}</span>

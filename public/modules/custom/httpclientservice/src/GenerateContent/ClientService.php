@@ -44,7 +44,7 @@ class ClientService {
   public function httpclientserviceGetService($url, $query = [], $code = NULL) {
     $client = \Drupal::service('httpclientservice.client');
     $query = ['verify' => FALSE, 'debug' => TRUE];
-    $url = ($code) ? $url . '/' . $code : $url;
+    $url = ($code) ? $url . $code : $url;
     $request = $client->connect('GET', $url, $query);
 
     return Json::decode($request);
@@ -164,6 +164,9 @@ class ClientService {
    * {@inheritdoc}
    */
   public function httpclientserviceDeleteEntity($type, $nid = NULL) {
+    // Get API user uid.
+    $uid = new ApiUser();
+
     if ($nid) {
       $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
@@ -174,6 +177,7 @@ class ClientService {
     else {
       $nodes = \Drupal::entityQuery("node")
         ->condition('type', $type)
+        ->condition('uid', $uid->getApiUser())
         ->execute();
 
       $storage_handler = \Drupal::entityTypeManager()->getStorage("node");
@@ -290,6 +294,18 @@ class ClientService {
     foreach ($paragraphs as $paragraph) {
       $paragraph->delete();
     }
+  }
+
+  /**
+   * Get changedate parameter.
+   *
+   * {@inheritdoc}
+   */
+  public function httpclientserviceGetChangedate() {
+    $changeday = date("Y-m-d", strtotime('-1 days'));
+    $changeday = '?changedate=' . $changeday;
+
+    return $changeday;
   }
 
 }

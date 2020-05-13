@@ -93,3 +93,41 @@
     }
   }
 }
+
+.button--print {
+  align-items: center;
+  background: $white;
+  border: 0 none;
+  border-radius: 5px;
+  color: $black;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+  &:active,
+  &:hover {
+    color: $blue;
+    text-decoration: underline;
+
+    .print__text {
+      color: $blue;
+      text-decoration: underline;
+    }
+  }
+
+  .print__text {
+    @include font-size(16px, 22px);
+    @include font-weight($regular);
+  }
+
+  .print__icon {
+    display: flex;
+    margin-right: $gutter / 1.5;
+
+    .icon {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}

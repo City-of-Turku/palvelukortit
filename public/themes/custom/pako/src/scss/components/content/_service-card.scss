@@ -10,6 +10,7 @@
   border-left: 10px solid transparent;
   margin-bottom: $gutter * 1.4;
   padding: $gutter * 2;
+  position: relative;
 }
 
 .service-card__title {
@@ -26,8 +27,26 @@
 .service-card__updated-on {
   @include font-size(16px, 22px);
   @include font-weight($regular);
+  align-items: center;
   color: $gray-dark;
-  text-align: right;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+
+  > span {
+    padding-right: $gutter;
+    position: relative;
+
+    &::after {
+      background-color: #282828;
+      content: '';
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1px;
+    }
+  }
 }
 
 .service-card__section {

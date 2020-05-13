@@ -1,0 +1,5 @@
+parameters:
+  twig.config: # disabling twig debugging and auto reload, plus enabling twig caching
+    debug: false
+    auto_reload: null
+    cache: true

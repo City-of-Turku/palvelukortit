@@ -6,6 +6,7 @@ public/libraries
 public/modules/contrib
 public/themes/contrib
 public/sites/default/files
+public/sites/default/settings.local.php
 vendor
 cghooks.lock
 files_private

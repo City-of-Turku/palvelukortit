@@ -9,6 +9,7 @@ public/sites/default/files
 vendor
 cghooks.lock
 files_private
+shared
 
 # Ignore the folder created by PhpStorm
 .idea/*

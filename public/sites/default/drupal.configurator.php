@@ -31,3 +31,7 @@ foreach (['all', $APP_ENV, 'local'] as $set) {
     $settings['container_yamls'][] = __DIR__ . '/' . $set . '.services.yml';
   }
 }
+
+if (file_exists(__DIR__ . '/' . 'settings.local.php')) {
+  include __DIR__ . '/' . 'settings.local.php';
+}

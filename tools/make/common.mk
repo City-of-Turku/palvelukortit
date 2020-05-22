@@ -17,7 +17,7 @@ PHONY += artifact
 # This command can always be run on host
 artifact: RUN_ON := host
 artifact: ## Make tar.gz package from the current build
-	$(call step,Create artifact (${RUN_ON})...)
+	$(call step,Create artifact...)
 	@${ARTIFACT_CMD}
 
 PHONY += build
